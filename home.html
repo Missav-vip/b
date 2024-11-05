@@ -5,14 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+        }
+        h1, h2 {
+            color: white;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin-top: 20px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h1>Selamat Datang di Halaman Utama!</h1>
     <p>Ini adalah halaman utama di mana Anda dapat mencari dan mengakses berbagai informasi.</p>
+    
     <form>
         <input type="text" placeholder="Cari..." />
         <button type="submit">Cari</button>
     </form>
+    
     <div>
         <h2>Akses Menu</h2>
         <ul>
@@ -20,5 +47,13 @@
             <li><a href="#">Menu Lain</a></li>
         </ul>
     </div>
+
+    <script>
+        // Mengambil latar belakang dari localStorage dan mengaplikasikannya
+        const backgroundImage = localStorage.getItem('backgroundImage');
+        if (backgroundImage) {
+            document.body.style.backgroundImage = `url(${backgroundImage})`;
+        }
+    </script>
 </body>
 </html>
