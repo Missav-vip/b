@@ -93,12 +93,24 @@
                 // Menampilkan preview gambar
                 preview.src = event.target.result;
                 preview.style.display = 'block'; // Tampilkan gambar preview
+
+                // Simpan gambar ke local storage
+                localStorage.setItem('backgroundImage', event.target.result);
             }
             reader.readAsDataURL(file);
         } else {
             alert("Silakan pilih gambar terlebih dahulu.");
         }
     }
+
+    // Ketika halaman dimuat, ambil gambar dari local storage jika ada
+    window.onload = function() {
+        const savedBackground = localStorage.getItem('backgroundImage');
+        if (savedBackground) {
+            document.body.style.backgroundImage = `url('${savedBackground}')`;
+            document.body.style.backgroundSize = 'cover';
+        }
+    };
 </script>
 
 </body>
