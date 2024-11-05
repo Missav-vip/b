@@ -23,7 +23,7 @@
             flex-grow: 1; /* Agar konten memenuhi sisa ruang */
         }
 
-        /* Styling untuk ikon hamburger */
+        /* Styling untuk ikon hamburger (garis 3) di sebelah kanan */
         .hamburger {
             font-size: 30px;
             cursor: pointer;
@@ -32,14 +32,14 @@
             color: white;
             position: fixed;
             top: 0;
-            left: 0;
+            right: 0; /* Pindahkan hamburger ke kanan */
             z-index: 100; /* Agar hamburger di atas menu */
         }
     </style>
 </head>
 <body>
-    <!-- Ikon Hamburger -->
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div> <!-- Menu Garis 3 -->
+    <!-- Ikon Hamburger (Garis 3) di sebelah kanan -->
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
 
     <!-- Menyertakan menu dari file terpisah -->
     <div id="menuContainer"></div>
