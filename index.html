@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Latar Belakang</title>
+    <meta name="description" content="Situs Shell untuk upload latar belakang dan akses internet.">
     <link rel="stylesheet" href="style.css">
+    <title>Shell - Upload Latar Belakang</title>
 </head>
 <body>
-    <div id="background"></div>
-    
-    <h1>Upload Gambar Latar Belakang</h1>
-    <form id="uploadForm">
-        <input type="file" id="fileInput" accept="image/*" required>
-        <button type="submit">Upload</button>
-    </form>
-
+    <div class="container">
+        <h1>Upload Latar Belakang</h1>
+        <form id="uploadForm" onsubmit="handleUpload(event)">
+            <input type="file" id="uploadInput" accept="image/*" required />
+            <button type="submit">Upload</button>
+        </form>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
