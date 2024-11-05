@@ -5,11 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .line {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+        }
+
+        .menu {
+            width: 200px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            position: fixed;
+            height: 100%;
+            z-index: 999;
+            top: 0;
+            left: -220px; /* Menu tersembunyi di luar layar */
+            transition: left 0.3s;
+            overflow-y: auto;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            margin: 5px 0;
+            transition: background-color 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .menu.show {
+            left: 0; /* Tampilkan menu */
+        }
+    </style>
 </head>
 <body>
     <h1>Selamat datang di halaman utama</h1>
 
-    <!-- Garis Tiga -->
     <div class="menu-toggle" onclick="toggleMenu()">
         <div class="line"></div>
         <div class="line"></div>
@@ -17,7 +80,7 @@
     </div>
 
     <!-- Menu -->
-    <div class="menu" id="menu" style="display: none;">
+    <div class="menu" id="menu">
         <h2>Menu</h2>
         <a href="#">Beranda</a>
         <a href="#">Profil</a>
@@ -34,11 +97,7 @@
         // Fungsi untuk menampilkan dan menyembunyikan menu
         function toggleMenu() {
             const menu = document.getElementById('menu');
-            if (menu.style.display === 'none') {
-                menu.style.display = 'block';
-            } else {
-                menu.style.display = 'none';
-            }
+            menu.classList.toggle('show'); // Tambahkan atau hapus kelas show
         }
 
         // Memuat gambar latar belakang dari localStorage jika ada
