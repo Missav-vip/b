@@ -16,6 +16,7 @@
             background-size: cover;
             color: #ffffff;
             transition: background 0.5s;
+            background-attachment: fixed; /* Mengunci latar belakang */
         }
 
         header {
@@ -71,6 +72,11 @@
     <img id="preview" alt="Preview Gambar">
 </div>
 
+<!-- Tombol untuk kembali ke beranda/home -->
+<div class="home-button">
+    <button onclick="goHome()">Kembali ke Beranda</button>
+</div>
+
 <!-- Konten lainnya -->
 <section id="latest-news">
     <h2>Berita Terbaru</h2>
@@ -84,23 +90,52 @@
         const file = fileInput.files[0];
         const preview = document.getElementById('preview');
 
+        // Format dan ukuran yang diizinkan
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        const maxSize = 5 * 1024 * 1024; // 5 MB
+
         if (file) {
+            // Validasi tipe file
+            if (!allowedTypes.includes(file.type)) {
+                alert("Format file tidak valid. Harap unggah gambar JPG, PNG, atau GIF.");
+                return;
+            }
+
+            // Validasi ukuran file
+            if (file.size > maxSize) {
+                alert("Ukuran file terlalu besar. Harap unggah gambar yang lebih kecil dari 5MB.");
+                return;
+            }
+
             const reader = new FileReader();
             reader.onload = function(event) {
-                document.body.style.backgroundImage = `url('${event.target.result}')`;
-                document.body.style.backgroundSize = 'cover'; // Pastikan gambar menutupi seluruh halaman
-                
-                // Menampilkan preview gambar
-                preview.src = event.target.result;
-                preview.style.display = 'block'; // Tampilkan gambar preview
+                // Cek resolusi gambar (minimal 800x600 untuk kualitas)
+                const img = new Image();
+                img.src = event.target.result;
+                img.onload = function() {
+                    if (img.width < 800 || img.height < 600) {
+                        alert("Resolusi gambar terlalu rendah. Harap unggah gambar dengan resolusi minimal 800x600.");
+                        return;
+                    }
+                    document.body.style.backgroundImage = `url('${event.target.result}')`;
+                    document.body.style.backgroundSize = 'cover'; // Pastikan gambar menutupi seluruh halaman
+                    
+                    // Menampilkan preview gambar
+                    preview.src = event.target.result;
+                    preview.style.display = 'block'; // Tampilkan gambar preview
 
-                // Simpan gambar ke local storage
-                localStorage.setItem('backgroundImage', event.target.result);
+                    // Simpan gambar ke local storage
+                    localStorage.setItem('backgroundImage', event.target.result);
+                }
             }
             reader.readAsDataURL(file);
         } else {
             alert("Silakan pilih gambar terlebih dahulu.");
         }
+    }
+
+    function goHome() {
+        window.location.href = "index.html"; // Ganti dengan path beranda Anda jika berbeda
     }
 
     // Ketika halaman dimuat, ambil gambar dari local storage jika ada
