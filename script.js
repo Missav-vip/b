@@ -1,33 +1,26 @@
-document.getElementById("searchForm").addEventListener("submit", function(event) {
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Mencegah pengiriman formulir secara default
 
-    const query = document.getElementById("searchQuery").value;
-    const source = document.getElementById("searchSource").value;
-    performSearch(query, source);
-});
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
 
-function performSearch(query, source) {
-    let searchUrl = '';
+    // Memeriksa apakah file ada dan merupakan gambar
+    if (file) {
+        const reader = new FileReader();
+        
+        // Menangani saat gambar sudah dibaca
+        reader.onload = function(e) {
+            const background = document.getElementById('background');
+            background.style.backgroundImage = `url(${e.target.result})`;
+            background.style.backgroundSize = 'cover'; // Agar gambar menutupi seluruh latar belakang
+            background.style.backgroundPosition = 'center'; // Memposisikan gambar di tengah
+            background.style.position = 'fixed'; // Agar tetap di tempat
+            background.style.top = '0';
+            background.style.left = '0';
+            background.style.width = '100%';
+            background.style.height = '100%';
+        }
 
-    // Mengatur URL pencarian berdasarkan sumber yang dipilih
-    switch(source) {
-        case 'google':
-            searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-            break;
-        case 'duckduckgo':
-            searchUrl = `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
-            break;
-        case 'deepweb':
-            searchUrl = `https://www.deepwebsites.com/?q=${encodeURIComponent(query)}`; // Contoh URL
-            break;
-        case 'darknet':
-            searchUrl = `http://darknetsearch.com/?q=${encodeURIComponent(query)}`; // Contoh URL
-            break;
-        default:
-            searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-            break;
+        reader.readAsDataURL(file); // Membaca file sebagai URL data
     }
-
-    // Membuka hasil pencarian di tab baru
-    window.open(searchUrl, "_blank");
-}
+});
