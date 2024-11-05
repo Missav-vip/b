@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Situs Shell untuk upload latar belakang dan akses internet.">
+    <title>Shell - Upload Background</title>
     <link rel="stylesheet" href="style.css">
-    <title>Shell - Upload Latar Belakang</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Upload Latar Belakang</h1>
-        <form id="uploadForm" onsubmit="handleUpload(event)">
-            <input type="file" id="uploadInput" accept="image/*" required />
-            <button type="submit">Upload</button>
+    <div class="upload-container">
+        <h2>Upload Background</h2>
+        <form id="uploadForm">
+            <input type="file" id="backgroundUpload" accept="image/*, video/*" required>
+            <button type="submit">Set Background</button>
         </form>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
