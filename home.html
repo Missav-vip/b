@@ -7,22 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Menu Toggle -->
+    <h1>Selamat datang di halaman utama</h1>
+
     <div class="menu-toggle" onclick="toggleMenu()">
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
     </div>
 
-    <!-- Form Upload Latar Belakang -->
-    <input type="file" id="backgroundInput" accept="image/*" onchange="uploadBackground()" />
-    
-    <h1>Selamat datang di halaman utama</h1>
-
-    <!-- Link Menu -->
-    <div id="menu-placeholder"></div>
+    <!-- Menu -->
+    <div class="menu" id="menu" style="display: none;">
+        <h2>Menu</h2>
+        <a href="#">Beranda</a>
+        <a href="#">Profil</a>
+        <a href="#">Akun Saya</a>
+        <a href="#">Berita</a>
+        <a href="#">Layanan</a>
+        <a href="#">Bantuan</a>
+        <a href="#">Kontak</a>
+        <a href="#">Pengaturan</a>
+        <a href="#">Logout</a>
+    </div>
 
     <script>
+        // Fungsi untuk menampilkan dan menyembunyikan menu
         function toggleMenu() {
             const menu = document.getElementById('menu');
             if (menu.style.display === 'none') {
@@ -32,33 +40,14 @@
             }
         }
 
-        function uploadBackground() {
-            const fileInput = document.getElementById('backgroundInput');
-            const file = fileInput.files[0];
-
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (event) {
-                    const imageUrl = event.target.result;
-                    document.body.style.backgroundImage = `url(${imageUrl})`;
-                    localStorage.setItem('backgroundImage', imageUrl);
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
+        // Memuat gambar latar belakang dari localStorage jika ada
         window.onload = function () {
             const backgroundImage = localStorage.getItem('backgroundImage');
             if (backgroundImage) {
                 document.body.style.backgroundImage = `url(${backgroundImage})`;
+                document.body.style.backgroundSize = "cover";
+                document.body.style.backgroundAttachment = "fixed";
             }
-
-            // Load Menu HTML dynamically
-            fetch('menu.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('menu-placeholder').innerHTML = data;
-                });
         }
     </script>
 </body>
