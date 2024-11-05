@@ -3,27 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Shell</title>
+    <meta name="description" content="Halaman utama Shell. Akses semua yang diperlukan di internet.">
     <link rel="stylesheet" href="style.css">
+    <title>Shell - Halaman Utama</title>
 </head>
 <body>
-    <div id="background"></div>
-    
-    <nav>
-        <ul>
-            <li><a href="upload.html">Upload Latar Belakang</a></li>
-            <li><a href="index.html">Beranda</a></li>
-        </ul>
-    </nav>
-
-    <h1>Halaman Utama</h1>
-    <p>Selamat datang di halaman utama Shell! Cari informasi yang Anda butuhkan di sini.</p>
-    
-    <form id="searchForm" action="#" method="GET">
-        <input type="text" id="searchInput" placeholder="Cari sesuatu..." required>
-        <button type="submit">Cari</button>
-    </form>
-
+    <div class="container">
+        <h1>Selamat Datang di Shell</h1>
+        <p>Cari apa yang Anda butuhkan di sini:</p>
+        <input type="text" id="searchInput" placeholder="Cari di internet..." />
+        <button onclick="search()">Cari</button>
+        <div id="searchResults"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
