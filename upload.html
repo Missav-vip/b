@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unggah Latar Belakang</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Unggah Latar Belakang</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Pilih dan Unggah Gambar</h2>
+        <div id="upload-form">
+            <input type="file" id="backgroundUpload" accept="image/*">
+            <button id="uploadButton">Unggah</button>
+            <div id="message"></div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Shell. Semua hak dilindungi.</p>
+    </footer>
 
+    <script>
+        document.getElementById('uploadButton').addEventListener('click', function() {
+            const fileInput = document.getElementById('backgroundUpload');
+            const file = fileInput.files[0];
+            const messageDiv = document.getElementById('message');
+
+            // Reset pesan
+            messageDiv.innerText = '';
+
+            // Memeriksa apakah file dipilih
+            if (!file) {
+                messageDiv.innerText = 'Silakan pilih file gambar terlebih dahulu.';
+                return;
+            }
+
+            // Memeriksa ukuran file (maksimal 5MB)
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            if (file.size > maxSize) {
+                messageDiv.innerText = 'File terlalu besar. Maksimal ukuran file adalah 5MB.';
+                return;
+            }
+
+            // Membaca file gambar
+            const img = new Image();
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                img.src = event.target.result;
+                img.onload = function() {
+                    // Memeriksa dimensi gambar
+                    const width = img.width;
+                    const height = img.height;
+
+                    // Misalkan kita ingin batasan 1920x1080
+                    if (width > 1920 || height > 1080) {
+                        messageDiv.innerText = 'Dimensi gambar terlalu besar. Maksimal adalah 1920x1080 piksel.';
+                    } else {
+                        messageDiv.innerText = 'Gambar berhasil diunggah!';
+                        // Lakukan aksi untuk menyimpan gambar atau mengganti latar belakang
+                        document.body.style.backgroundImage = `url('${event.target.result}')`;
+                        document.body.style.backgroundSize = 'cover'; // Menutupi seluruh latar belakang
+                        document.body.style.backgroundPosition = 'center'; // Pusatkan gambar
+                    }
+                }
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>
