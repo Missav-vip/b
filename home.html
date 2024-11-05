@@ -46,7 +46,8 @@
             if (backgroundImage) {
                 document.body.style.backgroundImage = `url(${backgroundImage})`;
                 document.body.style.backgroundSize = "cover";
-                document.body.style.backgroundAttachment = "fixed";
+                document.body.style.backgroundAttachment = "fixed"; // Menjaga latar belakang tetap pada tempatnya
+                document.body.style.overflow = "hidden"; // Mengunci posisi scroll agar tidak bergerak
             }
         }
     </script>
