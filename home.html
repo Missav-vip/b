@@ -36,32 +36,6 @@
             margin-left: 20px;
         }
 
-        .search-bar {
-            position: relative;
-            flex-grow: 1;
-            margin-right: 20px;
-            display: none;
-        }
-
-        .search-bar input {
-            padding: 10px;
-            width: 0;
-            font-size: 16px;
-            border: 1px solid #fff;
-            border-radius: 5px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            transition: width 0.4s ease-in-out;
-            opacity: 0.9;
-        }
-
-        .search-bar input:focus {
-            width: 5cm;
-            opacity: 1;
-            outline: none;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-        }
-
         .menu {
             display: none;
             position: absolute;
@@ -86,28 +60,36 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
 
-        #uploadBackground {
+        .search-bar {
             display: none;
-            margin-top: 10px;
-        }
-
-        .search-icon {
-            font-size: 24px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-
-        .search-label {
-            font-size: 18px;
+            position: relative;
             margin-left: 10px;
-            cursor: pointer;
+            flex-grow: 1;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 200px;
+            font-size: 16px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            transition: width 0.4s ease-in-out;
+        }
+
+        .search-bar input:focus {
+            width: 250px; /* Lebar saat fokus */
+            outline: none;
         }
     </style>
 </head>
 <body>
     <div class="menu-bar">
         <span class="hamburger" onclick="toggleMenu()">&#9776;</span>
-        <span class="search-label" onclick="toggleSearch()">Telusuri</span>
+        <div id="searchBar" class="search-bar">
+            <input type="text" placeholder="Telusuri..." onkeypress="if(event.key === 'Enter'){activateSearch();}">
+        </div>
     </div>
 
     <div id="menu" class="menu">
@@ -148,10 +130,6 @@
         <a href="#">Ubah Latar Belakang</a>
     </div>
 
-    <div id="uploadBackground">
-        <input type="file" id="backgroundInput" accept="image/*" onchange="uploadBackground()" />
-    </div>
-
     <script>
         const backgroundImage = localStorage.getItem('backgroundImage');
         if (backgroundImage) {
@@ -163,29 +141,10 @@
             menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
         }
 
-        function toggleUploadBackground() {
-            const uploadDiv = document.getElementById('uploadBackground');
-            uploadDiv.style.display = uploadDiv.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function uploadBackground() {
-            const fileInput = document.getElementById('backgroundInput');
-            const file = fileInput.files[0];
-
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (event) {
-                    const imageUrl = event.target.result;
-                    document.body.style.backgroundImage = `url(${imageUrl})`;
-                    localStorage.setItem('backgroundImage', imageUrl);
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
         function activateSearch() {
-            const searchInput = document.getElementById('searchInput').value;
+            const searchInput = document.querySelector('.search-bar input').value;
             console.log('Mencari:', searchInput);
+            // Tambahkan kode untuk melakukan pencarian
         }
 
         function toggleSearch() {
