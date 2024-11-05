@@ -14,41 +14,46 @@
             padding: 0;
             height: 100vh;
             overflow: hidden;
+            position: relative;
         }
-        
+
         h1 {
             text-align: center;
             margin-top: 50px;
             text-shadow: 2px 2px 4px #000;
         }
 
+        /* Garis Tiga (Toggle Menu) */
         .menu-toggle {
             position: fixed;
             top: 20px;
-            left: 20px;
+            right: 20px;
             cursor: pointer;
             z-index: 1000;
         }
 
         .line {
-            width: 25px; /* Lebar garis lebih kecil */
+            width: 25px;
             height: 3px;
             background-color: white;
             margin: 5px 0;
         }
 
+        /* Menu dengan latar belakang transparan dan gradasi */
         .menu {
-            width: 150px; /* Lebar menu lebih kecil */
-            background-color: rgba(0, 0, 0, 0.7);
+            width: auto;
+            background-color: rgba(0, 0, 0, 0); /* Transparan */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)); /* Gradasi */
             color: white;
             padding: 15px;
             position: fixed;
             height: 100%;
             z-index: 999;
             top: 0;
-            left: -170px; /* Menu tersembunyi di luar layar */
-            transition: left 0.3s;
-            overflow-y: auto;
+            right: -200px; /* Menu tersembunyi di luar layar */
+            transition: right 0.3s;
+            text-align: center;
+            box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.5); /* Efek gradasi di pinggir */
         }
 
         .menu a {
@@ -66,13 +71,14 @@
         }
 
         .menu.show {
-            left: 0; /* Tampilkan menu */
+            right: 0; /* Menu tampil saat garis tiga diklik */
         }
     </style>
 </head>
 <body>
     <h1>Selamat datang di halaman utama</h1>
 
+    <!-- Garis Tiga (Toggle Menu) -->
     <div class="menu-toggle" onclick="toggleMenu()">
         <div class="line"></div>
         <div class="line"></div>
@@ -97,7 +103,15 @@
         // Fungsi untuk menampilkan dan menyembunyikan menu
         function toggleMenu() {
             const menu = document.getElementById('menu');
-            menu.classList.toggle('show'); // Tambahkan atau hapus kelas show
+            const menuToggle = document.querySelector('.menu-toggle');
+            menu.classList.toggle('show'); // Toggle menu
+
+            // Sembunyikan garis tiga ketika menu muncul
+            if (menu.classList.contains('show')) {
+                menuToggle.style.display = 'none';
+            } else {
+                menuToggle.style.display = 'block';
+            }
         }
 
         // Memuat gambar latar belakang dari localStorage jika ada
