@@ -9,43 +9,138 @@
         body {
             font-family: Arial, sans-serif;
             color: white;
-            text-align: center;
+            margin: 0;
+            height: 100vh;
             background-size: cover;
             background-position: center center;
-            background-attachment: fixed;
-            height: 100vh;
-            margin: 0;
+            background-attachment: fixed; /* Mengunci latar belakang */
+            overflow: hidden; /* Menonaktifkan scroll vertikal */
         }
-        h1, h2 {
+
+        .menu-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .menu-bar .hamburger {
+            font-size: 30px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        .search-bar {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            width: 70%;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 90%;
+            font-size: 16px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.6);
             color: white;
         }
-        input[type="text"] {
-            padding: 10px;
-            margin-top: 20px;
-            width: 200px;
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            width: 250px;
+            text-align: left;
         }
-        button {
-            padding: 10px 20px;
-            margin-top: 10px;
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        .menu a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .hamburger-menu {
+            position: absolute;
+            top: 10px;
+            right: 10px;
             cursor: pointer;
+        }
+
+        .menu-bar ul {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .menu-bar ul li {
+            list-style: none;
+            display: inline;
         }
     </style>
 </head>
 <body>
-    <h1>Selamat Datang di Halaman Utama!</h1>
-    <p>Ini adalah halaman utama di mana Anda dapat mencari dan mengakses berbagai informasi.</p>
-    
-    <form>
-        <input type="text" placeholder="Cari..." />
-        <button type="submit">Cari</button>
-    </form>
-    
-    <div>
-        <h2>Akses Menu</h2>
-        <ul>
-            <li><a href="#">Profil</a></li>
-            <li><a href="#">Menu Lain</a></li>
-        </ul>
+    <!-- Menu Hamburger dan Pencarian -->
+    <div class="menu-bar">
+        <span class="hamburger" onclick="toggleMenu()">&#9776;</span>
+        <div class="search-bar">
+            <input type="text" placeholder="Cari..." />
+        </div>
+    </div>
+
+    <!-- Menu Dropdown -->
+    <div id="menu" class="menu">
+        <a href="#">Profil</a>
+        <a href="#">Akun Saya</a>
+        <a href="#">Berita</a>
+        <a href="#">Layanan</a>
+        <a href="#">Bantuan</a>
+        <a href="#">Kontak</a>
+        <a href="#">Pembayaran</a>
+        <a href="#">Riwayat</a>
+        <a href="#">Pengaturan</a>
+        <a href="#">Ulasan</a>
+        <a href="#">Kebijakan Privasi</a>
+        <a href="#">Tentang Kami</a>
+        <a href="#">FAQ</a>
+        <a href="#">Syarat dan Ketentuan</a>
+        <a href="#">Logout</a>
+        <a href="#">Keamanan</a>
+        <a href="#">Verifikasi</a>
+        <a href="#">Notifikasi</a>
+        <a href="#">Pemberitahuan</a>
+        <a href="#">Laporan</a>
+        <a href="#">Bantuan Pengguna</a>
+        <a href="#">Pendanaan</a>
+        <a href="#">Laporan Keuangan</a>
+        <a href="#">Analitik</a>
+        <a href="#">Statistik</a>
+        <a href="#">Perizinan</a>
+        <a href="#">Bergabung dengan Kami</a>
+        <a href="#">Layanan Pengguna</a>
+        <a href="#">Marketplace</a>
+        <a href="#">Tanya Jawab</a>
+        <a href="#">Halaman Pengguna</a>
+        <a href="#">Sosial Media</a>
+        <a href="#">Hubungi Kami</a>
+        <a href="#">Ubah Akun</a>
     </div>
 
     <script>
@@ -53,6 +148,12 @@
         const backgroundImage = localStorage.getItem('backgroundImage');
         if (backgroundImage) {
             document.body.style.backgroundImage = `url(${backgroundImage})`;
+        }
+
+        // Fungsi untuk membuka/tutup menu hamburger
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
         }
     </script>
 </body>
