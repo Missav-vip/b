@@ -14,12 +14,20 @@
 <style>
     .menu {
         width: 200px; /* Lebar menu */
-        background-color: rgba(0, 0, 0, 0.8); /* Warna latar belakang menu */
+        background-color: rgba(0, 0, 0, 0.5); /* Latar belakang transparan */
         color: white;
         padding: 15px;
         position: fixed; /* Membuat menu tetap di sisi kiri */
         height: 100%; /* Memenuhi tinggi layar */
         z-index: 100; /* Menempatkan menu di atas konten */
+        top: 0;
+        left: 0;
+        overflow-y: auto; /* Membuat menu bisa digulir */
+        max-height: 60%; /* Membatasi tinggi menu, hanya 60% dari layar */
+    }
+
+    .menu h2 {
+        text-align: center;
     }
 
     .menu a {
