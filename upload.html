@@ -13,6 +13,7 @@
             <input type="file" accept="image/*" id="imageInput" required>
             <button type="submit">Unggah</button>
         </form>
+        <button onclick="removeBackground()">Hapus Latar Belakang</button>
         <p id="message"></p>
     </div>
 
@@ -20,6 +21,7 @@
         // Set background to black initially
         document.body.style.backgroundColor = "black";
 
+        // Event listener untuk upload gambar
         document.getElementById("uploadForm").addEventListener("submit", function(event) {
             event.preventDefault();
             const imageInput = document.getElementById("imageInput");
@@ -33,7 +35,7 @@
                     if (img.width < 800 || img.height < 600) {
                         document.getElementById("message").textContent = "Gambar terlalu kecil, silakan pilih gambar yang lebih besar.";
                     } else {
-                        // Set background and lock it
+                        // Set background dan kunci gambar
                         document.body.style.backgroundImage = `url(${img.src})`;
                         document.body.style.backgroundSize = "cover";
                         document.body.style.backgroundPosition = "center";
@@ -44,6 +46,14 @@
                 };
             }
         });
+
+        // Fungsi untuk menghapus latar belakang
+        function removeBackground() {
+            document.body.style.backgroundImage = ""; // Menghapus gambar latar belakang
+            document.body.style.backgroundColor = "black"; // Mengembalikan ke latar belakang hitam
+            document.body.style.overflow = "auto"; // Mengizinkan scroll jika diperlukan
+            document.getElementById("message").textContent = "Latar belakang berhasil dihapus!";
+        }
     </script>
 </body>
 </html>
