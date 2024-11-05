@@ -24,33 +24,39 @@
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px;
             color: white;
-            text-align: center;
+            display: flex;
+            justify-content: space-between; /* Menjaga jarak antara pencarian dan menu hamburger */
         }
 
-        .menu-bar .hamburger {
+        .hamburger {
             font-size: 30px;
             cursor: pointer;
             margin-left: 20px;
         }
 
         .search-bar {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
-            width: 70%;
+            position: relative;
+            flex-grow: 1;
+            margin: 0 20px;
         }
 
         .search-bar input {
             padding: 10px;
-            width: 90%;
+            width: 100%;
             font-size: 16px;
             border: 1px solid #fff;
             border-radius: 5px;
             background-color: rgba(0, 0, 0, 0.6);
             color: white;
+            transition: width 0.4s ease-in-out;
+            opacity: 0.9;
+        }
+
+        .search-bar input:focus {
+            width: 100%; /* Memperbesar input saat fokus */
+            opacity: 1;
+            outline: none; /* Menghilangkan outline default */
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Tambahkan efek bayangan saat fokus */
         }
 
         .menu {
@@ -77,22 +83,10 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
 
-        .hamburger-menu {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-
-        .menu-bar ul {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .menu-bar ul li {
-            list-style: none;
-            display: inline;
+        /* Style untuk upload background */
+        #uploadBackground {
+            display: none; /* Sembunyikan form upload */
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -101,7 +95,7 @@
     <div class="menu-bar">
         <span class="hamburger" onclick="toggleMenu()">&#9776;</span>
         <div class="search-bar">
-            <input type="text" placeholder="Cari..." />
+            <input type="text" id="searchInput" placeholder="Cari..." oninput="activateSearch()" />
         </div>
     </div>
 
@@ -141,6 +135,12 @@
         <a href="#">Sosial Media</a>
         <a href="#">Hubungi Kami</a>
         <a href="#">Ubah Akun</a>
+        <a href="#" onclick="toggleUploadBackground()">Ubah Latar Belakang</a> <!-- Link untuk upload background -->
+    </div>
+
+    <!-- Form untuk Upload Background -->
+    <div id="uploadBackground">
+        <input type="file" id="backgroundInput" accept="image/*" onchange="uploadBackground()" />
     </div>
 
     <script>
@@ -154,6 +154,35 @@
         function toggleMenu() {
             const menu = document.getElementById('menu');
             menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Fungsi untuk membuka/tutup form upload background
+        function toggleUploadBackground() {
+            const uploadDiv = document.getElementById('uploadBackground');
+            uploadDiv.style.display = uploadDiv.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Fungsi untuk mengupload latar belakang
+        function uploadBackground() {
+            const fileInput = document.getElementById('backgroundInput');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const imageUrl = event.target.result;
+                    document.body.style.backgroundImage = `url(${imageUrl})`;
+                    localStorage.setItem('backgroundImage', imageUrl); // Simpan ke localStorage
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Fungsi untuk mengaktifkan pencarian
+        function activateSearch() {
+            const searchInput = document.getElementById('searchInput').value;
+            console.log('Mencari:', searchInput); // Tampilkan nilai pencarian di konsol
+            // Tambahkan logika untuk melakukan pencarian di sini
         }
     </script>
 </body>
