@@ -1,26 +1,25 @@
 document.getElementById('uploadForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Mencegah pengiriman formulir secara default
-
-    const fileInput = document.getElementById('fileInput');
+    event.preventDefault();
+    const fileInput = document.getElementById('backgroundUpload');
     const file = fileInput.files[0];
 
-    // Memeriksa apakah file ada dan merupakan gambar
-    if (file) {
+    if (file && (file.type.startsWith('image/') || file.type.startsWith('video/'))) {
         const reader = new FileReader();
-        
-        // Menangani saat gambar sudah dibaca
-        reader.onload = function(e) {
-            const background = document.getElementById('background');
-            background.style.backgroundImage = `url(${e.target.result})`;
-            background.style.backgroundSize = 'cover'; // Agar gambar menutupi seluruh latar belakang
-            background.style.backgroundPosition = 'center'; // Memposisikan gambar di tengah
-            background.style.position = 'fixed'; // Agar tetap di tempat
-            background.style.top = '0';
-            background.style.left = '0';
-            background.style.width = '100%';
-            background.style.height = '100%';
-        }
+        reader.onload = function() {
+            localStorage.setItem('background', reader.result);
+            window.location.href = 'home.html';
+        };
+        reader.readAsDataURL(file);
+    } else {
+        alert('Please upload a valid image or video file.');
+    }
+});
 
-        reader.readAsDataURL(file); // Membaca file sebagai URL data
+window.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname.includes('home.html')) {
+        const background = localStorage.getItem('background');
+        if (background) {
+            document.body.style.backgroundImage = `url(${background})`;
+        }
     }
 });
