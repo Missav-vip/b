@@ -8,42 +8,60 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            color: white;
             margin: 0;
-            height: 100vh;
-            background-size: cover;
-            background-position: center center;
-            background-attachment: fixed;
-            overflow: hidden;
+            height: 100vh; /* Memastikan tinggi halaman memenuhi viewport */
+            background-color: #222; /* Latar belakang halaman */
+            color: white;
+            display: flex;
+            overflow: hidden; /* Menonaktifkan scroll */
         }
 
-        .menu {
-            display: none; /* Menghapus menu */
+        /* Styling untuk konten utama */
+        .content {
+            margin-left: 220px; /* Memberi ruang untuk menu */
+            padding: 20px;
+            flex-grow: 1; /* Agar konten memenuhi sisa ruang */
+        }
+
+        /* Styling untuk ikon hamburger */
+        .hamburger {
+            font-size: 30px;
+            cursor: pointer;
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.8); /* Latar belakang untuk hamburger */
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100; /* Agar hamburger di atas menu */
         }
     </style>
 </head>
 <body>
-    <!-- Tempat untuk menu hamburger -->
+    <!-- Ikon Hamburger -->
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div> <!-- Menu Garis 3 -->
+
+    <!-- Menyertakan menu dari file terpisah -->
     <div id="menuContainer"></div>
 
+    <div class="content">
+        <h1>Selamat Datang di Halaman Utama</h1>
+        <p>Ini adalah konten utama di samping menu.</p>
+    </div>
+
     <script>
-        // Mengambil latar belakang dari localStorage dan mengaplikasikannya
-        const backgroundImage = localStorage.getItem('backgroundImage');
-        if (backgroundImage) {
-            document.body.style.backgroundImage = `url(${backgroundImage})`;
+        // Fungsi untuk membuka/tutup menu
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
         }
 
-        // Fungsi untuk memuat menu dari file menu.html
-        function loadMenu() {
-            fetch('menu.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('menuContainer').innerHTML = data;
-                })
-                .catch(error => console.error('Error loading menu:', error));
-        }
-
-        loadMenu(); // Panggil fungsi untuk memuat menu saat halaman dimuat
+        // Memuat file menu.html ke dalam halaman ini
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('menuContainer').innerHTML = data;
+            });
     </script>
 </body>
 </html>
