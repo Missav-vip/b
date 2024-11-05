@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shell - Beranda</title>
+    <title>Shell - Portal Masa Depan</title>
     <link rel="stylesheet" href="style.css">
-    <meta name="description" content="Selamat datang di Shell, platform terbaik untuk mengelola aset cryptocurrency Anda dengan aman dan nyaman.">
-    <meta name="keywords" content="Cryptocurrency, Dompet, Bitcoin, Ethereum, Shell">
+    <meta name="description" content="Selamat datang di Shell, portal masa depan untuk mengelola aset cryptocurrency Anda.">
+    <meta name="keywords" content="Cryptocurrency, Dompet, Teknologi Masa Depan, Shell">
     <style>
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #0c0c0c; /* Warna latar belakang gelap */
-            color: #ffffff; /* Teks berwarna putih */
+            background: linear-gradient(to bottom, #0a0a0a, #2a2a2a); /* Latar belakang gradien */
+            color: #e0e0e0; /* Teks berwarna cerah */
         }
 
         header {
-            background-color: #1a1a1a; /* Latar belakang header */
+            background: rgba(0, 0, 0, 0.8); /* Transparansi latar belakang */
             padding: 20px;
             text-align: center;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
         }
 
         nav ul {
@@ -34,6 +35,11 @@
         nav ul li a {
             color: #00ccff; /* Warna tautan */
             text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00; /* Warna saat hover */
         }
 
         .hero {
@@ -41,15 +47,23 @@
             margin: 20px 0;
         }
 
-        .latest-news {
-            background-color: #2a2a2a; /* Warna latar belakang untuk berita terbaru */
-            padding: 20px;
-            margin: 20px 0;
+        .hero img {
+            width: 100%; /* Gambar hero responsif */
+            max-width: 800px; /* Maksimal lebar gambar */
+            border-radius: 15px; /* Sudut melingkar */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
-        .features {
-            background-color: #2a2a2a; /* Warna latar belakang untuk fitur */
+        .latest-news, .features {
+            background: rgba(255, 255, 255, 0.05); /* Latar belakang transparan */
             padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .latest-news h3, .features h3 {
+            border-bottom: 2px solid #00ccff; /* Garis bawah berwarna */
         }
 
         .feature-item {
@@ -57,18 +71,19 @@
         }
 
         footer {
-            background-color: #1a1a1a; /* Latar belakang footer */
+            background: rgba(0, 0, 0, 0.8); /* Transparansi latar belakang */
             text-align: center;
             padding: 10px 0;
             position: relative;
             bottom: 0;
             width: 100%;
+            box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Shell</h1>
+        <h1>Shell - Portal Masa Depan</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Beranda</a></li>
@@ -86,7 +101,7 @@
     <main>
         <section class="hero">
             <h2>Selamat datang di Shell</h2>
-            <p>Platform terbaik untuk mengelola aset cryptocurrency Anda dengan aman dan nyaman.</p>
+            <p>Portal masa depan untuk mengelola aset cryptocurrency Anda dengan aman dan nyaman.</p>
             <img src="images/your-image-hero.jpg" alt="Shell Hero Image" />
         </section>
 
