@@ -1,59 +1,36 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unggah Latar Belakang - Shell</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="upload-container">
-        <h2>Pilih Gambar Latar Belakang</h2>
-        <form id="uploadForm">
-            <input type="file" accept="image/*" id="imageInput" required>
-            <button type="submit">Unggah</button>
-        </form>
-        <button onclick="removeBackground()">Hapus Latar Belakang</button>
-        <p id="message"></p>
-    </div>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Mengatur latar belakang default ke hitam */
+}
 
-    <script>
-        // Set background to black initially
-        document.body.style.backgroundColor = "black";
+.upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
 
-        // Event listener untuk upload gambar
-        document.getElementById("uploadForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const imageInput = document.getElementById("imageInput");
-            const file = imageInput.files[0];
+h2 {
+    margin-bottom: 20px;
+}
 
-            if (file) {
-                const img = new Image();
-                img.src = URL.createObjectURL(file);
-                img.onload = function() {
-                    // Cek ukuran dan dimensi gambar
-                    if (img.width < 800 || img.height < 600) {
-                        document.getElementById("message").textContent = "Gambar terlalu kecil, silakan pilih gambar yang lebih besar.";
-                    } else {
-                        // Set background dan kunci gambar
-                        document.body.style.backgroundImage = `url(${img.src})`;
-                        document.body.style.backgroundSize = "cover";
-                        document.body.style.backgroundPosition = "center";
-                        document.body.style.backgroundAttachment = "fixed"; // Mencegah scroll
-                        document.body.style.overflow = "hidden"; // Mengunci scroll
-                        document.getElementById("message").textContent = "Gambar berhasil diunggah!";
-                    }
-                };
-            }
-        });
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
 
-        // Fungsi untuk menghapus latar belakang
-        function removeBackground() {
-            document.body.style.backgroundImage = ""; // Menghapus gambar latar belakang
-            document.body.style.backgroundColor = "black"; // Mengembalikan ke latar belakang hitam
-            document.body.style.overflow = "auto"; // Mengizinkan scroll jika diperlukan
-            document.getElementById("message").textContent = "Latar belakang berhasil dihapus!";
-        }
-    </script>
-</body>
-</html>
+button:hover {
+    background-color: #0056b3;
+}
+
+input[type="file"] {
+    margin: 10px 0;
+}
