@@ -9,6 +9,7 @@
 <body>
     <h1>Selamat datang di halaman utama</h1>
 
+    <!-- Garis Tiga -->
     <div class="menu-toggle" onclick="toggleMenu()">
         <div class="line"></div>
         <div class="line"></div>
@@ -46,8 +47,7 @@
             if (backgroundImage) {
                 document.body.style.backgroundImage = `url(${backgroundImage})`;
                 document.body.style.backgroundSize = "cover";
-                document.body.style.backgroundAttachment = "fixed"; // Menjaga latar belakang tetap pada tempatnya
-                document.body.style.overflow = "hidden"; // Mengunci posisi scroll agar tidak bergerak
+                document.body.style.backgroundAttachment = "fixed";
             }
         }
     </script>
