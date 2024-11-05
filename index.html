@@ -3,26 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Situs Shell untuk mengunggah latar belakang dan mencari informasi.">
+    <title>Upload Latar Belakang</title>
     <link rel="stylesheet" href="style.css">
-    <title>Shell</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Selamat Datang di Shell</h1>
-        <form id="uploadForm">
-            <label for="bgUpload">Unggah Latar Belakang:</label>
-            <input type="file" id="bgUpload" accept="image/*,video/*" required>
-            <button type="submit">Unggah</button>
-        </form>
-
-        <form id="searchForm">
-            <input type="text" id="searchQuery" placeholder="Cari sesuatu...">
-            <button type="submit">Cari</button>
-        </form>
-
-        <div id="result"></div>
-    </div>
+    <div id="background"></div>
+    
+    <h1>Upload Gambar Latar Belakang</h1>
+    <form id="uploadForm">
+        <input type="file" id="fileInput" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
 
     <script src="script.js"></script>
 </body>
