@@ -3,34 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Selamat datang di Shell! Unggah latar belakang Anda dan nikmati pengalaman unik.">
+    <title>Shell - Beranda</title>
     <link rel="stylesheet" href="style.css">
-    <title>Shell - Unggah Latar Belakang</title>
 </head>
 <body>
-    <div class="upload-container">
-        <h1>Unggah Latar Belakang</h1>
-        <form id="uploadForm">
-            <input type="file" id="backgroundInput" accept="image/*" required>
-            <button type="submit">Unggah</button>
-        </form>
-    </div>
-
-    <script>
-        document.getElementById('uploadForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const fileInput = document.getElementById('backgroundInput');
-            const file = fileInput.files[0];
-            const reader = new FileReader();
-
-            reader.onloadend = function() {
-                localStorage.setItem('backgroundImage', reader.result);
-                window.location.href = 'home.html';
-            }
-
-            if (file) {
-                reader.readAsDataURL(file);
-            }
-        });
-    </script>
+    <header>
+        <h1>Selamat datang di Shell</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Beranda</a></li>
+                <li><a href="#" id="uploadLink">Unggah Latar Belakang</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Unggah Latar Belakang Anda</h2>
+        <p>Klik di bawah untuk mulai mengunggah latar belakang Anda.</p>
+        <a href="upload.html">Unggah Latar Belakang</a>
+    </main>
+    <footer>
+        <p>&copy; 2024 Shell. Semua hak dilindungi.</p>
+    </footer>
 </body>
 </html>
