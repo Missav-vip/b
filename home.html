@@ -17,74 +17,33 @@
             overflow: hidden;
         }
 
-        .menu-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0); /* Mengubah menjadi transparan */
-            padding: 10px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .hamburger {
-            font-size: 30px;
-            cursor: pointer;
-            margin-left: 20px;
-        }
-
         .menu {
-            display: none;
-            position: absolute;
-            top: 50px;
-            left: 10px;
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 20px;
-            border-radius: 5px;
-            width: 250px;
-            text-align: left;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 10px;
-            margin: 5px 0;
-        }
-
-        .menu a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            display: none; /* Menghapus menu */
         }
     </style>
 </head>
 <body>
-    <div class="menu-bar">
-        <span class="hamburger" onclick="toggleMenu()">&#9776;</span>
-    </div>
-
-    <div id="menu" class="menu">
-        <a href="#">Profil</a>
-        <a href="#">Akun Saya</a>
-        <a href="#">Layanan</a>
-        <a href="#">Bantuan</a>
-        <a href="#">Kontak</a>
-        <a href="#">Logout</a>
-    </div>
+    <!-- Tempat untuk menu hamburger -->
+    <div id="menuContainer"></div>
 
     <script>
+        // Mengambil latar belakang dari localStorage dan mengaplikasikannya
         const backgroundImage = localStorage.getItem('backgroundImage');
         if (backgroundImage) {
             document.body.style.backgroundImage = `url(${backgroundImage})`;
         }
 
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        // Fungsi untuk memuat menu dari file menu.html
+        function loadMenu() {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menuContainer').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading menu:', error));
         }
+
+        loadMenu(); // Panggil fungsi untuk memuat menu saat halaman dimuat
     </script>
 </body>
 </html>
