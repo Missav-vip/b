@@ -1,38 +1,33 @@
-document.getElementById('uploadForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const fileInput = document.getElementById('bgUpload');
-    const file = fileInput.files[0];
-    const url = URL.createObjectURL(file);
-    const background = document.createElement('div');
-    
-    background.style.backgroundImage = `url(${url})`;
-    background.style.backgroundSize = 'cover';
-    background.style.backgroundPosition = 'center';
-    background.style.position = 'fixed';
-    background.style.width = '100%';
-    background.style.height = '100%';
-    background.style.zIndex = '-1';
-    background.style.overflow = 'hidden'; // Menghindari scroll
+document.getElementById("searchForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Mencegah pengiriman formulir secara default
 
-    document.body.appendChild(background);
-    
-    // Redirect to home.html after upload
-    window.location.href = "home.html";
+    const query = document.getElementById("searchQuery").value;
+    const source = document.getElementById("searchSource").value;
+    performSearch(query, source);
 });
 
-document.getElementById('searchForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const query = document.getElementById('searchQuery').value;
-    alert(`Mencari: ${query}`);
-});
+function performSearch(query, source) {
+    let searchUrl = '';
 
-// Pendaftaran Service Worker
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('service-worker.js').then(function(registration) {
-            console.log('Service Worker registered with scope:', registration.scope);
-        }, function(error) {
-            console.log('Service Worker registration failed:', error);
-        });
-    });
+    // Mengatur URL pencarian berdasarkan sumber yang dipilih
+    switch(source) {
+        case 'google':
+            searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            break;
+        case 'duckduckgo':
+            searchUrl = `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
+            break;
+        case 'deepweb':
+            searchUrl = `https://www.deepwebsites.com/?q=${encodeURIComponent(query)}`; // Contoh URL
+            break;
+        case 'darknet':
+            searchUrl = `http://darknetsearch.com/?q=${encodeURIComponent(query)}`; // Contoh URL
+            break;
+        default:
+            searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+            break;
+    }
+
+    // Membuka hasil pencarian di tab baru
+    window.open(searchUrl, "_blank");
 }
