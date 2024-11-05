@@ -19,7 +19,10 @@ window.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.includes('home.html')) {
         const background = localStorage.getItem('background');
         if (background) {
-            document.body.style.backgroundImage = `url(${background})`;
+            document.body.style.backgroundImage = `url('${background}')`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+            document.body.style.backgroundAttachment = 'fixed';
         }
     }
 });
