@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Selamat datang di Shell! Unggah latar belakang Anda dan nikmati pengalaman unik.">
-    <title>Shell - Beranda</title>
+    <title>Shell</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Selamat datang di Shell</h1>
-        <nav>
-            <ul>
-                <li><a href="home.html">Beranda</a></li>
-                <li><a href="#" id="uploadLink">Unggah Latar Belakang</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Unggah Latar Belakang Anda</h2>
-        <p>Klik di bawah untuk mulai mengunggah latar belakang Anda.</p>
-        <a href="upload.html">Unggah Latar Belakang</a>
-    </main>
-    <footer>
-        <p>&copy; 2024 Shell. Semua hak dilindungi.</p>
-    </footer>
+    <div class="container">
+        <h1 id="siteName">Shell</h1>
+        <p>Selamat datang di situs kami!</p>
+        <button onclick="changeSiteName()">Ubah Nama Situs</button>
+        <a href="upload.html" class="upload-button">Unggah Latar Belakang</a>
+    </div>
+
+    <script>
+        function changeSiteName() {
+            let newName = prompt("Masukkan nama situs baru:");
+            if (newName) {
+                document.getElementById("siteName").textContent = newName + " Sell";
+            }
+        }
+    </script>
 </body>
 </html>
