@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shell</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Upload Latar Belakang</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1 id="siteName">Shell</h1>
-        <p>Selamat datang di situs kami!</p>
-        <button onclick="changeSiteName()">Ubah Nama Situs</button>
-        <a href="upload.html" class="upload-button">Unggah Latar Belakang</a>
+
+    <div class="upload-container">
+        <h2>Upload Latar Belakang</h2>
+        <form id="uploadForm">
+            <input type="file" id="backgroundUpload" accept="image/*,video/mp4,video/webm,video/ogg" required>
+            <button type="submit">Upload</button>
+        </form>
+        <div id="backgroundPreview"></div>
     </div>
 
+    <script src="script.js"></script>
     <script>
-        function changeSiteName() {
-            let newName = prompt("Masukkan nama situs baru:");
-            if (newName) {
-                document.getElementById("siteName").textContent = newName + " Sell";
-            }
+        // Registrasi Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                }, function(err) {
+                    console.log('Service Worker registration failed:', err);
+                });
+            });
         }
     </script>
 </body>
