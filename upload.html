@@ -3,75 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unggah Latar Belakang</title>
+    <title>Unggah Latar Belakang - Shell</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Unggah Latar Belakang</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Beranda</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Pilih dan Unggah Gambar</h2>
-        <div id="upload-form">
-            <input type="file" id="backgroundUpload" accept="image/*">
-            <button id="uploadButton">Unggah</button>
-            <div id="message"></div>
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 Shell. Semua hak dilindungi.</p>
-    </footer>
+    <div class="upload-container">
+        <h2>Pilih Gambar Latar Belakang</h2>
+        <form id="uploadForm">
+            <input type="file" accept="image/*" id="imageInput" required>
+            <button type="submit">Unggah</button>
+        </form>
+        <p id="message"></p>
+    </div>
 
     <script>
-        document.getElementById('uploadButton').addEventListener('click', function() {
-            const fileInput = document.getElementById('backgroundUpload');
-            const file = fileInput.files[0];
-            const messageDiv = document.getElementById('message');
+        // Set background to black initially
+        document.body.style.backgroundColor = "black";
 
-            // Reset pesan
-            messageDiv.innerText = '';
+        document.getElementById("uploadForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const imageInput = document.getElementById("imageInput");
+            const file = imageInput.files[0];
 
-            // Memeriksa apakah file dipilih
-            if (!file) {
-                messageDiv.innerText = 'Silakan pilih file gambar terlebih dahulu.';
-                return;
-            }
-
-            // Memeriksa ukuran file (maksimal 5MB)
-            const maxSize = 5 * 1024 * 1024; // 5MB
-            if (file.size > maxSize) {
-                messageDiv.innerText = 'File terlalu besar. Maksimal ukuran file adalah 5MB.';
-                return;
-            }
-
-            // Membaca file gambar
-            const img = new Image();
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                img.src = event.target.result;
+            if (file) {
+                const img = new Image();
+                img.src = URL.createObjectURL(file);
                 img.onload = function() {
-                    // Memeriksa dimensi gambar
-                    const width = img.width;
-                    const height = img.height;
-
-                    // Misalkan kita ingin batasan 1920x1080
-                    if (width > 1920 || height > 1080) {
-                        messageDiv.innerText = 'Dimensi gambar terlalu besar. Maksimal adalah 1920x1080 piksel.';
+                    // Cek ukuran dan dimensi gambar
+                    if (img.width < 800 || img.height < 600) {
+                        document.getElementById("message").textContent = "Gambar terlalu kecil, silakan pilih gambar yang lebih besar.";
                     } else {
-                        messageDiv.innerText = 'Gambar berhasil diunggah!';
-                        // Lakukan aksi untuk menyimpan gambar atau mengganti latar belakang
-                        document.body.style.backgroundImage = `url('${event.target.result}')`;
-                        document.body.style.backgroundSize = 'cover'; // Menutupi seluruh latar belakang
-                        document.body.style.backgroundPosition = 'center'; // Pusatkan gambar
+                        // Set background and lock it
+                        document.body.style.backgroundImage = `url(${img.src})`;
+                        document.body.style.backgroundSize = "cover";
+                        document.body.style.backgroundPosition = "center";
+                        document.body.style.backgroundAttachment = "fixed"; // Mencegah scroll
+                        document.body.style.overflow = "hidden"; // Mengunci scroll
+                        document.getElementById("message").textContent = "Gambar berhasil diunggah!";
                     }
-                }
-            };
-            reader.readAsDataURL(file);
+                };
+            }
         });
     </script>
 </body>
