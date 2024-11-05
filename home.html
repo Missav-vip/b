@@ -20,12 +20,14 @@
         .menu-bar {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px;
             color: white;
             display: flex;
-            justify-content: space-between; /* Menjaga jarak antara pencarian dan menu hamburger */
+            justify-content: space-between; /* Membuat ruang di antara elemen */
+            align-items: center;
         }
 
         .hamburger {
@@ -37,12 +39,13 @@
         .search-bar {
             position: relative;
             flex-grow: 1;
-            margin: 0 20px;
+            margin-right: 20px;
+            display: none; /* Sembunyikan search bar sampai ikon pencarian diklik */
         }
 
         .search-bar input {
             padding: 10px;
-            width: 100%;
+            width: 0; /* Dimulai dari lebar 0 */
             font-size: 16px;
             border: 1px solid #fff;
             border-radius: 5px;
@@ -53,17 +56,17 @@
         }
 
         .search-bar input:focus {
-            width: 100%; /* Memperbesar input saat fokus */
+            width: 5cm; /* Lebar kotak pencarian setelah difokuskan */
             opacity: 1;
-            outline: none; /* Menghilangkan outline default */
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Tambahkan efek bayangan saat fokus */
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Efek bayangan saat fokus */
         }
 
         .menu {
             display: none;
             position: absolute;
             top: 50px;
-            right: 10px;
+            left: 10px;
             background-color: rgba(0, 0, 0, 0.9);
             padding: 20px;
             border-radius: 5px;
@@ -88,13 +91,24 @@
             display: none; /* Sembunyikan form upload */
             margin-top: 10px;
         }
+
+        .search-icon {
+            font-size: 24px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
     <!-- Menu Hamburger dan Pencarian -->
     <div class="menu-bar">
-        <span class="hamburger" onclick="toggleMenu()">&#9776;</span>
-        <div class="search-bar">
+        <span class="hamburger" onclick="toggleMenu()">&#9776;</span> <!-- Menu Garis 3 di kiri -->
+        
+        <!-- Ikon Pencarian -->
+        <span class="search-icon" onclick="toggleSearch()">&#128269;</span> <!-- Ikon Pencarian -->
+        
+        <!-- Form Pencarian -->
+        <div class="search-bar" id="searchBar">
             <input type="text" id="searchInput" placeholder="Cari..." oninput="activateSearch()" />
         </div>
     </div>
@@ -135,7 +149,7 @@
         <a href="#">Sosial Media</a>
         <a href="#">Hubungi Kami</a>
         <a href="#">Ubah Akun</a>
-        <a href="#" onclick="toggleUploadBackground()">Ubah Latar Belakang</a> <!-- Link untuk upload background -->
+        <a href="#">Ubah Latar Belakang</a> <!-- Link untuk upload background -->
     </div>
 
     <!-- Form untuk Upload Background -->
@@ -183,6 +197,12 @@
             const searchInput = document.getElementById('searchInput').value;
             console.log('Mencari:', searchInput); // Tampilkan nilai pencarian di konsol
             // Tambahkan logika untuk melakukan pencarian di sini
+        }
+
+        // Fungsi untuk menampilkan/hide search bar saat ikon pencarian diklik
+        function toggleSearch() {
+            const searchBar = document.getElementById('searchBar');
+            searchBar.style.display = searchBar.style.display === 'block' ? 'none' : 'block';
         }
     </script>
 </body>
