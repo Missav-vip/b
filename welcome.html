@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('pemandangan-alam.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .message {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <h1>Selamat Datang di Shell!</h1>
+        <p>Anda akan diarahkan ke halaman upload latar belakang dalam 30 detik...</p>
+    </div>
 
+    <script>
+        setTimeout(() => {
+            window.location.href = 'upload.html';
+        }, 30000);
+    </script>
+</body>
+</html>
