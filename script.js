@@ -65,3 +65,36 @@ window.onload = function() {
         document.body.style.overflow = 'hidden'; // Menonaktifkan scroll
     }
 };
+
+// Fungsi pencarian
+const searchForm = document.getElementById('searchForm');
+const searchResults = document.getElementById('searchResults');
+
+if (searchForm) {
+    searchForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const query = document.getElementById('searchQuery').value;
+
+        // Panggil API atau metode pencarian yang diinginkan
+        // Untuk demonstrasi, kita akan menampilkan hasil palsu
+        displaySearchResults(query);
+    });
+}
+
+function displaySearchResults(query) {
+    // Menghapus hasil pencarian sebelumnya
+    searchResults.innerHTML = '';
+
+    // Hasil pencarian palsu
+    const results = [
+        `Hasil untuk "${query}" 1: Video menarik dari YouTube`,
+        `Hasil untuk "${query}" 2: Video menarik dari YouTube`,
+        `Hasil untuk "${query}" 3: Video menarik dari YouTube`
+    ];
+
+    results.forEach(result => {
+        const div = document.createElement('div');
+        div.textContent = result;
+        searchResults.appendChild(div);
+    });
+}
