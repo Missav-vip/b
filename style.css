@@ -1,32 +1,10 @@
-/* Gaya untuk Font dan Teks */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    color: white;
-}
-
-h1, h2 {
-    color: #333;
-}
-
-a {
-    color: blue;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
 /* Gaya untuk Garis Tiga */
 .menu-toggle {
     position: absolute;
     top: 20px;
     right: 20px;
     cursor: pointer;
-    z-index: 200;
+    z-index: 200;  /* Pastikan z-index cukup tinggi */
 }
 
 .line {
@@ -37,32 +15,24 @@ a:hover {
     border-radius: 5px;
 }
 
-/* Gaya untuk Menu */
+/* Tambahan gaya untuk Menu */
 .menu {
-    width: 200px;
-    background-color: rgba(0, 0, 0, 0.7);  /* Transparan */
-    color: white;
-    padding: 15px;
     position: fixed;
-    height: 100%;
-    z-index: 100;
     top: 0;
     left: 0;
-    overflow-y: auto;
-    max-height: 60%;
-}
-
-.menu h2 {
-    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 200px;
+    height: 100%;
+    display: none;
+    padding: 20px;
 }
 
 .menu a {
+    display: block;
     color: white;
     text-decoration: none;
-    display: block;
-    padding: 10px;
-    margin: 5px 0;
-    transition: background-color 0.3s;
+    margin: 10px 0;
 }
 
 .menu a:hover {
