@@ -9,54 +9,45 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            height: 100vh; /* Memastikan tinggi halaman memenuhi viewport */
-            background-color: #222; /* Latar belakang halaman */
+            height: 100vh;
+            background-color: #222;
             color: white;
             display: flex;
-            overflow: hidden; /* Menonaktifkan scroll */
+            overflow: hidden;
         }
 
-        /* Styling untuk konten utama */
         .content {
-            margin-left: 220px; /* Memberi ruang untuk menu */
+            margin-left: 220px;
             padding: 20px;
-            flex-grow: 1; /* Agar konten memenuhi sisa ruang */
+            flex-grow: 1;
         }
 
-        /* Styling untuk ikon hamburger (garis 3) di sebelah kanan */
         .hamburger {
             font-size: 30px;
             cursor: pointer;
             padding: 15px;
-            background-color: rgba(0, 0, 0, 0.8); /* Latar belakang untuk hamburger */
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
             position: fixed;
             top: 0;
-            right: 0; /* Pindahkan hamburger ke kanan */
-            z-index: 100; /* Agar hamburger di atas menu */
+            left: 0;
+            z-index: 100;
         }
     </style>
 </head>
 <body>
-    <!-- Ikon Hamburger (Garis 3) di sebelah kanan -->
     <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-
-    <!-- Menyertakan menu dari file terpisah -->
     <div id="menuContainer"></div>
-
     <div class="content">
         <h1>Selamat Datang di Halaman Utama</h1>
         <p>Ini adalah konten utama di samping menu.</p>
     </div>
-
     <script>
-        // Fungsi untuk membuka/tutup menu
         function toggleMenu() {
             const menu = document.getElementById('menu');
             menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
         }
 
-        // Memuat file menu.html ke dalam halaman ini
         fetch('menu.html')
             .then(response => response.text())
             .then(data => {
