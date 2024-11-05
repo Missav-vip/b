@@ -22,7 +22,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0); /* Mengubah menjadi transparan */
             padding: 10px;
             color: white;
             display: flex;
@@ -59,75 +59,20 @@
         .menu a:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
-
-        .search-bar {
-            display: none;
-            position: relative;
-            margin-left: 10px;
-            flex-grow: 1;
-        }
-
-        .search-bar input {
-            padding: 10px;
-            width: 200px;
-            font-size: 16px;
-            border: 1px solid #fff;
-            border-radius: 5px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            transition: width 0.4s ease-in-out;
-        }
-
-        .search-bar input:focus {
-            width: 250px; /* Lebar saat fokus */
-            outline: none;
-        }
     </style>
 </head>
 <body>
     <div class="menu-bar">
         <span class="hamburger" onclick="toggleMenu()">&#9776;</span>
-        <div id="searchBar" class="search-bar">
-            <input type="text" placeholder="Telusuri..." onkeypress="if(event.key === 'Enter'){activateSearch();}">
-        </div>
     </div>
 
     <div id="menu" class="menu">
         <a href="#">Profil</a>
         <a href="#">Akun Saya</a>
-        <a href="#">Berita</a>
         <a href="#">Layanan</a>
         <a href="#">Bantuan</a>
         <a href="#">Kontak</a>
-        <a href="#">Pembayaran</a>
-        <a href="#">Riwayat</a>
-        <a href="#">Pengaturan</a>
-        <a href="#">Ulasan</a>
-        <a href="#">Kebijakan Privasi</a>
-        <a href="#">Tentang Kami</a>
-        <a href="#">FAQ</a>
-        <a href="#">Syarat dan Ketentuan</a>
         <a href="#">Logout</a>
-        <a href="#">Keamanan</a>
-        <a href="#">Verifikasi</a>
-        <a href="#">Notifikasi</a>
-        <a href="#">Pemberitahuan</a>
-        <a href="#">Laporan</a>
-        <a href="#">Bantuan Pengguna</a>
-        <a href="#">Pendanaan</a>
-        <a href="#">Laporan Keuangan</a>
-        <a href="#">Analitik</a>
-        <a href="#">Statistik</a>
-        <a href="#">Perizinan</a>
-        <a href="#">Bergabung dengan Kami</a>
-        <a href="#">Layanan Pengguna</a>
-        <a href="#">Marketplace</a>
-        <a href="#">Tanya Jawab</a>
-        <a href="#">Halaman Pengguna</a>
-        <a href="#">Sosial Media</a>
-        <a href="#">Hubungi Kami</a>
-        <a href="#">Ubah Akun</a>
-        <a href="#">Ubah Latar Belakang</a>
     </div>
 
     <script>
@@ -139,17 +84,6 @@
         function toggleMenu() {
             const menu = document.getElementById('menu');
             menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function activateSearch() {
-            const searchInput = document.querySelector('.search-bar input').value;
-            console.log('Mencari:', searchInput);
-            // Tambahkan kode untuk melakukan pencarian
-        }
-
-        function toggleSearch() {
-            const searchBar = document.getElementById('searchBar');
-            searchBar.style.display = searchBar.style.display === 'block' ? 'none' : 'block';
         }
     </script>
 </body>
