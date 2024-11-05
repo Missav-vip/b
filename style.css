@@ -6,6 +6,10 @@ body {
 .upload-container {
     text-align: center;
     padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Mengatur tinggi agar formulir berada di tengah halaman */
 }
 
 header {
@@ -45,4 +49,15 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+}
+
+/* Tambahan untuk membuat latar belakang transparan dan responsif */
+body {
+    background-color: rgba(255, 255, 255, 0.8); /* Latar belakang default jika tidak ada gambar */
+    background-size: cover;
+}
+
+#homeBody {
+    background-position: center;
+    background-repeat: no-repeat;
 }
