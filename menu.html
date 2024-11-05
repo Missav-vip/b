@@ -1,102 +1,44 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Transparan</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+<div class="menu" id="menu" style="display: none;">
+    <h2>Menu</h2>
+    <a href="#">Beranda</a>
+    <a href="#">Profil</a>
+    <a href="#">Akun Saya</a>
+    <a href="#">Berita</a>
+    <a href="#">Layanan</a>
+    <a href="#">Bantuan</a>
+    <a href="#">Kontak</a>
+    <a href="#">Pengaturan</a>
+    <a href="#">Logout</a>
+</div>
 
-        .menu {
-            width: 200px;
-            background-color: rgba(0, 0, 0, 0.7); /* Latar belakang transparan */
-            color: white;
-            padding: 15px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            z-index: 100;
-            overflow-y: auto;
-            max-height: 60%;
-            transition: transform 0.3s ease-out; /* Efek animasi menu masuk */
-        }
+<style>
+    .menu {
+        width: 200px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 15px;
+        position: fixed;
+        height: 100%;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        overflow-y: auto;
+    }
 
-        .menu h2 {
-            text-align: center;
-        }
+    .menu h2 {
+        text-align: center;
+    }
 
-        .menu a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 10px;
-            margin: 5px 0;
-            transition: background-color 0.3s;
-        }
+    .menu a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        margin: 5px 0;
+        transition: background-color 0.3s;
+    }
 
-        .menu a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Menyembunyikan menu jika display: none */
-        .menu.hidden {
-            transform: translateX(-100%);
-        }
-
-        /* Tombol untuk menampilkan menu */
-        .menu-toggle {
-            font-size: 30px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 101;
-        }
-
-        .menu-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Tombol untuk menampilkan/menyembunyikan menu -->
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
-    <!-- Menu yang dapat ditampilkan -->
-    <div class="menu hidden" id="menu">
-        <h2>Menu</h2>
-        <a href="#">Beranda</a>
-        <a href="#">Profil</a>
-        <a href="#">Akun Saya</a>
-        <a href="#">Berita</a>
-        <a href="#">Layanan</a>
-        <a href="#">Bantuan</a>
-        <a href="#">Kontak</a>
-        <a href="#">Pengaturan</a>
-        <a href="#">Logout</a>
-    </div>
-
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById('menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-            } else {
-                menu.classList.add('hidden');
-            }
-        }
-    </script>
-
-</body>
-</html>
+    .menu a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+</style>
