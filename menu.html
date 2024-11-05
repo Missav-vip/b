@@ -1,65 +1,37 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Samping Kiri</title>
-    <link rel="stylesheet" href="style.css"> <!-- Jika ada file CSS terpisah -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            display: flex;
-        }
+<div class="menu" id="menu" style="display: none;">
+    <h2>Menu</h2>
+    <a href="#">Beranda</a>
+    <a href="#">Profil</a>
+    <a href="#">Akun Saya</a>
+    <a href="#">Berita</a>
+    <a href="#">Layanan</a>
+    <a href="#">Bantuan</a>
+    <a href="#">Kontak</a>
+    <a href="#">Pengaturan</a>
+    <a href="#">Logout</a>
+</div>
 
-        /* Styling untuk menu */
-        .menu {
-            width: 200px; /* Lebar menu */
-            background-color: rgba(0, 0, 0, 0.7); /* Warna latar belakang menu */
-            color: white;
-            padding: 15px;
-            position: fixed; /* Membuat menu tetap di sebelah kiri */
-            height: 100%; /* Memenuhi tinggi layar */
-        }
+<style>
+    .menu {
+        width: 200px; /* Lebar menu */
+        background-color: rgba(0, 0, 0, 0.8); /* Warna latar belakang menu */
+        color: white;
+        padding: 15px;
+        position: fixed; /* Membuat menu tetap di sisi kiri */
+        height: 100%; /* Memenuhi tinggi layar */
+        z-index: 100; /* Menempatkan menu di atas konten */
+    }
 
-        .menu a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 10px;
-            margin: 5px 0;
-            transition: background-color 0.3s; /* Efek transisi saat hover */
-        }
+    .menu a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        margin: 5px 0;
+        transition: background-color 0.3s; /* Efek transisi saat hover */
+    }
 
-        .menu a:hover {
-            background-color: rgba(255, 255, 255, 0.2); /* Efek hover */
-        }
-
-        /* Konten utama di samping menu */
-        .content {
-            margin-left: 220px; /* Memberi ruang untuk menu */
-            padding: 20px;
-            flex-grow: 1; /* Agar konten memenuhi sisa ruang */
-        }
-    </style>
-</head>
-<body>
-    <div class="menu">
-        <h2>Menu</h2>
-        <a href="#">Beranda</a>
-        <a href="#">Profil</a>
-        <a href="#">Akun Saya</a>
-        <a href="#">Berita</a>
-        <a href="#">Layanan</a>
-        <a href="#">Bantuan</a>
-        <a href="#">Kontak</a>
-        <a href="#">Pengaturan</a>
-        <a href="#">Logout</a>
-    </div>
-    
-    <div class="content">
-        <h1>Selamat Datang di Halaman Utama</h1>
-        <p>Ini adalah konten utama di samping menu.</p>
-    </div>
-</body>
-</html>
+    .menu a:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* Efek hover */
+    }
+</style>
