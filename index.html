@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Latar Belakang</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Situs Shell untuk mengunggah latar belakang dan mencari informasi.">
+    <link rel="stylesheet" href="style.css">
+    <title>Shell</title>
 </head>
 <body>
-
-    <div class="upload-container">
-        <h2>Upload Latar Belakang</h2>
+    <div class="container">
+        <h1>Selamat Datang di Shell</h1>
         <form id="uploadForm">
-            <input type="file" id="backgroundUpload" accept="image/*,video/mp4,video/webm,video/ogg" required>
-            <button type="submit">Upload</button>
+            <label for="bgUpload">Unggah Latar Belakang:</label>
+            <input type="file" id="bgUpload" accept="image/*,video/*" required>
+            <button type="submit">Unggah</button>
         </form>
-        <div id="backgroundPreview"></div>
+
+        <form id="searchForm">
+            <input type="text" id="searchQuery" placeholder="Cari sesuatu...">
+            <button type="submit">Cari</button>
+        </form>
+
+        <div id="result"></div>
     </div>
 
     <script src="script.js"></script>
-    <script>
-        // Registrasi Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('service-worker.js').then(function(registration) {
-                    console.log('Service Worker registered with scope:', registration.scope);
-                }, function(err) {
-                    console.log('Service Worker registration failed:', err);
-                });
-            });
-        }
-    </script>
 </body>
 </html>
