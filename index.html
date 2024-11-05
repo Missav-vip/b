@@ -3,67 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Situs resmi Shell untuk informasi dan layanan cryptocurrency.">
-    <meta name="keywords" content="Shell, cryptocurrency, bitcoin, wallet, keamanan, blockchain">
-    <meta name="author" content="Shell">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap">
-    <title>Situs Shell</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background: no-repeat center center fixed;
-            background-size: cover;
-            color: #ffffff;
-            transition: background 0.5s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Mengatur tinggi untuk memusatkan konten */
-            flex-direction: column;
-        }
-
-        header {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            text-align: center;
-        }
-
-        .upload-section {
-            text-align: center;
-            margin: 20px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 8px;
-        }
-
-        #preview {
-            margin-top: 20px;
-            max-width: 100%;
-            border: 2px solid #fff;
-            display: none; /* Tersembunyi sampai gambar di-upload */
-        }
-
-        button {
-            background-color: #4CAF50; /* Hijau */
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        button:hover {
-            background-color: #45a049; /* Hijau lebih gelap saat hover */
-        }
-    </style>
+    <meta name="description" content="Unggah wallpaper untuk Shell">
+    <link rel="stylesheet" href="style.css">
+    <title>Unggah Latar Belakang - Shell</title>
 </head>
 <body>
-
-<header>
-    <h1>Selamat Datang di Shell</h1>
-</header>
 
 <div class="upload-section">
     <h2>Unggah Wallpaper Anda</h2>
@@ -72,25 +16,21 @@
     <img id="preview" alt="Preview Gambar">
 </div>
 
-<!-- JavaScript untuk mengubah latar belakang -->
 <script>
     function setBackground() {
         const fileInput = document.getElementById('file-input');
         const file = fileInput.files[0];
         const preview = document.getElementById('preview');
 
-        // Format dan ukuran yang diizinkan
         const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
         const maxSize = 5 * 1024 * 1024; // 5 MB
 
         if (file) {
-            // Validasi tipe file
             if (!allowedTypes.includes(file.type)) {
                 alert("Format file tidak valid. Harap unggah gambar JPG, PNG, atau GIF.");
                 return;
             }
 
-            // Validasi ukuran file
             if (file.size > maxSize) {
                 alert("Ukuran file terlalu besar. Harap unggah gambar yang lebih kecil dari 5MB.");
                 return;
@@ -98,7 +38,6 @@
 
             const reader = new FileReader();
             reader.onload = function(event) {
-                // Cek resolusi gambar (minimal 800x600 untuk kualitas)
                 const img = new Image();
                 img.src = event.target.result;
                 img.onload = function() {
@@ -106,20 +45,9 @@
                         alert("Resolusi gambar terlalu rendah. Harap unggah gambar dengan resolusi minimal 800x600.");
                         return;
                     }
-                    document.body.style.backgroundImage = `url('${event.target.result}')`;
-                    document.body.style.backgroundSize = 'cover'; // Pastikan gambar menutupi seluruh halaman
-                    
-                    // Menampilkan preview gambar
-                    preview.src = event.target.result;
-                    preview.style.display = 'block'; // Tampilkan gambar preview
-
-                    // Simpan gambar ke local storage
                     localStorage.setItem('backgroundImage', event.target.result);
-
-                    // Arahkan pengguna ke halaman utama setelah mengunggah
-                    setTimeout(() => {
-                        window.location.href = "index.html"; // Ganti dengan path beranda Anda jika berbeda
-                    }, 2000); // Arahkan setelah 2 detik
+                    // Arahkan pengguna ke halaman utama
+                    window.location.href = "home.html"; // Ganti dengan path halaman utama Anda
                 }
             }
             reader.readAsDataURL(file);
@@ -133,7 +61,6 @@
         const savedBackground = localStorage.getItem('backgroundImage');
         if (savedBackground) {
             document.body.style.backgroundImage = `url('${savedBackground}')`;
-            document.body.style.backgroundSize = 'cover';
         }
     };
 </script>
