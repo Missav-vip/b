@@ -5,54 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            height: 100vh;
-            background-color: #222;
-            color: white;
-            display: flex;
-            overflow: hidden;
-        }
-
-        .content {
-            margin-left: 220px;
-            padding: 20px;
-            flex-grow: 1;
-        }
-
-        .hamburger {
-            font-size: 30px;
-            cursor: pointer;
-            padding: 15px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 100;
-        }
-    </style>
 </head>
 <body>
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-    <div id="menuContainer"></div>
-    <div class="content">
-        <h1>Selamat Datang di Halaman Utama</h1>
-        <p>Ini adalah konten utama di samping menu.</p>
+    <!-- Menu Toggle -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
     </div>
+
+    <!-- Form Upload Latar Belakang -->
+    <input type="file" id="backgroundInput" accept="image/*" onchange="uploadBackground()" />
+    
+    <h1>Selamat datang di halaman utama</h1>
+
+    <!-- Link Menu -->
+    <div id="menu-placeholder"></div>
+
     <script>
         function toggleMenu() {
             const menu = document.getElementById('menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            if (menu.style.display === 'none') {
+                menu.style.display = 'block';
+            } else {
+                menu.style.display = 'none';
+            }
         }
 
-        fetch('menu.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('menuContainer').innerHTML = data;
-            });
+        function uploadBackground() {
+            const fileInput = document.getElementById('backgroundInput');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const imageUrl = event.target.result;
+                    document.body.style.backgroundImage = `url(${imageUrl})`;
+                    localStorage.setItem('backgroundImage', imageUrl);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        window.onload = function () {
+            const backgroundImage = localStorage.getItem('backgroundImage');
+            if (backgroundImage) {
+                document.body.style.backgroundImage = `url(${backgroundImage})`;
+            }
+
+            // Load Menu HTML dynamically
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+                });
+        }
     </script>
 </body>
 </html>
