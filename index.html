@@ -3,67 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Unggah wallpaper untuk Shell">
     <link rel="stylesheet" href="style.css">
-    <title>Unggah Latar Belakang - Shell</title>
+    <title>Shell - Unggah Latar Belakang</title>
 </head>
 <body>
+    <div class="upload-container">
+        <h1>Unggah Latar Belakang</h1>
+        <form id="uploadForm">
+            <input type="file" id="backgroundInput" accept="image/*" required>
+            <button type="submit">Unggah</button>
+        </form>
+    </div>
 
-<div class="upload-section">
-    <h2>Unggah Wallpaper Anda</h2>
-    <input type="file" id="file-input" accept="image/*">
-    <button onclick="setBackground()">Terapkan Wallpaper</button>
-    <img id="preview" alt="Preview Gambar">
-</div>
-
-<script>
-    function setBackground() {
-        const fileInput = document.getElementById('file-input');
-        const file = fileInput.files[0];
-        const preview = document.getElementById('preview');
-
-        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-        const maxSize = 5 * 1024 * 1024; // 5 MB
-
-        if (file) {
-            if (!allowedTypes.includes(file.type)) {
-                alert("Format file tidak valid. Harap unggah gambar JPG, PNG, atau GIF.");
-                return;
-            }
-
-            if (file.size > maxSize) {
-                alert("Ukuran file terlalu besar. Harap unggah gambar yang lebih kecil dari 5MB.");
-                return;
-            }
-
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fileInput = document.getElementById('backgroundInput');
+            const file = fileInput.files[0];
             const reader = new FileReader();
-            reader.onload = function(event) {
-                const img = new Image();
-                img.src = event.target.result;
-                img.onload = function() {
-                    if (img.width < 800 || img.height < 600) {
-                        alert("Resolusi gambar terlalu rendah. Harap unggah gambar dengan resolusi minimal 800x600.");
-                        return;
-                    }
-                    localStorage.setItem('backgroundImage', event.target.result);
-                    // Arahkan pengguna ke halaman utama
-                    window.location.href = "home.html"; // Ganti dengan path halaman utama Anda
-                }
+
+            reader.onloadend = function() {
+                localStorage.setItem('backgroundImage', reader.result);
+                window.location.href = 'home.html';
             }
-            reader.readAsDataURL(file);
-        } else {
-            alert("Silakan pilih gambar terlebih dahulu.");
-        }
-    }
 
-    // Ketika halaman dimuat, ambil gambar dari local storage jika ada
-    window.onload = function() {
-        const savedBackground = localStorage.getItem('backgroundImage');
-        if (savedBackground) {
-            document.body.style.backgroundImage = `url('${savedBackground}')`;
-        }
-    };
-</script>
-
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
 </html>
