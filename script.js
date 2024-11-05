@@ -25,3 +25,14 @@ document.getElementById('searchForm').addEventListener('submit', function(e) {
     const query = document.getElementById('searchQuery').value;
     alert(`Mencari: ${query}`);
 });
+
+// Pendaftaran Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+            console.log('Service Worker registered with scope:', registration.scope);
+        }, function(error) {
+            console.log('Service Worker registration failed:', error);
+        });
+    });
+}
