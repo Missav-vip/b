@@ -15,18 +15,17 @@
             background-size: cover;
         }
 
+        /* Banner Style */
         #banner {
             width: 100%;
-            max-width: 100%;
             text-align: center;
             margin-top: 0;
             position: relative;
         }
 
         .responsive-banner {
-            width: 97%;
+            width: 100%;
             height: 150px;
-            margin-top: 10px;
             object-fit: cover;
             position: relative;
             border-radius: 20px;
@@ -43,26 +42,58 @@
             border-radius: 20px;
         }
 
-        /* Lingkaran Section */
+        /* Menu Style */
+        #menu-bar {
+            background-color: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 20px;
+        }
+
+        #menu-bar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        #menu-bar ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        #menu-bar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        #menu-bar ul li a:hover {
+            color: #f39c12;
+        }
+
+        /* Circle Section */
         .circle-container {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            justify-content: space-evenly;
+            flex-wrap: nowrap;
             margin-top: 30px;
             background-color: rgba(0, 0, 0, 0.5); /* Latar belakang hitam transparan */
-            padding: 20px;
+            padding: 20px 0;
             border-radius: 10px;
         }
 
         .circle-item {
-            margin: 10px;
             text-align: center;
             position: relative;
         }
 
         .circle {
-            width: 80px;
-            height: 80px;
+            width: 30px; /* Ukuran lingkaran 30px */
+            height: 30px;
             border-radius: 50%;
             background-size: cover;
             background-position: center;
@@ -79,36 +110,57 @@
 
         .circle-name {
             margin-top: 5px;
-            font-size: 16px;
+            font-size: 14px;
             color: white;
         }
 
         .circle-container .circle-item {
-            width: calc(100% / 9 - 20px); /* 9 lingkaran, membagi lebar 100% */
+            flex: 1;
+            text-align: center;
+            margin: 0 10px;
         }
 
         @media (max-width: 768px) {
             .circle-container .circle-item {
-                width: calc(100% / 5 - 20px); /* Untuk layar lebih kecil */
+                flex: 1 1 calc(33% - 20px);
             }
         }
 
         @media (max-width: 480px) {
             .circle-container .circle-item {
-                width: calc(100% / 3 - 20px); /* Lebih sedikit untuk layar sangat kecil */
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+
+        /* Responsive Menu */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .circle-container {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Menu Bar -->
+    <div id="menu-bar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Tentang</a></li>
+            <li><a href="#">Kontak</a></li>
+        </ul>
+    </div>
+
     <div id="banner">
         <img src="banner.png" alt="Banner" class="responsive-banner">
-    </div>
-    
-    <div class="profile-section">
-        <img src="profile.jpg" alt="Profile Image" class="profile-image">
-        <div class="profile-name">Nama Profil</div>
     </div>
 
     <!-- Circle Container -->
