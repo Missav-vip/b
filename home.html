@@ -11,15 +11,18 @@
             margin: 0;
             padding: 0;
             background-color: transparent;
-            background-attachment: fixed;
+            background-attachment: fixed; /* Mengunci latar belakang */
             background-size: cover;
+            background-position: center;
         }
 
         #banner {
-            width: 500px;
+            width: 100%;
+            max-width: 1200px; /* Memberikan ruang kiri dan kanan */
+            margin: 0 auto; /* Memastikan banner tetap di tengah */
             text-align: center;
             position: relative;
-            margin-top: 0.4rem; /* Menurunkan banner sedikit */
+            margin-top: 0.4rem;
         }
 
         .responsive-banner {
@@ -64,24 +67,24 @@
         .circle-container {
             display: flex;
             overflow-x: auto;
-            margin-top: 2mm; /* Jarak antara lingkaran dan banner 5mm */
+            margin-top: 2mm;
             padding-bottom: 10px;
-            justify-content: flex-start; /* Menjaga agar lingkaran terpusat ke kiri */
+            justify-content: flex-start;
         }
 
         .circle-item {
-            margin: 0 5px; /* Jarak antar lingkaran yang sama 10px */
+            margin: 0 5px;
             text-align: center;
         }
 
         .circle {
             display: inline-block;
-            width: 30px; /* Menyesuaikan ukuran lingkaran menjadi lebih besar */
+            width: 30px;
             height: 30px;
             border: 2px solid rgba(0, 0, 0, 0);
             border-radius: 50%;
             color: white;
-            font-size: 10px; /* Ukuran font lebih besar agar sesuai dengan ukuran lingkaran */
+            font-size: 10px;
             text-align: center;
             line-height: 30px;
             cursor: pointer;
@@ -89,24 +92,24 @@
         }
 
         .circle:hover {
-            transform: scale(1.2); /* Membuat lingkaran lebih besar saat di-hover */
+            transform: scale(1.2);
         }
 
         .circle-name {
-            margin-top: 1px; /* Mengatur jarak minimal antara lingkaran dan teks */
+            margin-top: 1px;
             font-size: 10px;
             color: white;
         }
 
         @media (max-width: 768px) {
             .circle-container .circle-item {
-                flex: 1 1 30%; /* Menyusun ulang agar lebih responsif */
+                flex: 1 1 30%;
             }
         }
 
         @media (max-width: 480px) {
             .circle-container .circle-item {
-                flex: 1 1 45%; /* Pengaturan ukuran pada layar kecil */
+                flex: 1 1 45%;
             }
         }
 
@@ -177,3 +180,4 @@
     </script>
 
 </body>
+</html>
