@@ -15,6 +15,20 @@
             background-size: cover;
         }
 
+        /* Banner Image */
+        #banner {
+            width: 100%;
+            max-width: 100%;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .responsive-banner {
+            width: 100%;
+            height: 50px;  /* Tinggi banner dikurangi setengah dari ukuran semula */
+            object-fit: cover;  /* Menjaga gambar tetap proporsional */
+        }
+
         /* Menu Toggle Button */
         .menu-toggle {
             position: fixed;
@@ -54,7 +68,6 @@
             z-index: 99;
             overflow-y: auto;
             border: 1px solid white;
-            border-radius: 20px; /* Sudut oval pada menu */
             height: 6cm; /* Menetapkan panjang menu menjadi 6 cm */
         }
 
@@ -82,29 +95,6 @@
             color: white;
         }
 
-        /* Banner Image */
-        #banner {
-            width: 100%;
-            max-width: 100%;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        /* Menyesuaikan gambar agar responsif */
-        .responsive-banner {
-            width: 100%;
-            height: auto;
-        }
-
-        /* Responsif untuk perangkat mobile */
-        @media (max-width: 480px) {
-            .responsive-banner {
-                width: 100%;  /* Menyesuaikan gambar di perangkat mobile */
-                max-height: 100px;  /* Membatasi tinggi banner menjadi setengah */
-                object-fit: cover;  /* Menjaga gambar tetap proporsional */
-            }
-        }
-
         /* Media query untuk perangkat dengan layar lebih kecil */
         @media (max-width: 768px) {
             .menu {
@@ -123,11 +113,10 @@
 </head>
 <body>
 
-    <h1>Selamat datang di halaman utama</h1>
-
     <!-- Banner Image -->
     <div id="banner">
-        <img src="https://github.com/Missav-vip/b/blob/d79e5e3bf139b49d3c8dbc3173fd3d18572dafca/DCF579F3-9372-4B28-B5D8-2AFD044A4F6B.jpeg" alt="Banner" class="responsive-banner">
+        <!-- Gambar banner dengan format JPEG -->
+        <img src="https://github.com/Missav-vip/b/blob/d79e5e3bf139b49d3c8dbc3173fd3d18572dafca/DCF579F3-9372-4B28-B5D8-2AFD044A4F6B.jpg" alt="Banner" class="responsive-banner">
     </div>
 
     <!-- Menu Toggle Button -->
