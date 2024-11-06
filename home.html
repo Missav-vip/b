@@ -70,15 +70,12 @@
             justify-content: center; /* Membuat lingkaran berada di tengah */
             margin-top: 0.5mm; /* Jarak atas 0.5mm dari banner */
             padding-bottom: 10px;
-            flex-wrap: wrap; /* Menyesuaikan layout ketika ukuran layar kecil */
         }
 
         .circle-item {
             margin: 0 1mm; /* Jarak antar lingkaran 1mm */
             text-align: center;
             position: relative;
-            flex: 1 1 20%; /* Mengatur fleksibilitas dan ukuran */
-            margin-bottom: 20px;
         }
 
         .circle {
@@ -109,47 +106,53 @@
         }
 
         .circle-name {
-            margin-top: 5px; /* Menambahkan jarak antara lingkaran dan nama */
+            margin-top: 1px;
             font-size: 8px;
             color: white;
         }
 
-        /* Kontainer untuk widget TradingView */
-        .tradingview-container {
-            display: flex;
+        /* Ticker Container */
+        .ticker-wrapper {
             width: 100%;
+            background-color: #333;
             overflow: hidden;
             position: relative;
-            height: 400px; /* Sesuaikan dengan ukuran yang diinginkan */
-            animation: moveGraph 20s linear infinite; /* Animasi gerak horizontal */
+            padding: 10px 0;
+            margin-top: 20px; /* Memberikan jarak antara lingkaran dan ticker */
         }
 
-        /* Animasi untuk membuat grafik bergerak dari kanan ke kiri */
-        @keyframes moveGraph {
+        .ticker {
+            display: flex;
+            animation: ticker-animation 15s linear infinite;
+            white-space: nowrap;
+        }
+
+        .ticker-item {
+            margin-right: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .ticker-item span {
+            color: #4CAF50; /* Hijau untuk nilai positif */
+        }
+
+        /* Animasi untuk pergerakan ticker */
+        @keyframes ticker-animation {
             0% {
-                transform: translateX(100%); /* Mulai dari kanan */
+                transform: translateX(100%);
             }
             100% {
-                transform: translateX(-100%); /* Bergerak ke kiri */
+                transform: translateX(-100%);
             }
         }
 
-        .tradingview-widget {
-            flex-shrink: 0; /* Jangan biarkan widget mengecil */
-            width: 100%;
-            height: 100%;
-        }
-
-        @media (max-width: 768px) {
-            .circle-container .circle-item {
-                flex: 1 1 30%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .circle-container .circle-item {
-                flex: 1 1 45%;
-            }
+        /* Styling tambahan untuk membuat ticker lebih menonjol */
+        .ticker-wrapper {
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
         }
 
     </style>
@@ -172,39 +175,83 @@
         <div class="circle-item">
             <a href="link1.html" class="circle" style="background-image: url('bugatti.jpg');"></a>
             <div class="circle-name">Bugatti</div>
-            <!-- TradingView Widget -->
-            <div class="tradingview-container">
-                <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_65c7c&symbol=BITFINEX:BTCUSD&interval=D&hidetoptoolbar=1&symboledit=1&saveimage=1&toolbarbg=F1F3F6" class="tradingview-widget" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
-            </div>
         </div>
         <div class="circle-item">
             <a href="link2.html" class="circle" style="background-image: url('lamborghini.jpg');"></a>
             <div class="circle-name">Lamborghini</div>
-            <!-- TradingView Widget -->
-            <div class="tradingview-container">
-                <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_65c7c&symbol=BITFINEX:ETHUSD&interval=D&hidetoptoolbar=1&symboledit=1&saveimage=1&toolbarbg=F1F3F6" class="tradingview-widget" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
-            </div>
         </div>
         <div class="circle-item">
             <a href="link3.html" class="circle" style="background-image: url('ferrari.jpg');"></a>
             <div class="circle-name">Ferrari</div>
-            <!-- TradingView Widget -->
-            <div class="tradingview-container">
-                <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_65c7c&symbol=BITFINEX:XRPUSD&interval=D&hidetoptoolbar=1&symboledit=1&saveimage=1&toolbarbg=F1F3F6" class="tradingview-widget" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+        </div>
+        <div class="circle-item">
+            <a href="link4.html" class="circle" style="background-image: url('rollsroyce.jpg');"></a>
+            <div class="circle-name">Rolls Royce</div>
+        </div>
+        <div class="circle-item">
+            <a href="link5.html" class="circle" style="background-image: url('mclaren.jpg');"></a>
+            <div class="circle-name">McLaren</div>
+        </div>
+        <div class="circle-item">
+            <a href="link6.html" class="circle" style="background-image: url('astonmartin.jpg');"></a>
+            <div class="circle-name">Aston Martin</div>
+        </div>
+        <div class="circle-item">
+            <a href="link7.html" class="circle" style="background-image: url('porsche.jpg');"></a>
+            <div class="circle-name">Porsche</div>
+        </div>
+        <div class="circle-item">
+            <a href="link8.html" class="circle" style="background-image: url('koenigsegg.jpg');"></a>
+            <div class="circle-name">Koenigsegg</div>
+        </div>
+        <div class="circle-item">
+            <a href="link9.html" class="circle" style="background-image: url('pagani.jpg');"></a>
+            <div class="circle-name">Pagani</div>
+        </div>
+    </div>
+
+    <!-- Bagian Ticker Mata Uang -->
+    <div class="ticker-wrapper">
+        <div class="ticker">
+            <div class="ticker-item">
+                BTC/USD: <span>+5.34%</span> $31,215.67
+            </div>
+            <div class="ticker-item">
+                ETH/USD: <span>-1.25%</span> $2,128.40
+            </div>
+            <div class="ticker-item">
+                LTC/USD: <span>+2.45%</span> $150.12
+            </div>
+            <div class="ticker-item">
+                XRP/USD: <span>-0.89%</span> $0.84
+            </div>
+            <div class="ticker-item">
+                BCH/USD: <span>+3.12%</span> $418.72
             </div>
         </div>
-        <!-- Tambahkan lebih banyak lingkaran dengan widget TradingView sesuai kebutuhan -->
     </div>
 
     <script>
-        window.onload = function () {
-            const backgroundImage = localStorage.getItem('backgroundImage');
-            if (backgroundImage) {
-                document.body.style.backgroundImage = `url(${backgroundImage})`;
-                document.body.style.backgroundSize = "cover";
-                document.body.style.backgroundAttachment = "fixed";
-            }
+        // Contoh pengambilan data dinamis (bisa diganti dengan data real-time)
+        function updateTickerData() {
+            const tickerItems = document.querySelectorAll('.ticker-item');
+            // Contoh pembaruan data statis, ganti dengan data nyata dari API
+            const newData = [
+                { symbol: 'BTC/USD', change: '+5.34%', price: '$31,215.67' },
+                { symbol: 'ETH/USD', change: '-1.25%', price: '$2,128.40' },
+                { symbol: 'LTC/USD', change: '+2.45%', price: '$150.12' },
+                { symbol: 'XRP/USD', change: '-0.89%', price: '$0.84' },
+                { symbol: 'BCH/USD', change: '+3.12%', price: '$418.72' }
+            ];
+
+            tickerItems.forEach((item, index) => {
+                item.innerHTML = `${newData[index].symbol}: <span>${newData[index].change
+                                                                                    item.innerHTML = `${newData[index].symbol}: <span>${newData[index].change}</span> ${newData[index].price}`;
+            });
         }
+
+        // Memperbarui ticker data setiap 10 detik
+        setInterval(updateTickerData, 10000);
     </script>
 
 </body>
