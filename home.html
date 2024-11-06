@@ -111,36 +111,24 @@
             color: white;
         }
 
-        /* Ticker Container */
+        /* Animasi ticker */
         .ticker-wrapper {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
             width: 100%;
-            background-color: #333;
             overflow: hidden;
-            position: relative;
-            padding: 10px 0;
-            margin-top: 20px; /* Memberikan jarak antara lingkaran dan ticker */
-        }
-
-        .ticker {
-            display: flex;
-            animation: ticker-animation 15s linear infinite;
             white-space: nowrap;
         }
 
         .ticker-item {
-            margin-right: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #fff;
-            letter-spacing: 1px;
+            display: inline-block;
+            padding: 0 20px;
+            font-size: 16px;
+            color: white;
+            animation: ticker-animation 15s linear infinite;
         }
 
-        .ticker-item span {
-            color: #4CAF50; /* Hijau untuk nilai positif */
-        }
-
-        /* Animasi untuk pergerakan ticker */
         @keyframes ticker-animation {
             0% {
                 transform: translateX(100%);
@@ -150,11 +138,18 @@
             }
         }
 
-        /* Styling tambahan untuk membuat ticker lebih menonjol */
-        .ticker-wrapper {
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        /* Media Query untuk layar lebih kecil */
+        @media (max-width: 768px) {
+            .circle-container .circle-item {
+                flex: 1 1 30%;
+            }
         }
 
+        @media (max-width: 480px) {
+            .circle-container .circle-item {
+                flex: 1 1 45%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -210,48 +205,25 @@
         </div>
     </div>
 
-    <!-- Bagian Ticker Mata Uang -->
+    <!-- Bagian Ticker TradingView -->
     <div class="ticker-wrapper">
-        <div class="ticker">
-            <div class="ticker-item">
-                BTC/USD: <span>+5.34%</span> $31,215.67
-            </div>
-            <div class="ticker-item">
-                ETH/USD: <span>-1.25%</span> $2,128.40
-            </div>
-            <div class="ticker-item">
-                LTC/USD: <span>+2.45%</span> $150.12
-            </div>
-            <div class="ticker-item">
-                XRP/USD: <span>-0.89%</span> $0.84
-            </div>
-            <div class="ticker-item">
-                BCH/USD: <span>+3.12%</span> $418.72
-            </div>
-        </div>
+        <div class="ticker-item">BITSTAMP:BTCUSD: <span>+3.45% $31,215.67</span></div>
+        <div class="ticker-item">CRYPTO:ETHUSD: <span>-1.12% $2,147.45</span></div>
+        <div class="ticker-item">CRYPTOCAP:SOL: <span>+2.87% $212.54</span></div>
+        <div class="ticker-item">CRYPTO:XPRUSD: <span>+0.45% $0.89</span></div>
+        <div class="ticker-item">CRYPTOCAP:LTC: <span>-0.88% $195.15</span></div>
+        <div class="ticker-item">BINANCEUS:MATICUSDT: <span>+1.72% $1.35</span></div>
     </div>
 
     <script>
-        // Contoh pengambilan data dinamis (bisa diganti dengan data real-time)
-        function updateTickerData() {
-            const tickerItems = document.querySelectorAll('.ticker-item');
-            // Contoh pembaruan data statis, ganti dengan data nyata dari API
-            const newData = [
-                { symbol: 'BTC/USD', change: '+5.34%', price: '$31,215.67' },
-                { symbol: 'ETH/USD', change: '-1.25%', price: '$2,128.40' },
-                { symbol: 'LTC/USD', change: '+2.45%', price: '$150.12' },
-                { symbol: 'XRP/USD', change: '-0.89%', price: '$0.84' },
-                { symbol: 'BCH/USD', change: '+3.12%', price: '$418.72' }
-            ];
-
-            tickerItems.forEach((item, index) => {
-                item.innerHTML = `${newData[index].symbol}: <span>${newData[index].change
-                                                                                    item.innerHTML = `${newData[index].symbol}: <span>${newData[index].change}</span> ${newData[index].price}`;
-            });
+        window.onload = function () {
+            const backgroundImage = localStorage.getItem('backgroundImage');
+            if (backgroundImage) {
+                document.body.style.backgroundImage = `url(${backgroundImage})`;
+                document.body.style.backgroundSize = "cover";
+                document.body.style.backgroundAttachment = "fixed";
+            }
         }
-
-        // Memperbarui ticker data setiap 10 detik
-        setInterval(updateTickerData, 10000);
     </script>
 
 </body>
