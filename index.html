@@ -3,40 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deteksi VPN dengan Suara Robot</title>
+    <title>Peringatan VPN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            background-color: black;
+            text-align: center;
+            padding: 20px;
+        }
+        .warning-message {
+            font-size: 24px;
+            color: red;
+            margin-top: 20px;
+            animation: flash 2s infinite;
+        }
+
+        @keyframes flash {
+            0% { color: red; }
+            50% { color: yellow; }
+            100% { color: red; }
+        }
+    </style>
 </head>
 <body>
-
-    <!-- Konten Halaman -->
-    <h1>Selamat datang di situs kami!</h1>
-
-    <!-- Peringatan VPN (tersembunyi sampai terdeteksi VPN) -->
-    <div id="warning" style="display: none; color: red; font-size: 20px; padding: 20px; text-align: center;">
+    <h1>Selamat datang di halaman kami</h1>
+    <div id="warning" class="warning-message" style="display: none;">
         Peringatan: VPN terdeteksi! Anda tidak dapat melanjutkan.
     </div>
 
     <script>
-        // Fungsi untuk mendeteksi VPN
-        function detectVPN() {
-            // Misalnya, logika untuk mendeteksi VPN (dalam contoh ini, kita anggap VPN terdeteksi)
-            var isVPN = true; // Gantilah dengan logika deteksi VPN yang sesuai
+        // Fungsi untuk memeriksa jika pengguna menggunakan VPN
+        function checkVPN() {
+            const ipApiUrl = 'https://api.ipify.org?format=json'; // URL untuk mendapatkan alamat IP pengguna
+            const vpnCheckUrl = 'https://api.iplocation.net/?ip='; // API untuk deteksi lokasi berdasarkan IP
 
-            if (isVPN) {
-                // Menampilkan peringatan di halaman
-                document.getElementById('warning').style.display = 'block';
-                
-                // Memutar suara robot menggunakan SpeechSynthesis API
-                var message = new SpeechSynthesisUtterance('Peringatan: VPN terdeteksi! Anda tidak dapat melanjutkan.');
-                message.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Google UK English Male'; })[0]; // Menggunakan suara robot Google UK English Male
-                speechSynthesis.speak(message);
+            fetch(ipApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const userIp = data.ip;
+                    return fetch(vpnCheckUrl + userIp)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const isVPN = data.is_vpn; // Misalnya, API ini mengembalikan informasi tentang VPN
 
-                // Menonaktifkan interaksi dengan halaman
-                document.body.style.pointerEvents = 'none'; // Menonaktifkan semua klik pada halaman
-            }
+                    if (isVPN) {
+                        document.getElementById('warning').style.display = 'block'; // Menampilkan peringatan jika VPN terdeteksi
+                        playWarningMessage(); // Memutar suara peringatan
+                        blockUser(); // Menghentikan interaksi lebih lanjut
+                    } else {
+                        console.log('Tidak ada VPN yang terdeteksi.');
+                    }
+                })
+                .catch(error => console.error('Terjadi kesalahan saat memeriksa VPN:', error));
         }
 
-        // Memanggil fungsi deteksi VPN
-        detectVPN();
+        // Fungsi untuk memainkan suara peringatan menggunakan suara robot wanita
+        function playWarningMessage() {
+            const message = new SpeechSynthesisUtterance("Peringatan: VPN terdeteksi! Anda tidak dapat melanjutkan.");
+            const voices = speechSynthesis.getVoices();
+            
+            // Pilih suara wanita jika tersedia
+            message.voice = voices.filter(function(voice) { 
+                return voice.name === 'Google UK English Female'; 
+            })[0];
+
+            if (!message.voice) {
+                // Jika suara robot wanita tidak ditemukan, pilih suara wanita lainnya
+                message.voice = voices.filter(function(voice) { 
+                    return voice.name.includes('female'); 
+                })[0];
+            }
+
+            speechSynthesis.speak(message); // Memainkan suara peringatan
+        }
+
+        // Fungsi untuk memblokir interaksi lebih lanjut (menghentikan klik atau geser)
+        function blockUser() {
+            document.body.style.pointerEvents = 'none'; // Menonaktifkan semua interaksi pengguna dengan halaman
+        }
+
+        // Panggil fungsi untuk memeriksa VPN saat halaman dimuat
+        window.onload = checkVPN;
     </script>
 </body>
 </html>
