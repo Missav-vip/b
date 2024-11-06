@@ -3,151 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendeteksi VPN dengan Efek Visual dan Getaran</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Pesan Error */
-        .error-message {
-            position: fixed;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 20px;
-            background-color: #dc3545; /* Warna merah */
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 5px;
-            display: none;
-            z-index: 1000;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-            animation: shake 0.5s ease-in-out 1, flash 1.5s infinite;
-        }
-
-        /* Animasi Getaran */
-        @keyframes shake {
-            0% { transform: translateX(-50%) translateY(0); }
-            25% { transform: translateX(-50%) translateY(-10px); }
-            50% { transform: translateX(-50%) translateY(0); }
-            75% { transform: translateX(-50%) translateY(10px); }
-            100% { transform: translateX(-50%) translateY(0); }
-        }
-
-        /* Animasi Flash untuk Perubahan Warna */
-        @keyframes flash {
-            0% { background-color: #dc3545; }
-            50% { background-color: #ff6347; }
-            100% { background-color: #dc3545; }
-        }
-
-        /* Efek Visual VPN */
-        .vpn-effect {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 0, 0, 0.3);
-            z-index: 999;
-            display: none;
-            animation: pulse 1s infinite;
-        }
-
-        /* Animasi Pulse untuk Efek VPN */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.3;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.7;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 0.3;
-            }
-        }
-    </style>
+    <title>Deteksi VPN dengan Suara Robot</title>
 </head>
 <body>
 
-    <!-- Pesan Error -->
-    <div id="error-message" class="error-message">
-        Terjadi kesalahan! Anda menggunakan VPN atau lokasi tidak dapat dikenali.
+    <!-- Konten Halaman -->
+    <h1>Selamat datang di situs kami!</h1>
+
+    <!-- Peringatan VPN (tersembunyi sampai terdeteksi VPN) -->
+    <div id="warning" style="display: none; color: red; font-size: 20px; padding: 20px; text-align: center;">
+        Peringatan: VPN terdeteksi! Anda tidak dapat melanjutkan.
     </div>
 
-    <!-- Efek Visual VPN -->
-    <div id="vpn-effect" class="vpn-effect"></div>
-
     <script>
-        let vpnDetected = false; // Variabel untuk melacak status VPN
+        // Fungsi untuk mendeteksi VPN
+        function detectVPN() {
+            // Misalnya, logika untuk mendeteksi VPN (dalam contoh ini, kita anggap VPN terdeteksi)
+            var isVPN = true; // Gantilah dengan logika deteksi VPN yang sesuai
 
-        function showError(message) {
-            const errorMessage = document.getElementById('error-message');
-            const vpnEffect = document.getElementById('vpn-effect');
-            
-            // Tampilkan pesan error
-            errorMessage.textContent = message;
-            errorMessage.style.display = 'block';
+            if (isVPN) {
+                // Menampilkan peringatan di halaman
+                document.getElementById('warning').style.display = 'block';
+                
+                // Memutar suara robot menggunakan SpeechSynthesis API
+                var message = new SpeechSynthesisUtterance('Peringatan: VPN terdeteksi! Anda tidak dapat melanjutkan.');
+                message.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Google UK English Male'; })[0]; // Menggunakan suara robot Google UK English Male
+                speechSynthesis.speak(message);
 
-            // Tampilkan efek visual VPN
-            vpnEffect.style.display = 'block';
-        }
-
-        // Fungsi untuk memicu getaran perangkat
-        function triggerVibration() {
-            if (navigator.vibrate) {
-                // Memicu getaran kuat selama 5000ms (5 detik) untuk perangkat yang mendukung Vibration API
-                navigator.vibrate(5000); // Getaran 5000ms
+                // Menonaktifkan interaksi dengan halaman
+                document.body.style.pointerEvents = 'none'; // Menonaktifkan semua klik pada halaman
             }
         }
 
-        // Fungsi untuk memeriksa VPN secara terus-menerus
-        function checkVPN() {
-            fetch('https://api.ipstack.com/check?access_key=35c787a0-9be6-11ef-ad81-158c52d931f2')
-                .then(response => response.json())
-                .then(data => {
-                    const country = data.country_name;
-                    const city = data.city;
-                    const region = data.region_name;
-
-                    // Mengecek apakah pengguna menggunakan VPN atau lokasi tidak valid
-                    if (data.location.is_vpn || !country || !city || !region) {
-                        if (!vpnDetected) {
-                            showError("Anda menggunakan VPN atau lokasi tidak dapat dikenali.");
-                            triggerVibration();  // Memicu getaran pada perangkat
-                            vpnDetected = true;  // Tandai bahwa VPN terdeteksi
-                        }
-                    } else {
-                        if (vpnDetected) {
-                            vpnDetected = false;  // Reset status VPN jika VPN dimatikan
-                            // Menyembunyikan pesan error dan efek ketika VPN dimatikan
-                            document.getElementById('error-message').style.display = 'none';
-                            document.getElementById('vpn-effect').style.display = 'none';
-                        }
-                        console.log(`Lokasi Anda terdeteksi di ${city}, ${region}, ${country}`);
-                    }
-                })
-                .catch(error => {
-                    showError("Terjadi kesalahan saat mendeteksi lokasi.");
-                    console.error('Error:', error);
-                });
-        }
-
-        // Fungsi untuk memeriksa VPN setiap 5 detik
-        setInterval(checkVPN, 5000);
-
-        // Panggil fungsi checkVPN secara otomatis saat halaman dimuat
-        window.onload = checkVPN;
-
+        // Memanggil fungsi deteksi VPN
+        detectVPN();
     </script>
-
 </body>
 </html>
