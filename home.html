@@ -4,135 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            color: white;
-            margin: 0;
-            padding: 0;
-            background-color: transparent;
-            background-attachment: fixed;
-            background-size: cover;
-        }
-
-        /* Banner Image */
-        #banner {
-            width: 100%;
-            max-width: 100%;
-            text-align: center;
-            margin-top: 0;
-            position: relative;
-        }
-
-        /* Banner dengan gradasi transparan dan sudut oval */
-        .responsive-banner {
-            width: 97%;
-            height: 150px;  /* Tinggi banner 150px */
-            margin-top: 10px;
-            object-fit: cover;  /* Menjaga gambar tetap proporsional */
-            position: relative;
-            border-radius: 20px; /* Sudut oval pada banner */
-        }
-
-        .responsive-banner::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));  /* Gradasi yang lebih ringan */
-            border-radius: 20px; /* Menjaga sudut oval */
-        }
-
-        /* Menu Toggle Button */
-        .menu-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 30px;
-            height: 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
-            z-index: 100;
-        }
-
-        /* Garis menu toggle */
-        .line {
-            width: 30px;
-            height: 3px;
-            background-color: white;
-            border-radius: 5px;
-        }
-
-        /* Menu style */
-        .menu {
-            position: fixed;
-            top: 50%; /* Menu vertikal di tengah layar */
-            left: 50%; /* Menu horizontal di tengah layar */
-            transform: translate(-50%, -50%); /* Menyempurnakan posisi di tengah */
-            width: auto; /* Menyesuaikan lebar menu dengan konten */
-            max-width: 250px; /* Lebar maksimal menu */
-            background: rgba(0, 0, 0, 0.5); /* Latar belakang transparan */
-            color: white;
-            display: none;
-            flex-direction: column;
-            padding-top: 20px;
-            text-align: center;
-            z-index: 99;
-            overflow-y: auto;
-            border: 1px solid white;
-            height: 6cm; /* Menetapkan panjang menu menjadi 6 cm */
-        }
-
-        /* Header Menu */
-        .menu h2 {
-            margin: 0 0 20px 0;
-        }
-
-        /* Link dalam menu */
-        .menu a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 0;
-            display: block;
-        }
-
-        /* Hover Link */
-        .menu a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Header halaman */
-        h1 {
-            text-align: center;
-            color: white;
-        }
-
-        /* Media query untuk perangkat dengan layar lebih kecil */
-        @media (max-width: 768px) {
-            .menu {
-                height: auto; /* Menyesuaikan tinggi menu pada perangkat kecil */
-                width: 80%; /* Lebar menu menyesuaikan layar */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .menu {
-                width: 90%; /* Lebar menu lebih kecil di perangkat mobile */
-                height: auto; /* Menyesuaikan panjang menu */
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css"> <!-- Menyambungkan file CSS -->
 </head>
 <body>
-
     <!-- Banner Image -->
     <div id="banner">
-        <!-- Gambar banner dengan format JPEG di folder lokal -->
-        <img src="banner.png" alt="Banner" class="responsive-banner">
+        <img src="banner.jpg" alt="Banner" class="responsive-banner">
     </div>
 
     <!-- Menu Toggle Button -->
@@ -156,37 +33,38 @@
         <a href="#">Logout</a>
     </div>
 
+    <!-- Lingkaran dengan Foto dan Nama (Horizontal) -->
     <div class="circle-container">
-    <!-- Lingkaran 1 -->
-    <div class="circle">
-        <img src="path_to_image1.jpg" alt="Image 1">
-        <div class="circle-name">Home</div>
+        <!-- Lingkaran 1 -->
+        <a href="home-page.html" class="circle">
+            <img src="path_to_image1.jpg" alt="Image 1">
+            <div class="circle-name">Home</div>
+        </a>
+        
+        <!-- Lingkaran 2 -->
+        <a href="profil-page.html" class="circle">
+            <img src="path_to_image2.jpg" alt="Image 2">
+            <div class="circle-name">Profil</div>
+        </a>
+        
+        <!-- Lingkaran 3 -->
+        <a href="akun-page.html" class="circle">
+            <img src="path_to_image3.jpg" alt="Image 3">
+            <div class="circle-name">Akun Saya</div>
+        </a>
+        
+        <!-- Lingkaran 4 -->
+        <a href="berita-page.html" class="circle">
+            <img src="path_to_image4.jpg" alt="Image 4">
+            <div class="circle-name">Berita</div>
+        </a>
+        
+        <!-- Lingkaran 5 -->
+        <a href="layanan-page.html" class="circle">
+            <img src="path_to_image5.jpg" alt="Image 5">
+            <div class="circle-name">Layanan</div>
+        </a>
     </div>
-    
-    <!-- Lingkaran 2 -->
-    <div class="circle">
-        <img src="path_to_image2.jpg" alt="Image 2">
-        <div class="circle-name">Profil</div>
-    </div>
-    
-    <!-- Lingkaran 3 -->
-    <div class="circle">
-        <img src="path_to_image3.jpg" alt="Image 3">
-        <div class="circle-name">Akun Saya</div>
-    </div>
-    
-    <!-- Lingkaran 4 -->
-    <div class="circle">
-        <img src="path_to_image4.jpg" alt="Image 4">
-        <div class="circle-name">Berita</div>
-    </div>
-    
-    <!-- Lingkaran 5 -->
-    <div class="circle">
-        <img src="path_to_image5.jpg" alt="Image 5">
-        <div class="circle-name">Layanan</div>
-    </div>
-</div>
 
     <script>
         /* Fungsi untuk membuka dan menutup menu */
@@ -211,6 +89,5 @@
             }
         }
     </script>
-
 </body>
 </html>
