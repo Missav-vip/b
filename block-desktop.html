@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blokir Akses Desktop</title>
+  <style>
+    /* Mengatur tampilan untuk perangkat dengan layar besar */
+    @media (min-width: 1024px) {
+      body {
+        display: none; /* Sembunyikan seluruh konten */
+      }
+      .blocked-message {
+        display: block; /* Tampilkan pesan blokir */
+        text-align: center;
+        margin-top: 50px;
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Konten halaman -->
+  <div class="blocked-message" style="display: none;">
+    <p>Website ini hanya dapat diakses menggunakan perangkat mobile.</p>
+  </div>
+
+  <script>
+    // Mengecek ukuran layar dan mengarahkan pengguna jika diakses menggunakan perangkat desktop
+    if (window.innerWidth >= 1024) {
+      window.location.href = "https://www.example.com/blocked"; // Ganti dengan URL halaman blokir Anda
+    }
+  </script>
+</body>
+</html>
