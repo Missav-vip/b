@@ -1,63 +1,59 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    color: #333;
+    background-color: #f4f4f4;
 }
 
 header {
     background-color: #333;
     color: white;
+    padding: 10px;
     text-align: center;
-    padding: 1rem;
 }
 
-h1, h2, h3 {
-    margin-top: 0;
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
 }
 
-.container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 2rem;
+nav ul li {
+    display: inline;
+    margin-right: 20px;
 }
 
-.card {
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.info {
+    padding: 20px;
     background-color: white;
-    width: 280px;
-    margin: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    margin: 20px;
+    border-radius: 10px;
 }
 
-.card img {
-    width: 100%;
-    border-radius: 8px 8px 0 0;
+.info h2 {
+    font-size: 24px;
+    color: #333;
 }
 
-.card h3 {
-    text-align: center;
-    padding: 1rem;
+.info h3 {
+    font-size: 20px;
+    color: #333;
 }
 
-.card p {
-    text-align: center;
-    padding: 0 1rem 1rem;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.content {
-    padding: 2rem;
-}
-
-ul {
+.info ul {
     list-style-type: disc;
-    padding-left: 20px;
+    margin-left: 20px;
 }
