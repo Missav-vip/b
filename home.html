@@ -18,8 +18,8 @@
 
         #banner {
             width: 100%;
-            max-width: 1200px; /* Memberikan ruang kiri dan kanan */
-            margin: 0 auto; /* Memastikan banner tetap di tengah */
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
             position: relative;
             margin-top: 0.4rem;
@@ -66,14 +66,13 @@
 
         .circle-container {
             display: flex;
-            overflow-x: auto;
-            margin-top: 2mm;
+            justify-content: center; /* Membuat lingkaran berada di tengah */
+            margin-top: 0.5mm; /* Jarak atas 0.5mm dari banner */
             padding-bottom: 10px;
-            justify-content: flex-start;
         }
 
         .circle-item {
-            margin: 0 5px;
+            margin: 0 0.5mm; /* Jarak antar lingkaran 0.5mm */
             text-align: center;
         }
 
@@ -87,12 +86,7 @@
             font-size: 10px;
             text-align: center;
             line-height: 30px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .circle:hover {
-            transform: scale(1.2);
+            cursor: default; /* Menghilangkan efek klik */
         }
 
         .circle-name {
@@ -132,39 +126,39 @@
     <div class="circle-container">
         <div class="circle-item">
             <a href="link1.html" class="circle">1</a>
-            <div class="circle-name">Toyota Supra</div>
+            <div class="circle-name">Bugatti</div>
         </div>
         <div class="circle-item">
             <a href="link2.html" class="circle">2</a>
-            <div class="circle-name">Honda Civic</div>
+            <div class="circle-name">Lamborghini</div>
         </div>
         <div class="circle-item">
             <a href="link3.html" class="circle">3</a>
-            <div class="circle-name">Nissan Skyline</div>
+            <div class="circle-name">Ferrari</div>
         </div>
         <div class="circle-item">
             <a href="link4.html" class="circle">4</a>
-            <div class="circle-name">Ford Mustang</div>
+            <div class="circle-name">Rolls Royce</div>
         </div>
         <div class="circle-item">
             <a href="link5.html" class="circle">5</a>
-            <div class="circle-name">Chevrolet Camaro</div>
+            <div class="circle-name">McLaren</div>
         </div>
         <div class="circle-item">
             <a href="link6.html" class="circle">6</a>
-            <div class="circle-name">BMW M3</div>
+            <div class="circle-name">Aston Martin</div>
         </div>
         <div class="circle-item">
             <a href="link7.html" class="circle">7</a>
-            <div class="circle-name">Audi R8</div>
+            <div class="circle-name">Porsche</div>
         </div>
         <div class="circle-item">
             <a href="link8.html" class="circle">8</a>
-            <div class="circle-name">Porsche 911</div>
+            <div class="circle-name">Koenigsegg</div>
         </div>
         <div class="circle-item">
             <a href="link9.html" class="circle">9</a>
-            <div class="circle-name">Lamborghini Huracán</div>
+            <div class="circle-name">Pagani</div>
         </div>
     </div>
 
