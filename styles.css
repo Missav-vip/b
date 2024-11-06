@@ -1,90 +1,105 @@
-/* General Styles */
+/* Styling untuk seluruh halaman */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    overflow-x: hidden; /* Mencegah scroll horizontal */
 }
 
-header {
-    background-color: #333;
+/* Styling untuk header dengan banner */
+#banner {
+    background: url('path/to/banner-image.jpg') no-repeat center center/cover;
+    height: 300px;
     color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#banner h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+/* Styling untuk logo dan deskripsi di bawah banner */
+.logo-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.logo-section img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.logo-section p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+/* Styling untuk warning atau peringatan */
+.warning {
+    background-color: #FFDD57;
+    color: #D90000;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Styling untuk informasi singkat nama-nama web */
+.web-info {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+}
+
+.web-item {
+    text-align: center;
+    width: 150px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.web-item:hover {
+    transform: scale(1.05);
+}
+
+/* Styling untuk kata-kata bijak */
+.quote {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 1.5em;
+    font-style: italic;
+}
+
+/* Styling untuk footer yang tetap terkunci di bawah */
+#footer-text {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
     padding: 10px;
     text-align: center;
 }
 
-h1, h2 {
-    margin: 10px 0;
-}
-
-p {
-    margin: 10px;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
+/* Styling untuk tombol atau link */
+.btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
     color: white;
     text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header {
-        padding: 20px;
-    }
-
-    nav ul li {
-        display: block;
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    section {
-        padding: 20px;
-    }
-
-    footer {
-        position: relative;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        font-size: 14px;
-    }
-
-    header {
-        font-size: 18px;
-    }
-
-    h1, h2 {
-        font-size: 20px;
-    }
-
-    nav ul li {
-        font-size: 16px;
-    }
-
-    footer {
-        font-size: 14px;
-    }
+.btn:hover {
+    background-color: #45a049;
 }
