@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pilih Server dan Satelit</title>
+    <title>Akses Web Berdasarkan Jenis</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -11,7 +11,6 @@
             color: #fff;
             text-align: center;
             padding: 50px;
-            margin: 0;
         }
         .warning {
             background-color: #f44336;
@@ -29,26 +28,38 @@
             margin-top: 20px;
             font-size: 1.5em;
         }
-        .vpn-warning {
-            background-color: #ff9800;
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-            font-size: 1.5em;
-        }
         .countdown {
             font-size: 2em;
             margin-top: 20px;
             color: yellow;
         }
+        .hidden-content {
+            display: none;
+            margin-top: 20px;
+        }
+        .contact-admin {
+            font-size: 1.2em;
+            color: #FF5722;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Selamat Datang!</h1>
-    <p>Untuk melanjutkan, pilih Server dan Satelit yang sesuai dengan lokasi Anda:</p>
+    <h1>Selamat Datang di Sistem Akses Web</h1>
+    <p>Untuk melanjutkan, pilih Jenis Web yang ingin Anda akses:</p>
 
+    <!-- Dropdown untuk memilih jenis web -->
+    <label for="webType">Pilih Jenis Web:</label>
+    <select id="webType" name="webType">
+        <option value="surfaceWeb">Surface Web</option>
+        <option value="deepWeb">Deep Web</option>
+        <option value="darknet">Darknet</option>
+        <option value="darkWeb">Dark Web</option>
+    </select>
+    
+    <br><br>
+    
     <!-- Dropdown untuk memilih satelit -->
     <label for="satellite">Pilih Satelit:</label>
     <select id="satellite" name="satellite">
@@ -56,7 +67,7 @@
         <option value="beta_satelite">Beta Satelit</option>
         <option value="gamma_satelite">Gamma Satelit</option>
     </select>
-    
+
     <br><br>
     
     <!-- Dropdown untuk memilih server -->
@@ -65,6 +76,9 @@
         <option value="server_1">Server 1</option>
         <option value="server_2">Server 2</option>
         <option value="server_3">Server 3</option>
+        <option value="server_4">Server 4</option>
+        <option value="server_5">Server 5</option>
+        <option value="server_6">Server 6</option>
     </select>
 
     <br><br>
@@ -72,33 +86,52 @@
 
     <div id="message"></div>
     <div id="countdown" class="countdown"></div>
-    
+
+    <!-- Konten tersembunyi untuk akses lebih dalam -->
+    <div id="hiddenContent" class="hidden-content">
+        <h2>Konten Terbatas</h2>
+        <p>Selamat! Anda telah mengakses konten terbatas.</p>
+    </div>
+
+    <!-- Kontak Admin untuk Dark Web -->
+    <div id="contactAdmin" class="contact-admin" style="display: none;">
+        <p>Untuk mengakses Dark Web, Anda perlu menghubungi admin terlebih dahulu.</p>
+    </div>
+
     <script>
-        // Daftar server dan satelit yang Anda tentukan
+        // Daftar satelit dan server yang bisa dipilih berdasarkan jenis web
         const satelliteRegions = {
-            alpha_satelite: { lat: -6.2088, lon: 106.8456, server: 'Server 1' },
-            beta_satelite: { lat: 40.7128, lon: -74.0060, server: 'Server 2' },
-            gamma_satelite: { lat: 51.5074, lon: -0.1278, server: 'Server 3' }
+            surfaceWeb: { server: ['server_1', 'server_2', 'server_3'] },
+            deepWeb: { server: ['server_3', 'server_4'] },
+            darknet: { server: ['server_4', 'server_5'] },
+            darkWeb: { server: ['server_5', 'server_6'] }
         };
 
-        // Fungsi untuk memilih server dan satelit
+        // Fungsi untuk memeriksa dan menampilkan pesan berdasarkan jenis web yang dipilih
         function submitSelection() {
-            const selectedSatellite = document.getElementById("satellite").value;
+            const selectedWebType = document.getElementById("webType").value;
             const selectedServer = document.getElementById("server").value;
+
+            const region = satelliteRegions[selectedWebType];
             
-            const region = satelliteRegions[selectedSatellite];
-            
-            if (region) {
-                // Menampilkan informasi server yang dipilih
-                document.getElementById("message").innerHTML = "<div class='success'>Satelit: " + selectedSatellite.replace("_", " ") + " dipilih. Server yang dipilih: " + selectedServer + "</div>";
+            // Jika memilih Dark Web, tampilkan kontak admin
+            if (selectedWebType === 'darkWeb') {
+                document.getElementById("contactAdmin").style.display = 'block';
+                document.getElementById("message").innerHTML = '';
+                return;
+            }
+
+            // Memeriksa apakah server yang dipilih sesuai dengan jenis web
+            if (region && region.server.includes(selectedServer)) {
+                document.getElementById("message").innerHTML = "<div class='success'>Web: " + selectedWebType.replace("_", " ") + " dipilih. Server yang dipilih: " + selectedServer + " sesuai.</div>";
                 document.getElementById("countdown").innerHTML = "Menunggu verifikasi lokasi dan pengaturan server...";
                 startCountdown();
             } else {
-                document.getElementById("message").innerHTML = "<div class='warning'>Lokasi satelit tidak terverifikasi.</div>";
+                document.getElementById("message").innerHTML = "<div class='warning'>Akses ditolak. Server tidak sesuai dengan jenis web yang dipilih.</div>";
             }
         }
 
-        // Fungsi countdown untuk menunggu 1 menit sebelum melanjutkan
+        // Fungsi countdown untuk menunggu 60 detik sebelum melanjutkan
         let countdownTimer;
         let timeLeft = 60;
 
@@ -109,39 +142,12 @@
                 if (timeLeft <= 0) {
                     clearInterval(countdownTimer);
                     document.getElementById("countdown").innerHTML = "Waktu habis. Halaman akan melanjutkan otomatis.";
-                    // Aksi otomatis setelah countdown habis
-                    // Misalnya, alihkan ke halaman lain atau aktifkan tombol "Lanjut"
+                    // Menampilkan konten terbatas
+                    document.getElementById("hiddenContent").style.display = 'block';
                 }
             }, 1000);
         }
 
-        // Fungsi untuk mendeteksi apakah pengguna menggunakan VPN
-        function detectVPN() {
-            const vpnDetected = navigator.connection || navigator.webkitConnection;
-
-            if (vpnDetected) {
-                document.getElementById("message").innerHTML = "<div class='vpn-warning'>VPN terdeteksi. Anda tidak dapat melanjutkan dengan VPN aktif.</div>";
-                stopCountdown();
-                disablePageAccess();
-            }
-        }
-
-        // Fungsi untuk menonaktifkan akses halaman jika VPN terdeteksi
-        function disablePageAccess() {
-            document.body.style.pointerEvents = "none"; // Menonaktifkan semua interaksi halaman
-            document.getElementById("message").innerHTML += "<div class='warning'>Silakan matikan VPN untuk melanjutkan.</div>";
-        }
-
-        // Fungsi untuk menghentikan countdown
-        function stopCountdown() {
-            clearInterval(countdownTimer);
-            document.getElementById("countdown").innerHTML = "Waktu berhenti. VPN terdeteksi.";
-        }
-
-        // Menjalankan fungsi untuk meminta izin lokasi pengguna dan mendeteksi VPN saat halaman dimuat
-        window.onload = function() {
-            detectVPN();
-        };
     </script>
 
 </body>
