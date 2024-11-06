@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Akses Web</title>
+    <title>Akses Dark Web</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* CSS tambahan jika diperlukan */
         body {
             font-family: Arial, sans-serif;
-            background-color: #1a1a1a;
+            background-color: #333;
             color: #f1f1f1;
             margin: 0;
             padding: 0;
@@ -28,37 +27,61 @@
             margin-bottom: 20px;
         }
 
-        .web-choice {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
+        .menu {
+            background-color: #444;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 10px;
         }
 
-        .web-choice button {
-            padding: 15px 30px;
+        .menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        .menu a {
+            color: #f1f1f1;
+            text-decoration: none;
             font-size: 1.2rem;
+        }
+
+        .info, .warning, .pricing, .details {
+            margin-top: 30px;
             background-color: #444;
             color: #f1f1f1;
-            border: 2px solid #f1f1f1;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            padding: 20px;
+            border-radius: 10px;
         }
 
-        .web-choice button:hover {
-            background-color: #f1f1f1;
-            color: #444;
+        .info h3, .details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
         }
 
-        .note {
+        .pricing {
             background-color: #333;
-            padding: 15px;
+            color: #f1f1f1;
+            padding: 20px;
             border-radius: 10px;
             margin-top: 20px;
         }
 
-        .note p {
-            font-size: 1.1rem;
+        .pricing h3 {
+            font-size: 1.5rem;
+        }
+
+        .warning {
+            background-color: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            margin-top: 30px;
         }
 
         .footer {
@@ -66,35 +89,147 @@
             font-size: 1rem;
             color: #999;
         }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .menu-item {
+            display: none;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Selamat datang di Sistem Akses Web</h1>
-        <p>Pilih jenis web yang ingin Anda akses:</p>
-        
-        <!-- Pilihan Web -->
-        <div class="web-choice">
-            <button onclick="window.location.href='surface-web.html'">Surface Web</button>
-            <button onclick="window.location.href='deep-web.html'">Deep Web</button>
-            <button onclick="window.location.href='dark-web.html'">Dark Web</button>
-            <button onclick="window.location.href='darknet.html'">Darknet</button>
-        </div>
-        
-        <h3>Informasi Penting:</h3>
-        <p>Pastikan Anda memilih jenis web yang ingin diakses dengan bijak, karena setiap kategori memiliki aturan akses yang berbeda. Akses ke Dark Web dan Darknet memerlukan prosedur khusus yang harus diikuti.</p>
+        <h1>Akses Dark Web</h1>
 
-        <div class="note">
-            <h3>Catatan:</h3>
-            <p>Jika Anda memilih Dark Web atau Darknet, Anda akan diminta untuk mengikuti proses verifikasi dan pembayaran untuk mendapatkan akses penuh. Pembayaran untuk Dark Web dan Darknet sebesar 9.9 BTC.</p>
-            <p>Silakan menghubungi admin untuk mendapatkan informasi lebih lanjut mengenai akses ke Dark Web dan Darknet.</p>
+        <!-- Menu -->
+        <div class="menu">
+            <ul>
+                <li><a href="javascript:void(0)" onclick="showDetails('darkweb')">Dark Web</a></li>
+                <li><a href="javascript:void(0)" onclick="showDetails('surfaceweb')">Surface Web</a></li>
+                <li><a href="javascript:void(0)" onclick="showDetails('deepweb')">Deep Web</a></li>
+                <li><a href="javascript:void(0)" onclick="showDetails('darknet')">Darknet</a></li>
+            </ul>
         </div>
 
-        <div class="footer">
-            <p>&copy; 2024 Semua hak cipta dilindungi. Akses ke web ini tunduk pada kebijakan dan persyaratan kami.</p>
+        <!-- Dark Web Details -->
+        <div id="darkweb" class="menu-item">
+            <div class="info">
+                <h3>Kelebihan Dark Web</h3>
+                <ul>
+                    <li>Privasi lebih tinggi</li>
+                    <li>Akses ke informasi sensitif</li>
+                    <li>Komunikasi aman dan terenkripsi</li>
+                    <li>Anonymitas yang lebih baik</li>
+                </ul>
+            </div>
+
+            <div class="info">
+                <h3>Kekurangan Dark Web</h3>
+                <ul>
+                    <li>Akses yang berisiko tinggi (malware, virus)</li>
+                    <li>Risiko terlibat dengan kejahatan</li>
+                    <li>Kurangnya regulasi dan perlindungan konsumen</li>
+                    <li>Penggunaan yang bisa melanggar hukum</li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                <h3>PERINGATAN!</h3>
+                <p>Dark Web membawa risiko yang tinggi. Pastikan Anda tahu apa yang Anda lakukan dan selalu berhati-hati. Akses ke Dark Web hanya disarankan untuk pengguna yang paham risiko dan memiliki tujuan yang sah.</p>
+            </div>
+
+            <div class="pricing">
+                <h3>Biaya Akses ke Dark Web</h3>
+                <p>Untuk mendapatkan akses ke Dark Web, Anda perlu membayar biaya sebesar <strong>9.9 BTC</strong>. Pembayaran ini akan memberi Anda akses penuh ke layanan Dark Web.</p>
+                <a href="javascript:void(0)" class="btn" onclick="alert('Proses pembayaran akan dilanjutkan.');">Lakukan Pembayaran</a>
+            </div>
+        </div>
+
+        <!-- Surface Web Details -->
+        <div id="surfaceweb" class="menu-item">
+            <div class="info">
+                <h3>Kelebihan Surface Web</h3>
+                <ul>
+                    <li>Akses cepat dan mudah ke berbagai situs</li>
+                    <li>Keamanan lebih baik dengan HTTPS</li>
+                    <li>Legalitas dan regulasi yang lebih jelas</li>
+                </ul>
+            </div>
+
+            <div class="info">
+                <h3>Kekurangan Surface Web</h3>
+                <ul>
+                    <li>Keterbatasan informasi yang dapat diakses</li>
+                    <li>Penggunaan data yang lebih mudah dilacak</li>
+                    <li>Kurangnya anonimitas dan privasi</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Deep Web Details -->
+        <div id="deepweb" class="menu-item">
+            <div class="info">
+                <h3>Kelebihan Deep Web</h3>
+                <ul>
+                    <li>Akses ke data dan informasi yang lebih aman dan pribadi</li>
+                    <li>Lebih sulit dilacak dibandingkan Surface Web</li>
+                </ul>
+            </div>
+
+            <div class="info">
+                <h3>Kekurangan Deep Web</h3>
+                <ul>
+                    <li>Akses yang lebih terbatas untuk publik</li>
+                    <li>Lebih sulit dijangkau tanpa alat khusus</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Darknet Details -->
+        <div id="darknet" class="menu-item">
+            <div class="info">
+                <h3>Kelebihan Darknet</h3>
+                <ul>
+                    <li>Akses ke layanan dan informasi sangat terproteksi</li>
+                    <li>Anonymitas lebih terjaga</li>
+                </ul>
+            </div>
+
+            <div class="info">
+                <h3>Kekurangan Darknet</h3>
+                <ul>
+                    <li>Potensi untuk disalahgunakan oleh individu tidak bertanggung jawab</li>
+                    <li>Risiko terlibat dengan kegiatan ilegal</li>
+                </ul>
+            </div>
         </div>
     </div>
+
+    <script>
+        function showDetails(page) {
+            // Menyembunyikan semua menu-item
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => item.style.display = 'none');
+
+            // Menampilkan halaman yang dipilih
+            document.getElementById(page).style.display = 'block';
+        }
+    </script>
 
 </body>
 </html>
