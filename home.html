@@ -11,8 +11,9 @@
             margin: 0;
             padding: 0;
             background-color: transparent;
-            background-attachment: fixed;
+            background-attachment: fixed; /* Mengunci latar belakang */
             background-size: cover;
+            height: 100%;
         }
 
         .menu-toggle {
@@ -40,16 +41,16 @@
             top: 50%; /* Menempatkan menu di tengah layar secara vertikal */
             left: 50%; /* Menempatkan menu di tengah layar secara horizontal */
             transform: translate(-50%, -50%); /* Menyeimbangkan posisi menu agar benar-benar di tengah */
-            width: auto; /* Menyesuaikan lebar menu dengan konten */
-            max-width: 300px; /* Lebar maksimal menu */
-            background: rgba(0, 0, 0, 0.5); /* Transparansi menu */
+            width: 250px; /* Lebar standar menu */
+            height: 4cm; /* Tinggi menu 4cm */
+            background: rgba(0, 0, 0, 0.7); /* Transparansi menu */
             color: white;
             display: none;
             flex-direction: column;
-            padding-top: 20px;
+            padding-top: 10px;
             text-align: center;
             z-index: 99;
-            overflow-y: auto;
+            overflow-y: auto; /* Menyebabkan menu bisa di-scroll */
             border: 1px solid white;
         }
 
@@ -99,12 +100,13 @@
     <script>
         function toggleMenu() {
             const menu = document.getElementById('menu');
+            const menuToggle = document.querySelector('.menu-toggle');
             if (menu.style.display === 'none' || menu.style.display === '') {
                 menu.style.display = 'block';
-                document.querySelector('.menu-toggle').style.display = 'none';
+                menuToggle.style.display = 'none';
             } else {
                 menu.style.display = 'none';
-                document.querySelector('.menu-toggle').style.display = 'flex';
+                menuToggle.style.display = 'flex';
             }
         }
 
@@ -113,9 +115,21 @@
             if (backgroundImage) {
                 document.body.style.backgroundImage = `url(${backgroundImage})`;
                 document.body.style.backgroundSize = "cover";
-                document.body.style.backgroundAttachment = "fixed";
+                document.body.style.backgroundAttachment = "fixed"; /* Latar belakang tetap saat di-scroll */
             }
         }
+
+        // Menambahkan event listener untuk klik di luar menu
+        window.addEventListener('click', function(event) {
+            const menu = document.getElementById('menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            // Cek apakah klik terjadi di luar menu dan menu toggle
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                menu.style.display = 'none';
+                menuToggle.style.display = 'flex';
+            }
+        });
     </script>
 </body>
 </html>
