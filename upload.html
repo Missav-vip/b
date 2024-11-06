@@ -3,63 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Latar Belakang</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Sambutan Robot</title>
     <style>
         body {
+            background-color: black;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: black;
-            color: white;
-        }
-        .upload-form {
-            background-color: pink;
-            padding: 20px;
-            border-radius: 10px;
+            font-family: Arial, sans-serif;
             text-align: center;
-            width: 300px;
         }
-        input[type="file"] {
-            margin: 10px 0;
+        h1 {
+            font-size: 36px;
+            color: #00ff00; /* Efek warna hijau seperti teks matrix */
         }
     </style>
 </head>
 <body>
-    <div class="upload-form">
-        <h2>Upload Latar Belakang Anda</h2>
-        <input type="file" id="backgroundImage" accept="image/*">
-        <button onclick="uploadBackground()">Upload</button>
-    </div>
+    <h1>Selamat datang di sistem! Menunggu 3 detik untuk melanjutkan...</h1>
 
     <script>
-        function uploadBackground() {
-            const fileInput = document.getElementById('backgroundImage');
-            const file = fileInput.files[0];
-
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (event) {
-                    // Set latar belakang
-                    document.body.style.backgroundImage = `url(${event.target.result})`;
-                    document.body.style.backgroundSize = "cover";
-                    document.body.style.backgroundAttachment = "fixed";  // Mengunci latar belakang
-                    document.body.style.overflow = "hidden"; // Menonaktifkan scroll vertikal
-
-                    // Simpan URL gambar di localStorage agar tetap ada saat pindah halaman
-                    localStorage.setItem('backgroundImage', event.target.result);
-
-                    // Arahkan ke halaman home setelah 30 detik
-                    setTimeout(() => {
-                        window.location.href = 'home.html';
-                    }, 30000);
-                };
-                reader.readAsDataURL(file);
-            } else {
-                alert('Silakan pilih file gambar terlebih dahulu.');
-            }
-        }
+        // Mengarahkan ke halaman upload setelah 3 detik
+        setTimeout(function() {
+            window.location.href = 'upload.html';
+        }, 3000);
     </script>
 </body>
 </html>
