@@ -66,10 +66,11 @@
             overflow-x: auto;
             margin-top: 0.3rem; /* Menggeser lingkaran sedikit ke bawah setelah banner */
             padding-bottom: 10px;
+            justify-content: flex-start; /* Menjaga agar lingkaran terpusat ke kiri */
         }
 
         .circle-item {
-            margin: 10px;
+            margin: 5px; /* Mengurangi jarak antar lingkaran */
             text-align: center;
         }
 
@@ -80,12 +81,12 @@
             border: 2px solid rgba(0, 0, 0, 0.3);
             border-radius: 50%;
             color: white;
-            font-size: 14px;
+            font-size: 12px; /* Mengurangi ukuran font untuk menjaga keseimbangan */
             text-align: center;
             line-height: 15px;
             cursor: pointer;
             transition: transform 0.3s ease;
-            margin-bottom: 10px;
+            margin-bottom: 5px; /* Mengurangi jarak antara lingkaran dan teks */
         }
 
         .circle:hover {
@@ -93,7 +94,7 @@
         }
 
         .circle-name {
-            margin-top: 1px; /* Mengatur jarak minimal antara lingkaran dan teks */
+            margin-top: 2px; /* Mengatur jarak minimal antara lingkaran dan teks */
             font-size: 10px;
             color: white;
         }
