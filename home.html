@@ -16,14 +16,15 @@
         }
 
         #banner {
-            width: 96%;
+            width: 100%; /* Ganti 96% dengan 100% agar banner mengisi seluruh lebar halaman */
             text-align: center;
             position: relative;
             margin-top: 0.4rem; /* Menurunkan banner sedikit */
+            padding: 0 5%; /* Menambahkan padding kiri dan kanan */
         }
 
         .responsive-banner {
-            width: 100%;
+            width: 100%; /* Lebar 100% agar gambar mengikuti lebar kontainer */
             height: 150px;
             object-fit: cover;
             border-radius: 20px;
@@ -76,14 +77,10 @@
 
         .circle {
             display: inline-block;
-            width: 30px; /* Menyesuaikan ukuran lingkaran menjadi lebih besar */
-            height: 30px;
-            border: 2px solid rgba(0, 0, 0, 0);
-            border-radius: 50%;
-            color: white;
-            font-size: 10px; /* Ukuran font lebih besar agar sesuai dengan ukuran lingkaran */
-            text-align: center;
-            line-height: 30px;
+            width: 50px; /* Sesuaikan ukuran gambar */
+            height: 50px;
+            overflow: hidden;
+            border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
             cursor: pointer;
             transition: transform 0.3s ease;
         }
@@ -93,9 +90,15 @@
         }
 
         .circle-name {
-            margin-top: 1px; /* Mengatur jarak minimal antara lingkaran dan teks */
-            font-size: 10px;
+            margin-top: 5px; /* Jarak antara gambar dan teks */
+            font-size: 12px;
             color: white;
+        }
+
+        .circle-img {
+            width: 100%; /* Gambar akan menyesuaikan lebar lingkaran */
+            height: 100%;
+            object-fit: cover; /* Memastikan gambar mengisi lingkaran */
         }
 
         @media (max-width: 768px) {
@@ -109,7 +112,6 @@
                 flex: 1 1 45%; /* Pengaturan ukuran pada layar kecil */
             }
         }
-
     </style>
 </head>
 <body>
@@ -123,44 +125,62 @@
     </div>
 
     <div id="banner">
-        <img src="banner.png" alt="Banner" class="responsive-banner">
+        <img src="https://www.w3schools.com/w3images/fjords.jpg" alt="Banner" class="responsive-banner">
     </div>
 
     <div class="circle-container">
         <div class="circle-item">
-            <a href="link1.html" class="circle">1</a>
+            <a href="link1.html" class="circle">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Toyota_Supra_%28A80%29_front.jpg/800px-Toyota_Supra_%28A80%29_front.jpg" alt="Toyota Supra" class="circle-img">
+            </a>
             <div class="circle-name">Toyota Supra</div>
         </div>
         <div class="circle-item">
-            <a href="link2.html" class="circle">2</a>
+            <a href="link2.html" class="circle">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/1996_Honda_Civic_1.6_VTi_Hatchback_1.6.jpg/800px-1996_Honda_Civic_1.6_VTi_Hatchback_1.6.jpg" alt="Honda Civic" class="circle-img">
+            </a>
             <div class="circle-name">Honda Civic</div>
         </div>
         <div class="circle-item">
-            <a href="link3.html" class="circle">3</a>
+            <a href="link3.html" class="circle">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Nissan_Skyline_GT-R_R32.jpg/800px-Nissan_Skyline_GT-R_R32.jpg" alt="Nissan Skyline" class="circle-img">
+            </a>
             <div class="circle-name">Nissan Skyline</div>
         </div>
         <div class="circle-item">
-            <a href="link4.html" class="circle">4</a>
+            <a href="link4.html" class="circle">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/1965_Ford_Mustang_Coupe.jpg/800px-1965_Ford_Mustang_Coupe.jpg" alt="Ford Mustang" class="circle-img">
+            </a>
             <div class="circle-name">Ford Mustang</div>
         </div>
         <div class="circle-item">
-            <a href="link5.html" class="circle">5</a>
+            <a href="link5.html" class="circle">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Chevrolet_Camaro_1967.jpg/800px-Chevrolet_Camaro_1967.jpg" alt="Chevrolet Camaro" class="circle-img">
+            </a>
             <div class="circle-name">Chevrolet Camaro</div>
         </div>
         <div class="circle-item">
-            <a href="link6.html" class="circle">6</a>
+            <a href="link6.html" class="circle">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/BMW_M3_F80_front_20180311.jpg/800px-BMW_M3_F80_front_20180311.jpg" alt="BMW M3" class="circle-img">
+            </a>
             <div class="circle-name">BMW M3</div>
         </div>
         <div class="circle-item">
-            <a href="link7.html" class="circle">7</a>
+            <a href="link7.html" class="circle">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Audi_R8_V10_quattro_5.2_Front.jpg/800px-Audi_R8_V10_quattro_5.2_Front.jpg" alt="Audi R8" class="circle-img">
+            </a>
             <div class="circle-name">Audi R8</div>
         </div>
         <div class="circle-item">
-            <a href="link8.html" class="circle">8</a>
+            <a href="link8.html" class="circle">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/2013_Porsche_911_Carrera_4S_%28Type_991%29_front.jpg/800px-2013_Porsche_911_Carrera_4S_%28Type_991%29_front.jpg" alt="Porsche 911" class="circle-img">
+            </a>
             <div class="circle-name">Porsche 911</div>
         </div>
         <div class="circle-item">
-            <a href="link9.html" class="circle">9</a>
+            <a href="link9.html" class="circle">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lamborghini_Hurac%C3%A1n_front_1.jpg/800px-Lamborghini_Hurac%C3%A1n_front_1.jpg" alt="Lamborghini Huracán" class="circle-img">
+            </a>
             <div class="circle-name">Lamborghini Huracán</div>
         </div>
     </div>
