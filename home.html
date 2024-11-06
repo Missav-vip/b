@@ -138,6 +138,24 @@
             }
         }
 
+        .ticker-symbol {
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        .ticker-change {
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        .ticker-positive {
+            color: #28a745; /* Hijau untuk kenaikan */
+        }
+
+        .ticker-negative {
+            color: #dc3545; /* Merah untuk penurunan */
+        }
+
         /* Media Query untuk layar lebih kecil */
         @media (max-width: 768px) {
             .circle-container .circle-item {
@@ -207,24 +225,31 @@
 
     <!-- Bagian Ticker TradingView -->
     <div class="ticker-wrapper">
-        <div class="ticker-item">BITSTAMP:BTCUSD: <span>+3.45% $31,215.67</span></div>
-        <div class="ticker-item">CRYPTO:ETHUSD: <span>-1.12% $2,147.45</span></div>
-        <div class="ticker-item">CRYPTOCAP:SOL: <span>+2.87% $212.54</span></div>
-        <div class="ticker-item">CRYPTO:XPRUSD: <span>+0.45% $0.89</span></div>
-        <div class="ticker-item">CRYPTOCAP:LTC: <span>-0.88% $195.15</span></div>
-        <div class="ticker-item">BINANCEUS:MATICUSDT: <span>+1.72% $1.35</span></div>
+        <div class="ticker-item">
+            <span class="ticker-symbol">BTC/USD</span>
+            <span class="ticker-change ticker-positive">+3.45% $31,215.67</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-symbol">ETH/USD</span>
+            <span class="ticker-change ticker-negative">-1.12% $2,147.45</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-symbol">SOL/USD</span>
+            <span class="ticker-change ticker-positive">+2.87% $212.54</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-symbol">XPR/USD</span>
+            <span class="ticker-change ticker-positive">+0.45% $0.89</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-symbol">LTC/USD</span>
+            <span class="ticker-change ticker-negative">-0.88% $195.15</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-symbol">MATIC/USDT</span>
+            <span class="ticker-change ticker-positive">+1.72% $1.35</span>
+        </div>
     </div>
 
     <script>
-        window.onload = function () {
-            const backgroundImage = localStorage.getItem('backgroundImage');
-            if (backgroundImage) {
-                document.body.style.backgroundImage = `url(${backgroundImage})`;
-                document.body.style.backgroundSize = "cover";
-                document.body.style.backgroundAttachment = "fixed";
-            }
-        }
-    </script>
-
-</body>
-</html>
+        window
