@@ -15,50 +15,34 @@
             background-size: cover;
         }
 
-        /* Banner Image */
         #banner {
             width: 100%;
             max-width: 100%;
             text-align: center;
             margin-top: 0;
+            position: relative;
         }
 
         .responsive-banner {
             width: 97%;
             height: 150px;
-            margin-top: 5px;
+            margin-top: 10px;
             object-fit: cover;
             position: relative;
+            border-radius: 20px;
         }
 
-        /* Lingkaran yang Menggunakan Foto */
-        .circle-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            gap: 20px;
+        .responsive-banner::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+            border-radius: 20px;
         }
 
-        .circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .circle:hover {
-            transform: scale(1.1); /* Zoom saat hover */
-        }
-
-        .circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Menjaga gambar agar tetap proporsional di dalam lingkaran */
-        }
-
-        /* Menu Toggle Button */
         .menu-toggle {
             position: fixed;
             top: 20px;
@@ -72,7 +56,6 @@
             z-index: 100;
         }
 
-        /* Garis menu toggle */
         .line {
             width: 30px;
             height: 3px;
@@ -80,15 +63,14 @@
             border-radius: 5px;
         }
 
-        /* Menu style */
         .menu {
             position: fixed;
-            top: 50%; /* Menu vertikal di tengah layar */
-            left: 50%; /* Menu horizontal di tengah layar */
-            transform: translate(-50%, -50%); /* Menyempurnakan posisi di tengah */
-            width: auto; /* Menyesuaikan lebar menu dengan konten */
-            max-width: 250px; /* Lebar maksimal menu */
-            background: rgba(0, 0, 0, 0.5); /* Latar belakang transparan */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            max-width: 250px;
+            background: rgba(0, 0, 0, 0.5);
             color: white;
             display: none;
             flex-direction: column;
@@ -97,15 +79,13 @@
             z-index: 99;
             overflow-y: auto;
             border: 1px solid white;
-            height: 6cm; /* Menetapkan panjang menu menjadi 6 cm */
+            height: 6cm;
         }
 
-        /* Header Menu */
         .menu h2 {
             margin: 0 0 20px 0;
         }
 
-        /* Link dalam menu */
         .menu a {
             color: white;
             text-decoration: none;
@@ -113,52 +93,45 @@
             display: block;
         }
 
-        /* Hover Link */
         .menu a:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* Header halaman */
         h1 {
             text-align: center;
             color: white;
         }
 
-        /* Media query untuk perangkat dengan layar lebih kecil */
         @media (max-width: 768px) {
             .menu {
-                height: auto; /* Menyesuaikan tinggi menu pada perangkat kecil */
-                width: 80%; /* Lebar menu menyesuaikan layar */
+                height: auto;
+                width: 80%;
             }
         }
 
         @media (max-width: 480px) {
             .menu {
-                width: 90%; /* Lebar menu lebih kecil di perangkat mobile */
-                height: auto; /* Menyesuaikan panjang menu */
+                width: 90%;
+                height: auto;
             }
         }
-
     </style>
 </head>
 <body>
 
-    <!-- Banner Image -->
     <div id="banner">
-        <img src="banner.png" alt="Banner" class="responsive-banner">
+        <img src="folder/banner.jpg" alt="Banner" class="responsive-banner">
     </div>
 
-    <!-- Menu Toggle Button -->
     <div class="menu-toggle" onclick="toggleMenu()">
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
     </div>
 
-    <!-- Menu -->
     <div class="menu" id="menu">
         <h2>Menu</h2>
-        <a href="#">Home</a>
+        <a href="#">Beranda</a>
         <a href="#">Profil</a>
         <a href="#">Akun Saya</a>
         <a href="#">Berita</a>
@@ -169,35 +142,24 @@
         <a href="#">Logout</a>
     </div>
 
-    <!-- Lingkaran yang Bisa Diklik, Ganti dengan Foto -->
-    <div class="circle-container">
-        <div class="circle" onclick="alert('Lingkaran 1 Diklik')">
-            <img src="banner.png" alt="Lingkaran 1">
-        </div>
-        <div class="circle" onclick="alert('Lingkaran 2 Diklik')">
-            <img src="banner.png" alt="Lingkaran 2">
-        </div>
-        <div class="circle" onclick="alert('Lingkaran 3 Diklik')">
-            <img src="banner.png" alt="Lingkaran 3">
-        </div>
-        <div class="circle" onclick="alert('Lingkaran 4 Diklik')">
-            <img src="banner.png" alt="Lingkaran 4">
-        </div>
-        <div class="circle" onclick="alert('Lingkaran 5 Diklik')">
-            <img src="banner.png" alt="Lingkaran 5">
-        </div>
-    </div>
-
     <script>
-        /* Fungsi untuk membuka dan menutup menu */
         function toggleMenu() {
             const menu = document.getElementById('menu');
             if (menu.style.display === 'none' || menu.style.display === '') {
-                menu.style.display = 'block';  /* Menampilkan menu */
-                document.querySelector('.menu-toggle').style.display = 'none';  /* Menyembunyikan tombol toggle */
+                menu.style.display = 'block';
+                document.querySelector('.menu-toggle').style.display = 'none';
             } else {
-                menu.style.display = 'none';  /* Menyembunyikan menu */
-                document.querySelector('.menu-toggle').style.display = 'flex';  /* Menampilkan tombol toggle */
+                menu.style.display = 'none';
+                document.querySelector('.menu-toggle').style.display = 'flex';
+            }
+        }
+
+        window.onload = function () {
+            const backgroundImage = localStorage.getItem('backgroundImage');
+            if (backgroundImage) {
+                document.body.style.backgroundImage = `url(${backgroundImage})`;
+                document.body.style.backgroundSize = "cover";
+                document.body.style.backgroundAttachment = "fixed";
             }
         }
     </script>
