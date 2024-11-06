@@ -114,9 +114,30 @@
             color: white;
         }
 
+        /* Kontainer untuk widget TradingView */
+        .tradingview-container {
+            display: flex;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            height: 400px; /* Sesuaikan dengan ukuran yang diinginkan */
+            animation: moveGraph 20s linear infinite; /* Animasi gerak horizontal */
+        }
+
+        /* Animasi untuk membuat grafik bergerak dari kanan ke kiri */
+        @keyframes moveGraph {
+            0% {
+                transform: translateX(100%); /* Mulai dari kanan */
+            }
+            100% {
+                transform: translateX(-100%); /* Bergerak ke kiri */
+            }
+        }
+
         .tradingview-widget {
-            width: 100%; /* Membuat lebar grafik sesuai dengan lebar kontainer */
-            height: 400px; /* Atur tinggi grafik sesuai kebutuhan */
+            flex-shrink: 0; /* Jangan biarkan widget mengecil */
+            width: 100%;
+            height: 100%;
         }
 
         @media (max-width: 768px) {
@@ -152,24 +173,24 @@
             <a href="link1.html" class="circle" style="background-image: url('bugatti.jpg');"></a>
             <div class="circle-name">Bugatti</div>
             <!-- TradingView Widget -->
-            <div class="tradingview-widget">
-                <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_65c7c&symbol=BITFINEX:BTCUSD&interval=D&hidetoptoolbar=1&symboledit=1&saveimage=1&toolbarbg=F1F3F6" width="100%" height="400" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+            <div class="tradingview-container">
+                <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_65c7c&symbol=BITFINEX:BTCUSD&interval=D&hidetoptoolbar=1&symboledit=1&saveimage=1&toolbarbg=F1F3F6" class="tradingview-widget" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
             </div>
         </div>
         <div class="circle-item">
             <a href="link2.html" class="circle" style="background-image: url('lamborghini.jpg');"></a>
             <div class="circle-name">Lamborghini</div>
             <!-- TradingView Widget -->
-            <div class="tradingview-widget">
-                <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_65c7c&symbol=BITFINEX:ETHUSD&interval=D&hidetoptoolbar=1&symboledit=1&saveimage=1&toolbarbg=F1F3F6" width="100%" height="400" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+            <div class="tradingview-container">
+                <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_65c7c&symbol=BITFINEX:ETHUSD&interval=D&hidetoptoolbar=1&symboledit=1&saveimage=1&toolbarbg=F1F3F6" class="tradingview-widget" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
             </div>
         </div>
         <div class="circle-item">
             <a href="link3.html" class="circle" style="background-image: url('ferrari.jpg');"></a>
             <div class="circle-name">Ferrari</div>
             <!-- TradingView Widget -->
-            <div class="tradingview-widget">
-                <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_65c7c&symbol=BITFINEX:XRPUSD&interval=D&hidetoptoolbar=1&symboledit=1&saveimage=1&toolbarbg=F1F3F6" width="100%" height="400" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+            <div class="tradingview-container">
+                <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_65c7c&symbol=BITFINEX:XRPUSD&interval=D&hidetoptoolbar=1&symboledit=1&saveimage=1&toolbarbg=F1F3F6" class="tradingview-widget" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
             </div>
         </div>
         <!-- Tambahkan lebih banyak lingkaran dengan widget TradingView sesuai kebutuhan -->
