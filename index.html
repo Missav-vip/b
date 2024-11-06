@@ -3,89 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peringatan VPN</title>
+    <title>Efek Lampu Berkedip</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            color: white;
-            background-color: black;
-            text-align: center;
-            padding: 20px;
-        }
-        .warning-message {
-            font-size: 24px;
-            color: red;
-            margin-top: 20px;
-            animation: flash 2s infinite;
+        /* Efek flash (lampu berkedip) */
+        @keyframes flash {
+            0% { background-color: white; }
+            50% { background-color: red; }
+            100% { background-color: white; }
         }
 
-        @keyframes flash {
-            0% { color: red; }
-            50% { color: yellow; }
-            100% { color: red; }
+        /* Efek flash yang akan diterapkan pada seluruh halaman */
+        .flash-effect {
+            animation: flash 0.5s infinite;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        
+        /* Teks peringatan */
+        .warning-text {
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -40%);
+            color: white;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            z-index: 10000;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <h1>Selamat datang di halaman kami</h1>
-    <div id="warning" class="warning-message" style="display: none;">
-        Peringatan: VPN terdeteksi! Anda tidak dapat melanjutkan.
+    <!-- Efek Flash -->
+    <div class="flash-effect"></div>
+
+    <!-- Teks Peringatan -->
+    <div class="warning-text">
+        <p>PERINGATAN: VPN Terdeteksi! Lanjutkan untuk melindungi data Anda.</p>
     </div>
 
     <script>
-        // Fungsi untuk memeriksa jika pengguna menggunakan VPN
-        function checkVPN() {
-            const ipApiUrl = 'https://api.ipify.org?format=json'; // URL untuk mendapatkan alamat IP pengguna
-            const vpnCheckUrl = 'https://api.iplocation.net/?ip='; // API untuk deteksi lokasi berdasarkan IP
+        // Fungsi deteksi VPN (contoh sederhana)
+        function detectVPN() {
+            // Gantilah dengan deteksi VPN yang sebenarnya menggunakan API
+            let isVPN = true;  // Misalnya VPN terdeteksi
 
-            fetch(ipApiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    const userIp = data.ip;
-                    return fetch(vpnCheckUrl + userIp)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    const isVPN = data.is_vpn; // Misalnya, API ini mengembalikan informasi tentang VPN
-
-                    if (isVPN) {
-                        document.getElementById('warning').style.display = 'block'; // Menampilkan peringatan jika VPN terdeteksi
-                        playWarningMessage(); // Memutar suara peringatan
-                        blockUser(); // Menghentikan interaksi lebih lanjut
-                    } else {
-                        console.log('Tidak ada VPN yang terdeteksi.');
-                    }
-                })
-                .catch(error => console.error('Terjadi kesalahan saat memeriksa VPN:', error));
-        }
-
-        // Fungsi untuk memainkan suara peringatan menggunakan suara robot wanita
-        function playWarningMessage() {
-            const message = new SpeechSynthesisUtterance("Peringatan: VPN terdeteksi! Anda tidak dapat melanjutkan.");
-            const voices = speechSynthesis.getVoices();
-            
-            // Pilih suara wanita jika tersedia
-            message.voice = voices.filter(function(voice) { 
-                return voice.name === 'Google UK English Female'; 
-            })[0];
-
-            if (!message.voice) {
-                // Jika suara robot wanita tidak ditemukan, pilih suara wanita lainnya
-                message.voice = voices.filter(function(voice) { 
-                    return voice.name.includes('female'); 
-                })[0];
+            if (isVPN) {
+                document.body.classList.add("flash-effect");
             }
-
-            speechSynthesis.speak(message); // Memainkan suara peringatan
         }
 
-        // Fungsi untuk memblokir interaksi lebih lanjut (menghentikan klik atau geser)
-        function blockUser() {
-            document.body.style.pointerEvents = 'none'; // Menonaktifkan semua interaksi pengguna dengan halaman
-        }
-
-        // Panggil fungsi untuk memeriksa VPN saat halaman dimuat
-        window.onload = checkVPN;
+        // Panggil fungsi deteksi VPN saat halaman dimuat
+        window.onload = detectVPN;
     </script>
 </body>
 </html>
