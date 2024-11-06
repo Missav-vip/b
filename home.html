@@ -15,7 +15,6 @@
             background-size: cover;
         }
 
-        /* Banner Style */
         #banner {
             width: 100%;
             text-align: center;
@@ -31,18 +30,6 @@
             border-radius: 20px;
         }
 
-        .responsive-banner::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
-            border-radius: 20px;
-        }
-
-        /* Menu Style */
         #menu-bar {
             background-color: rgba(0, 0, 0, 0);
             position: fixed;
@@ -75,47 +62,44 @@
             color: #f39c12;
         }
 
-        /* Circle Section */
         .circle-container {
             display: flex;
             justify-content: center;
-            margin-top: 0.3rem;
-            background-color: rgba(0, 0, 0, 0.5); /* Latar belakang hitam transparan */
+            margin-top: 0.4rem;
             padding: 10px 0;
             border-radius: 10px;
         }
 
         .circle-item {
-            width: auto; /* Mengatur lebar otomatis berdasarkan isi */
-            height: auto; /* Mengatur tinggi otomatis berdasarkan isi */
+            width: auto;
+            height: auto;
             border-radius: 50%;
             margin: 0 10px;
-            transform: translateY(-15px); /* Menggeser lingkaran lebih ke atas */
+            transform: translateY(-15px);
         }
 
         .circle {
             display: inline-block;
-            padding: 5px 10px; /* Sesuaikan padding dengan tulisan */
-            border: 2px solid rgba(0, 0, 0, 0.3); /* Border agar terlihat */
-            border-radius: 50%; /* Membuat lingkaran */
-            color: white; /* Warna tulisan */
-            font-size: 14px; /* Sesuaikan ukuran tulisan */
+            padding: 5px 10px;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            color: white;
+            font-size: 14px;
             text-align: center;
-            line-height: 25px; /* Menjaga tulisan tetap terpusat di dalam lingkaran */
+            line-height: 25px;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
 
-        /* Hover effect */
         .circle:hover {
-            transform: scale(1.1); /* Efek hover untuk memperbesar lingkaran */
+            transform: scale(1.1);
         }
 
         .circle-name {
             margin-top: 5px;
             font-size: 14px;
             color: white;
-            text-align: center; /* Agar tulisan berada di tengah */
+            text-align: center;
         }
 
         @media (max-width: 768px) {
@@ -130,7 +114,6 @@
             }
         }
 
-        /* Responsive Menu */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -148,7 +131,6 @@
 </head>
 <body>
 
-    <!-- Menu Bar -->
     <div id="menu-bar">
         <ul>
             <li><a href="#">Home</a></li>
@@ -161,43 +143,42 @@
         <img src="banner.png" alt="Banner" class="responsive-banner">
     </div>
 
-    <!-- Circle Container -->
     <div class="circle-container">
         <div class="circle-item">
             <a href="link1.html" class="circle">1</a>
-            <div class="circle-name">Nama 1</div>
+            <div class="circle-name">Toyota Supra</div>
         </div>
         <div class="circle-item">
             <a href="link2.html" class="circle">2</a>
-            <div class="circle-name">Nama 2</div>
+            <div class="circle-name">Honda Civic</div>
         </div>
         <div class="circle-item">
             <a href="link3.html" class="circle">3</a>
-            <div class="circle-name">Nama 3</div>
+            <div class="circle-name">Nissan Skyline</div>
         </div>
         <div class="circle-item">
             <a href="link4.html" class="circle">4</a>
-            <div class="circle-name">Nama 4</div>
+            <div class="circle-name">Ford Mustang</div>
         </div>
         <div class="circle-item">
             <a href="link5.html" class="circle">5</a>
-            <div class="circle-name">Nama 5</div>
+            <div class="circle-name">Chevrolet Camaro</div>
         </div>
         <div class="circle-item">
             <a href="link6.html" class="circle">6</a>
-            <div class="circle-name">Nama 6</div>
+            <div class="circle-name">BMW M3</div>
         </div>
         <div class="circle-item">
             <a href="link7.html" class="circle">7</a>
-            <div class="circle-name">Nama 7</div>
+            <div class="circle-name">Audi R8</div>
         </div>
         <div class="circle-item">
             <a href="link8.html" class="circle">8</a>
-            <div class="circle-name">Nama 8</div>
+            <div class="circle-name">Porsche 911</div>
         </div>
         <div class="circle-item">
             <a href="link9.html" class="circle">9</a>
-            <div class="circle-name">Nama 9</div>
+            <div class="circle-name">Lamborghini Huracán</div>
         </div>
     </div>
 
