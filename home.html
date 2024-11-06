@@ -30,7 +30,7 @@
 
         .line {
             width: 100%;
-            height: 4px;
+            height: 3px; /* Ukuran garis dikurangi */
             background-color: white;
             border-radius: 4px;
         }
@@ -40,15 +40,16 @@
             position: fixed;
             top: 0;
             right: 0;
-            width: 250px;
+            width: 200px; /* Lebar menu diatur */
             height: 100%;
-            background: rgba(0, 0, 0, 0.8); /* Transparan */
+            background: rgba(0, 0, 0, 0.5); /* Transparan */
             color: white;
             display: none; /* Mulai dengan tersembunyi */
             flex-direction: column;
             padding-top: 50px;
             text-align: center;
             z-index: 99; /* Dibawah garis tiga */
+            overflow-y: auto; /* Agar dapat scroll */
         }
 
         .menu h2 {
@@ -107,8 +108,10 @@
             const menu = document.getElementById('menu');
             if (menu.style.display === 'none' || menu.style.display === '') {
                 menu.style.display = 'block';
+                document.querySelector('.menu-toggle').style.display = 'none'; // Garis tiga disembunyikan saat menu terbuka
             } else {
                 menu.style.display = 'none';
+                document.querySelector('.menu-toggle').style.display = 'flex'; // Garis tiga ditampilkan saat menu tertutup
             }
         }
 
