@@ -70,7 +70,6 @@
             justify-content: center; /* Membuat lingkaran berada di tengah */
             margin-top: 0.5mm; /* Jarak atas 0.5mm dari banner */
             padding-bottom: 10px;
-            flex-wrap: wrap; /* Agar bisa membungkus jika layar kecil */
         }
 
         .circle-item {
@@ -112,69 +111,15 @@
             color: white;
         }
 
-        .box-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .box-item {
-            width: 100px; /* Lebar kotak */
-            height: 100px; /* Tinggi kotak */
-            background-color: rgba(255, 255, 255, 0.3);
-            margin: 1mm;
-            border-radius: 10px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .box-item:hover {
-            transform: scale(1.05); /* Efek memperbesar saat hover */
-        }
-
-        .box-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        .box-name {
-            position: absolute;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 12px;
-            color: white;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
         @media (max-width: 768px) {
             .circle-container .circle-item {
                 flex: 1 1 30%;
-            }
-
-            .box-item {
-                width: 80px;
-                height: 80px;
             }
         }
 
         @media (max-width: 480px) {
             .circle-container .circle-item {
                 flex: 1 1 45%;
-            }
-
-            .box-item {
-                width: 60px;
-                height: 60px;
             }
         }
 
@@ -233,144 +178,16 @@
         </div>
     </div>
 
-    <div class="box-container">
-        <!-- 12 kotak yang bisa diklik -->
-        <div class="box-item">
-            <img src="car1.jpg" alt="Car 1">
-            <div class="box-name">Car 1</div>
-        </div>
-        <div class="box-item">
-            <img src="car2.jpg" alt="Car 2">
-            <div class="box-name">Car 2</div>
-        </div>
-        <div class="box-item">
-            <img src="car3.jpg" alt="Car 3">
-            <div class="box-name">Car 3</div>
-        </div>
-        <div class="box-item">
-            <img src="car4.jpg" alt="Car 4">
-            <div class="box-name">Car 4</div>
-        </div>
-        <div class="box-item">
-            <img src="car5.jpg" alt="Car 5">
-            <div class="box-name">Car 5</div>
-        </div>
-        <div class="box-item">
-            <img src="car6.jpg" alt="Car 6">
-            <div class="box-name">Car
-    <div class="circle-container">
-        <!-- Kotak pertama -->
-        <div class="circle-item">
-            <a href="link1.html" class="circle" style="background-image: url('image1.jpg');"></a>
-            <div class="circle-name">Image 1</div>
-            <div class="info-box">Informasi tentang Image 1</div>
-        </div>
-        <!-- Kotak kedua -->
-        <div class="circle-item">
-            <a href="link2.html" class="circle" style="background-image: url('image2.jpg');"></a>
-            <div class="circle-name">Image 2</div>
-            <div class="info-box">Informasi tentang Image 2</div>
-        </div>
-        <!-- Kotak ketiga -->
-        <div class="circle-item">
-            <a href="link3.html" class="circle" style="background-image: url('image3.jpg');"></a>
-            <div class="circle-name">Image 3</div>
-            <div class="info-box">Informasi tentang Image 3</div>
-        </div>
-        <!-- Kotak keempat -->
-        <div class="circle-item">
-            <a href="link4.html" class="circle" style="background-image: url('image4.jpg');"></a>
-            <div class="circle-name">Image 4</div>
-            <div class="info-box">Informasi tentang Image 4</div>
-        </div>
-        <!-- Kotak kelima -->
-        <div class="circle-item">
-            <a href="link5.html" class="circle" style="background-image: url('image5.jpg');"></a>
-            <div class="circle-name">Image 5</div>
-            <div class="info-box">Informasi tentang Image 5</div>
-        </div>
-        <!-- Kotak keenam -->
-        <div class="circle-item">
-            <a href="link6.html" class="circle" style="background-image: url('image6.jpg');"></a>
-            <div class="circle-name">Image 6</div>
-            <div class="info-box">Informasi tentang Image 6</div>
-        </div>
-        <!-- Kotak ketujuh -->
-        <div class="circle-item">
-            <a href="link7.html" class="circle" style="background-image: url('image7.jpg');"></a>
-            <div class="circle-name">Image 7</div>
-            <div class="info-box">Informasi tentang Image 7</div>
-        </div>
-        <!-- Kotak kedelapan -->
-        <div class="circle-item">
-            <a href="link8.html" class="circle" style="background-image: url('image8.jpg');"></a>
-            <div class="circle-name">Image 8</div>
-            <div class="info-box">Informasi tentang Image 8</div>
-        </div>
-        <!-- Kotak kesembilan -->
-        <div class="circle-item">
-            <a href="link9.html" class="circle" style="background-image: url('image9.jpg');"></a>
-            <div class="circle-name">Image 9</div>
-            <div class="info-box">Informasi tentang Image 9</div>
-        </div>
-        <!-- Kotak kesepuluh -->
-        <div class="circle-item">
-            <a href="link10.html" class="circle" style="background-image: url('image10.jpg');"></a>
-            <div class="circle-name">Image 10</div>
-            <div class="info-box">Informasi tentang Image 10</div>
-        </div>
-        <!-- Kotak kesebelas -->
-        <div class="circle-item">
-            <a href="link11.html" class="circle" style="background-image: url('image11.jpg');"></a>
-            <div class="circle-name">Image 11</div>
-            <div class="info-box">Informasi tentang Image 11</div>
-        </div>
-        <!-- Kotak kedua belas -->
-        <div class="circle-item">
-            <a href="link12.html" class="circle" style="background-image: url('image12.jpg');"></a>
-            <div class="circle-name">Image 12</div>
-            <div class="info-box">Informasi tentang Image 12</div>
-        </div>
-    </div>
-
-    <style>
-        /* Menambahkan gaya untuk kotak dan informasi */
-        .circle-item {
-            margin: 0 1mm;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            width: 50px; /* Ukuran kotak */
-            height: 50px; /* Ukuran kotak */
-            margin-bottom: 10px;
-        }
-
-        .circle-item a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-        }
-
-        .info-box {
-            font-size: 12px;
-            color: white;
-            margin-top: 5px;
-        }
-
-        /* Responsive untuk kotak */
-        @media (max-width: 768px) {
-            .circle-container .circle-item {
-                flex: 1 1 30%;
+    <script>
+        window.onload = function () {
+            const backgroundImage = localStorage.getItem('backgroundImage');
+            if (backgroundImage) {
+                document.body.style.backgroundImage = `url(${backgroundImage})`;
+                document.body.style.backgroundSize = "cover";
+                document.body.style.backgroundAttachment = "fixed";
             }
         }
+    </script>
 
-        @media (max-width: 480px) {
-            .circle-container .circle-item {
-                flex: 1 1 45%;
-            }
-        }
-    </style>
+</body>
+</html>
