@@ -19,7 +19,7 @@
             width: 100%;
             text-align: center;
             position: relative;
-            margin-top: 1rem; /* Menurunkan banner sebesar 0.3 */
+            margin-top: 1rem; /* Menurunkan banner sedikit */
         }
 
         .responsive-banner {
@@ -64,29 +64,28 @@
         .circle-container {
             display: flex;
             overflow-x: auto;
-            margin-top: 0.3rem; /* Menggeser lingkaran sedikit ke bawah setelah banner */
+            margin-top: 5mm; /* Jarak antara lingkaran dan banner 5mm */
             padding-bottom: 10px;
             justify-content: flex-start; /* Menjaga agar lingkaran terpusat ke kiri */
         }
 
         .circle-item {
-            margin: 5px; /* Mengurangi jarak antar lingkaran */
+            margin: 0 10px; /* Jarak antar lingkaran yang sama 10px */
             text-align: center;
         }
 
         .circle {
             display: inline-block;
-            width: 15px;
-            height: 15px;
+            width: 30px; /* Menyesuaikan ukuran lingkaran menjadi lebih besar */
+            height: 30px;
             border: 2px solid rgba(0, 0, 0, 0.3);
             border-radius: 50%;
             color: white;
-            font-size: 12px; /* Mengurangi ukuran font untuk menjaga keseimbangan */
+            font-size: 16px; /* Ukuran font lebih besar agar sesuai dengan ukuran lingkaran */
             text-align: center;
-            line-height: 15px;
+            line-height: 30px;
             cursor: pointer;
             transition: transform 0.3s ease;
-            margin-bottom: 5px; /* Mengurangi jarak antara lingkaran dan teks */
         }
 
         .circle:hover {
