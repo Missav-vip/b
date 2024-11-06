@@ -11,11 +11,11 @@
             margin: 0;
             padding: 0;
             background-color: transparent;
-            background-attachment: fixed; /* Latar belakang tidak bergerak */
+            background-attachment: fixed;
             background-size: cover;
-            height: 100%;
         }
 
+        /* Menu Toggle Button */
         .menu-toggle {
             position: fixed;
             top: 20px;
@@ -29,36 +29,41 @@
             z-index: 100;
         }
 
+        /* Garis menu toggle */
         .line {
-            width: 60%;
-            height: 5px;
+            width: 30px;
+            height: 3px;
             background-color: white;
-            border-radius: 3px;
+            border-radius: 5px;
         }
 
+        /* Menu style */
         .menu {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 150px; /* Lebar menu diperkecil */
-            height: 4cm;
-            background: rgba(0, 0, 0, 0.7);
+            top: 50%; /* Menu vertikal di tengah layar */
+            left: 50%; /* Menu horizontal di tengah layar */
+            transform: translate(-50%, -50%); /* Menyempurnakan posisi di tengah */
+            width: auto; /* Menyesuaikan lebar menu dengan konten */
+            max-width: 250px; /* Lebar maksimal menu */
+            background: rgba(0, 0, 0, 0.5); /* Latar belakang transparan */
             color: white;
             display: none;
             flex-direction: column;
-            padding-top: 10px;
+            padding-top: 20px;
             text-align: center;
             z-index: 99;
             overflow-y: auto;
             border: 1px solid white;
-            border-radius: 0; /* Menghilangkan efek sudut membulat */
+            border-radius: 20px; /* Sudut oval pada menu */
+            height: 6cm; /* Menetapkan panjang menu menjadi 6 cm */
         }
 
+        /* Header Menu */
         .menu h2 {
             margin: 0 0 20px 0;
         }
 
+        /* Link dalam menu */
         .menu a {
             color: white;
             text-decoration: none;
@@ -66,63 +71,45 @@
             display: block;
         }
 
+        /* Hover Link */
         .menu a:hover {
             background-color: rgba(255, 255, 255, 0.2);
         }
 
+        /* Header halaman */
         h1 {
             text-align: center;
             color: white;
         }
 
-        /* Media Queries untuk perangkat kecil (ponsel) */
-        @media screen and (max-width: 600px) {
+        /* Media query untuk perangkat dengan layar lebih kecil */
+        @media (max-width: 768px) {
             .menu {
-                width: 80%; /* Lebar menu lebih besar pada perangkat kecil */
-                height: auto;
-                max-height: 80%;
-            }
-
-            .line {
-                width: 50%; /* Lebar garis menu sedikit lebih besar di ponsel */
+                height: auto; /* Menyesuaikan tinggi menu pada perangkat kecil */
+                width: 80%; /* Lebar menu menyesuaikan layar */
             }
         }
 
-        /* Media Queries untuk perangkat tablet */
-        @media screen and (min-width: 601px) and (max-width: 1024px) {
+        @media (max-width: 480px) {
             .menu {
-                width: 60%; /* Lebar menu sedikit lebih besar pada tablet */
-                height: auto;
-                max-height: 60%;
-            }
-
-            .line {
-                width: 40%; /* Lebar garis menu disesuaikan pada tablet */
-            }
-        }
-
-        /* Media Queries untuk perangkat desktop */
-        @media screen and (min-width: 1025px) {
-            .menu {
-                width: 200px; /* Lebar menu standar pada desktop */
-                height: 4cm;
-            }
-
-            .line {
-                width: 30%; /* Lebar garis menu standar pada desktop */
+                width: 90%; /* Lebar menu lebih kecil di perangkat mobile */
+                height: auto; /* Menyesuaikan panjang menu */
             }
         }
     </style>
 </head>
 <body>
+
     <h1>Selamat datang di halaman utama</h1>
 
+    <!-- Menu Toggle Button -->
     <div class="menu-toggle" onclick="toggleMenu()">
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
     </div>
 
+    <!-- Menu -->
     <div class="menu" id="menu">
         <h2>Menu</h2>
         <a href="#">Beranda</a>
@@ -137,18 +124,19 @@
     </div>
 
     <script>
+        /* Fungsi untuk membuka dan menutup menu */
         function toggleMenu() {
             const menu = document.getElementById('menu');
-            const menuToggle = document.querySelector('.menu-toggle');
             if (menu.style.display === 'none' || menu.style.display === '') {
-                menu.style.display = 'block';
-                menuToggle.style.display = 'none';
+                menu.style.display = 'block';  /* Menampilkan menu */
+                document.querySelector('.menu-toggle').style.display = 'none';  /* Menyembunyikan tombol toggle */
             } else {
-                menu.style.display = 'none';
-                menuToggle.style.display = 'flex';
+                menu.style.display = 'none';  /* Menyembunyikan menu */
+                document.querySelector('.menu-toggle').style.display = 'flex';  /* Menampilkan tombol toggle */
             }
         }
 
+        /* Menampilkan gambar latar belakang ketika halaman dimuat */
         window.onload = function () {
             const backgroundImage = localStorage.getItem('backgroundImage');
             if (backgroundImage) {
@@ -157,16 +145,7 @@
                 document.body.style.backgroundAttachment = "fixed";
             }
         }
-
-        // Menambahkan event listener untuk menutup menu ketika klik di luar menu
-        window.addEventListener('click', function (e) {
-            const menu = document.getElementById('menu');
-            const menuToggle = document.querySelector('.menu-toggle');
-            if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
-                menu.style.display = 'none';
-                menuToggle.style.display = 'flex';
-            }
-        });
     </script>
+
 </body>
 </html>
