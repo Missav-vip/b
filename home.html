@@ -43,110 +43,59 @@
             border-radius: 20px;
         }
 
+        /* Lingkaran Section */
         .circle-container {
             display: flex;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            padding: 10px 0;
-            margin: 20px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            background-color: rgba(0, 0, 0, 0.5); /* Latar belakang hitam transparan */
+            padding: 20px;
+            border-radius: 10px;
         }
 
         .circle-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-right: 15px;
+            margin: 10px;
+            text-align: center;
+            position: relative;
         }
 
         .circle {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
             background-size: cover;
             background-position: center;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            transition: transform 0.3s;
-        }
-
-        .circle-name {
-            color: white;
-            text-align: center;
+            display: block;
+            margin: 0 auto;
+            border: 5px solid rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
         .circle:hover {
-            transform: scale(1.1);
+            transform: scale(1.1); /* Efek hover untuk memperbesar lingkaran */
         }
 
-        .menu-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 30px;
-            height: 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
-            z-index: 100;
-        }
-
-        .line {
-            width: 30px;
-            height: 3px;
-            background-color: white;
-            border-radius: 5px;
-        }
-
-        .menu {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: auto;
-            max-width: 250px;
-            background: rgba(0, 0, 0, 0.5);
+        .circle-name {
+            margin-top: 5px;
+            font-size: 16px;
             color: white;
-            display: none;
-            flex-direction: column;
-            padding-top: 20px;
-            text-align: center;
-            z-index: 99;
-            overflow-y: auto;
-            border: 1px solid white;
-            height: 6cm;
         }
 
-        .menu h2 {
-            margin: 0 0 20px 0;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 0;
-            display: block;
-        }
-
-        .menu a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        h1 {
-            text-align: center;
-            color: white;
+        .circle-container .circle-item {
+            width: calc(100% / 9 - 20px); /* 9 lingkaran, membagi lebar 100% */
         }
 
         @media (max-width: 768px) {
-            .menu {
-                height: auto;
-                width: 80%;
+            .circle-container .circle-item {
+                width: calc(100% / 5 - 20px); /* Untuk layar lebih kecil */
             }
         }
 
         @media (max-width: 480px) {
-            .menu {
-                width: 90%;
-                height: auto;
+            .circle-container .circle-item {
+                width: calc(100% / 3 - 20px); /* Lebih sedikit untuk layar sangat kecil */
             }
         }
     </style>
@@ -157,6 +106,11 @@
         <img src="banner.png" alt="Banner" class="responsive-banner">
     </div>
     
+    <div class="profile-section">
+        <img src="profile.jpg" alt="Profile Image" class="profile-image">
+        <div class="profile-name">Nama Profil</div>
+    </div>
+
     <!-- Circle Container -->
     <div class="circle-container">
         <div class="circle-item">
@@ -197,37 +151,7 @@
         </div>
     </div>
 
-    <div class="menu-toggle" onclick="toggleMenu()">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </div>
-
-    <div class="menu" id="menu">
-        <h2>Menu</h2>
-        <a href="#">Beranda</a>
-        <a href="#">Profil</a>
-        <a href="#">Akun Saya</a>
-        <a href="#">Berita</a>
-        <a href="#">Layanan</a>
-        <a href="#">Bantuan</a>
-        <a href="#">Kontak</a>
-        <a href="#">Pengaturan</a>
-        <a href="#">Logout</a>
-    </div>
-
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            if (menu.style.display === 'none' || menu.style.display === '') {
-                menu.style.display = 'block';
-                document.querySelector('.menu-toggle').style.display = 'none';
-            } else {
-                menu.style.display = 'none';
-                document.querySelector('.menu-toggle').style.display = 'flex';
-            }
-        }
-
         window.onload = function () {
             const backgroundImage = localStorage.getItem('backgroundImage');
             if (backgroundImage) {
