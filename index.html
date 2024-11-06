@@ -3,75 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Datang</title>
+    <title>Pendeteksi Lokasi dan Efek Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Pesan Error */
+        .error-message {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px;
+            background-color: #dc3545; /* Warna merah */
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            animation: shake 0.5s ease-in-out 1, flash 1.5s infinite;
+        }
+
+        /* Animasi Getaran */
+        @keyframes shake {
+            0% { transform: translateX(-50%) translateY(0); }
+            25% { transform: translateX(-50%) translateY(-10px); }
+            50% { transform: translateX(-50%) translateY(0); }
+            75% { transform: translateX(-50%) translateY(10px); }
+            100% { transform: translateX(-50%) translateY(0); }
+        }
+
+        /* Animasi Flash untuk Perubahan Warna */
+        @keyframes flash {
+            0% { background-color: #dc3545; }
+            50% { background-color: #ff6347; }
+            100% { background-color: #dc3545; }
+        }
+
+        /* Tombol untuk Menampilkan Pesan Error */
+        .show-error-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .show-error-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <div id="welcome-message" style="font-size: 20px; text-align: center; padding: 20px;">
-        <!-- Sambutan akan ditampilkan di sini -->
+
+    <!-- Tombol untuk Menampilkan Pesan Error -->
+    <button class="show-error-btn" onclick="checkLocation()">Cek Lokasi</button>
+
+    <!-- Pesan Error -->
+    <div id="error-message" class="error-message">
+        Terjadi kesalahan! Anda menggunakan VPN atau lokasi tidak dapat dikenali.
     </div>
 
     <script>
-        // Fungsi untuk mendeteksi perangkat pengguna
-        function detectDevice() {
-            const userAgent = navigator.userAgent;
+        function showError(message) {
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
 
-            if (/mobile/i.test(userAgent)) {
-                return 'Mobile';
-            } else if (/tablet/i.test(userAgent)) {
-                return 'Tablet';
-            } else {
-                return 'Desktop';
-            }
+            // Menyembunyikan pesan error setelah beberapa detik
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 5000); // Pesan error akan hilang setelah 5 detik
         }
 
-        // Fungsi untuk mendapatkan lokasi menggunakan Geolocation API
-        function getLocation() {
-            return new Promise((resolve, reject) => {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        position => {
-                            const { latitude, longitude } = position.coords;
-                            fetch(`https://geocode.xyz/${latitude},${longitude}?json=1`)
-                                .then(response => response.json())
-                                .then(data => {
-                                    resolve({
-                                        city: data.city || 'Unknown',
-                                        country: data.country || 'Unknown'
-                                    });
-                                })
-                                .catch(err => reject(err));
-                        },
-                        error => reject(error),
-                        { timeout: 10000 }
-                    );
-                } else {
-                    reject('Geolocation tidak tersedia');
-                }
-            });
+        // Fungsi untuk mendeteksi lokasi pengguna
+        function checkLocation() {
+            // Menggunakan API untuk mendeteksi lokasi
+            fetch('https://api.ipstack.com/check?access_key=35c787a0-9be6-11ef-ad81-158c52d931f2')
+                .then(response => response.json())
+                .then(data => {
+                    const country = data.country_name;
+                    const city = data.city;
+                    const region = data.region_name;
+
+                    // Mengecek apakah pengguna menggunakan VPN atau lokasi tidak valid
+                    if (data.location.is_vpn || !country || !city || !region) {
+                        showError("Anda menggunakan VPN atau lokasi tidak dapat dikenali.");
+                    } else {
+                        // Menampilkan informasi lokasi jika tidak menggunakan VPN
+                        alert(`Lokasi Anda terdeteksi di ${city}, ${region}, ${country}`);
+                    }
+                })
+                .catch(error => {
+                    showError("Terjadi kesalahan saat mendeteksi lokasi.");
+                    console.error('Error:', error);
+                });
         }
-
-        window.onload = async function() {
-            const device = detectDevice();
-            const welcomeMessage = document.getElementById('welcome-message');
-
-            try {
-                const location = await getLocation();
-                const city = location.city;
-                const country = location.country;
-
-                // Menampilkan sambutan yang disesuaikan dengan perangkat dan lokasi
-                if (device === 'Mobile') {
-                    welcomeMessage.innerHTML = `Selamat datang di situs kami dari ${city}, ${country}! Nikmati pengalaman terbaik di perangkat mobile Anda.`;
-                } else if (device === 'Tablet') {
-                    welcomeMessage.innerHTML = `Selamat datang di situs kami dari ${city}, ${country}! Dapatkan pengalaman hebat di tablet Anda.`;
-                } else {
-                    welcomeMessage.innerHTML = `Selamat datang di situs kami dari ${city}, ${country}! Nikmati pengalaman terbaik di perangkat desktop Anda.`;
-                }
-            } catch (err) {
-                console.error(err);
-                welcomeMessage.innerHTML = 'Selamat datang! Kami gagal mendeteksi lokasi Anda.';
-            }
-        };
     </script>
+
 </body>
 </html>
