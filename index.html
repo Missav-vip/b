@@ -45,27 +45,9 @@
             50% { background-color: #ff6347; }
             100% { background-color: #dc3545; }
         }
-
-        /* Tombol untuk Menampilkan Pesan Error */
-        .show-error-btn {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .show-error-btn:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 <body>
-
-    <!-- Tombol untuk Menampilkan Pesan Error -->
-    <button class="show-error-btn" onclick="checkLocation()">Cek Lokasi</button>
 
     <!-- Pesan Error -->
     <div id="error-message" class="error-message">
@@ -99,7 +81,7 @@
                         showError("Anda menggunakan VPN atau lokasi tidak dapat dikenali.");
                     } else {
                         // Menampilkan informasi lokasi jika tidak menggunakan VPN
-                        alert(`Lokasi Anda terdeteksi di ${city}, ${region}, ${country}`);
+                        console.log(`Lokasi Anda terdeteksi di ${city}, ${region}, ${country}`);
                     }
                 })
                 .catch(error => {
@@ -107,6 +89,9 @@
                     console.error('Error:', error);
                 });
         }
+
+        // Panggil fungsi checkLocation secara otomatis saat halaman dimuat
+        window.onload = checkLocation;
     </script>
 
 </body>
