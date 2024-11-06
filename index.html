@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verifikasi Lokasi Pengguna</title>
+    <title>Pilih Server dan Satelit</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -47,72 +47,55 @@
 <body>
 
     <h1>Selamat Datang!</h1>
-    <p>Untuk melanjutkan, kami memerlukan izin lokasi Anda. Pastikan Anda berada di salah satu dari tiga wilayah satelit kami yang terverifikasi.</p>
+    <p>Untuk melanjutkan, pilih Server dan Satelit yang sesuai dengan lokasi Anda:</p>
+
+    <!-- Dropdown untuk memilih satelit -->
+    <label for="satellite">Pilih Satelit:</label>
+    <select id="satellite" name="satellite">
+        <option value="alpha_satelite">Alpha Satelit</option>
+        <option value="beta_satelite">Beta Satelit</option>
+        <option value="gamma_satelite">Gamma Satelit</option>
+    </select>
+    
+    <br><br>
+    
+    <!-- Dropdown untuk memilih server -->
+    <label for="server">Pilih Server:</label>
+    <select id="server" name="server">
+        <option value="server_1">Server 1</option>
+        <option value="server_2">Server 2</option>
+        <option value="server_3">Server 3</option>
+    </select>
+
+    <br><br>
+    <button onclick="submitSelection()">Submit</button>
 
     <div id="message"></div>
     <div id="countdown" class="countdown"></div>
-
+    
     <script>
-        // Daftar 3 wilayah satelit yang diterima (misalnya dengan latitude dan longitude)
-        const satelliteRegions = [
-            { lat: -6.2088, lon: 106.8456 },  // Jakarta, Indonesia
-            { lat: 40.7128, lon: -74.0060 },  // New York, USA
-            { lat: 51.5074, lon: -0.1278 }    // London, UK
-        ];
+        // Daftar server dan satelit yang Anda tentukan
+        const satelliteRegions = {
+            alpha_satelite: { lat: -6.2088, lon: 106.8456, server: 'Server 1' },
+            beta_satelite: { lat: 40.7128, lon: -74.0060, server: 'Server 2' },
+            gamma_satelite: { lat: 51.5074, lon: -0.1278, server: 'Server 3' }
+        };
 
-        // Fungsi untuk memeriksa apakah lokasi pengguna berada di salah satu wilayah satelit
-        function isInSateliteRegion(lat, lon) {
-            for (const region of satelliteRegions) {
-                // Membandingkan lokasi dengan toleransi kecil (misalnya 0.5 derajat)
-                if (Math.abs(lat - region.lat) < 0.5 && Math.abs(lon - region.lon) < 0.5) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        // Fungsi untuk mendapatkan lokasi pengguna
-        function getUserLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    const lat = position.coords.latitude;
-                    const lon = position.coords.longitude;
-
-                    // Menampilkan lokasi yang terdeteksi
-                    document.getElementById("message").innerHTML = "Lokasi Anda terdeteksi: " + lat + ", " + lon;
-
-                    // Cek apakah lokasi cocok dengan wilayah satelit
-                    if (isInSateliteRegion(lat, lon)) {
-                        document.getElementById("message").innerHTML = "<div class='success'>Lokasi Anda terverifikasi. Anda dapat melanjutkan.</div>";
-                    } else {
-                        document.getElementById("message").innerHTML = "<div class='warning'>Lokasi Anda tidak cocok dengan wilayah satelit kami. Akses dibatasi.</div>";
-                    }
-
-                    // Memulai countdown jika lokasi terverifikasi
-                    startCountdown();
-                }, function(error) {
-                    document.getElementById("message").innerHTML = "<div class='warning'>Gagal mendeteksi lokasi Anda. Pastikan izin lokasi telah diberikan.</div>";
-                });
+        // Fungsi untuk memilih server dan satelit
+        function submitSelection() {
+            const selectedSatellite = document.getElementById("satellite").value;
+            const selectedServer = document.getElementById("server").value;
+            
+            const region = satelliteRegions[selectedSatellite];
+            
+            if (region) {
+                // Menampilkan informasi server yang dipilih
+                document.getElementById("message").innerHTML = "<div class='success'>Satelit: " + selectedSatellite.replace("_", " ") + " dipilih. Server yang dipilih: " + selectedServer + "</div>";
+                document.getElementById("countdown").innerHTML = "Menunggu verifikasi lokasi dan pengaturan server...";
+                startCountdown();
             } else {
-                document.getElementById("message").innerHTML = "<div class='warning'>Geolocation tidak didukung oleh browser Anda.</div>";
+                document.getElementById("message").innerHTML = "<div class='warning'>Lokasi satelit tidak terverifikasi.</div>";
             }
-        }
-
-        // Fungsi untuk mendeteksi apakah pengguna menggunakan VPN
-        function detectVPN() {
-            const vpnDetected = navigator.connection || navigator.webkitConnection;
-
-            if (vpnDetected) {
-                document.getElementById("message").innerHTML = "<div class='vpn-warning'>VPN terdeteksi. Anda tidak dapat melanjutkan dengan VPN aktif.</div>";
-                stopCountdown();
-                disablePageAccess();
-            }
-        }
-
-        // Fungsi untuk menonaktifkan akses halaman jika VPN terdeteksi
-        function disablePageAccess() {
-            document.body.style.pointerEvents = "none"; // Menonaktifkan semua interaksi halaman
-            document.getElementById("message").innerHTML += "<div class='warning'>Silakan matikan VPN untuk melanjutkan.</div>";
         }
 
         // Fungsi countdown untuk menunggu 1 menit sebelum melanjutkan
@@ -132,6 +115,23 @@
             }, 1000);
         }
 
+        // Fungsi untuk mendeteksi apakah pengguna menggunakan VPN
+        function detectVPN() {
+            const vpnDetected = navigator.connection || navigator.webkitConnection;
+
+            if (vpnDetected) {
+                document.getElementById("message").innerHTML = "<div class='vpn-warning'>VPN terdeteksi. Anda tidak dapat melanjutkan dengan VPN aktif.</div>";
+                stopCountdown();
+                disablePageAccess();
+            }
+        }
+
+        // Fungsi untuk menonaktifkan akses halaman jika VPN terdeteksi
+        function disablePageAccess() {
+            document.body.style.pointerEvents = "none"; // Menonaktifkan semua interaksi halaman
+            document.getElementById("message").innerHTML += "<div class='warning'>Silakan matikan VPN untuk melanjutkan.</div>";
+        }
+
         // Fungsi untuk menghentikan countdown
         function stopCountdown() {
             clearInterval(countdownTimer);
@@ -140,7 +140,6 @@
 
         // Menjalankan fungsi untuk meminta izin lokasi pengguna dan mendeteksi VPN saat halaman dimuat
         window.onload = function() {
-            getUserLocation();
             detectVPN();
         };
     </script>
