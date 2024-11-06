@@ -1,98 +1,150 @@
-/* Reset default margin dan padding */
+/* Reset some default styling */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body */
 body {
     font-family: Arial, sans-serif;
+    line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
-    line-height: 1.6;
     padding: 20px;
 }
 
-/* Header */
+/* Styling header */
 header {
     text-align: center;
-    background-color: #007BFF;
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 header h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
+    color: #333;
+    font-size: 2.5rem;
 }
 
 header p {
-    font-size: 1.2em;
+    font-size: 1rem;
+    color: #555;
 }
 
-/* Section */
-section {
+/* Navbar Styling */
+nav {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+nav button:hover {
+    background-color: #0056b3;
+}
+
+/* Section Styling */
+.info-section {
+    display: none;
     background-color: white;
-    margin: 20px 0;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-section h2 {
-    font-size: 2em;
-    margin-bottom: 15px;
-}
-
-section h3 {
-    font-size: 1.5em;
+.info-section h2 {
+    color: #333;
+    font-size: 1.8rem;
     margin-bottom: 10px;
 }
 
-section ul {
-    list-style: disc;
-    margin-left: 20px;
+.info-section p {
+    font-size: 1rem;
+    color: #555;
 }
 
-section ul li {
-    font-size: 1.1em;
-    margin-bottom: 8px;
-}
-
-/* Footer */
+/* Footer Styling */
 footer {
     text-align: center;
-    margin-top: 40px;
-    font-size: 1em;
-    color: #666;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #777;
 }
 
-footer a {
-    color: #007BFF;
-    text-decoration: none;
-}
+/* Media Queries for responsiveness */
 
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Responsiveness */
-@media (max-width: 768px) {
+/* Small devices (tablets, phones in portrait mode) */
+@media only screen and (max-width: 767px) {
     header h1 {
-        font-size: 2em;
+        font-size: 2rem;
     }
 
-    section h2 {
-        font-size: 1.5em;
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
     }
 
-    section h3 {
-        font-size: 1.2em;
+    nav button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2rem;
     }
 
-    section ul li {
-        font-size: 1em;
+    .info-section {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}
+
+/* Medium devices (landscape tablets) */
+@media only screen and (max-width: 1024px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    nav button {
+        padding: 12px 25px;
+    }
+
+    .info-section {
+        max-width: 90%;
+    }
+}
+
+/* Large devices (desktops) */
+@media only screen and (min-width: 1025px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    nav button {
+        padding: 10px 20px;
+        font-size: 1rem;
     }
 }
