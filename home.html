@@ -16,15 +16,15 @@
         }
 
         #banner {
-            width: 100%; /* Ganti 96% dengan 100% agar banner mengisi seluruh lebar halaman */
+            width: 100%;
             text-align: center;
             position: relative;
-            margin-top: 0.4rem; /* Menurunkan banner sedikit */
-            padding: 0 5%; /* Menambahkan padding kiri dan kanan */
+            margin-top: 0.4rem;
+            padding: 0 5%;
         }
 
         .responsive-banner {
-            width: 100%; /* Lebar 100% agar gambar mengikuti lebar kontainer */
+            width: 100%;
             height: 150px;
             object-fit: cover;
             border-radius: 20px;
@@ -62,54 +62,78 @@
             color: #f39c12;
         }
 
+        .hamburger-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+            }
+            #menu-bar ul {
+                display: none;
+            }
+        }
+
+        .menu-open #menu-bar ul {
+            display: block;
+            position: absolute;
+            top: 50px;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
         .circle-container {
             display: flex;
             overflow-x: auto;
-            margin-top: 2mm; /* Jarak antara lingkaran dan banner 5mm */
+            margin-top: 2mm;
             padding-bottom: 10px;
-            justify-content: flex-start; /* Menjaga agar lingkaran terpusat ke kiri */
+            justify-content: flex-start;
         }
 
         .circle-item {
-            margin: 0 5px; /* Jarak antar lingkaran yang sama 10px */
+            margin: 0 5px;
             text-align: center;
         }
 
         .circle {
             display: inline-block;
-            width: 50px; /* Sesuaikan ukuran gambar */
+            width: 50px;
             height: 50px;
             overflow: hidden;
-            border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
+            border-radius: 50%;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border 0.3s ease;
         }
 
         .circle:hover {
-            transform: scale(1.2); /* Membuat lingkaran lebih besar saat di-hover */
+            transform: scale(1.2);
+            border: 2px solid #f39c12;
         }
 
         .circle-name {
-            margin-top: 5px; /* Jarak antara gambar dan teks */
+            margin-top: 5px;
             font-size: 12px;
             color: white;
         }
 
         .circle-img {
-            width: 100%; /* Gambar akan menyesuaikan lebar lingkaran */
+            width: 100%;
             height: 100%;
-            object-fit: cover; /* Memastikan gambar mengisi lingkaran */
+            object-fit: cover;
         }
 
         @media (max-width: 768px) {
             .circle-container .circle-item {
-                flex: 1 1 30%; /* Menyusun ulang agar lebih responsif */
+                flex: 1 1 30%;
             }
         }
 
         @media (max-width: 480px) {
             .circle-container .circle-item {
-                flex: 1 1 45%; /* Pengaturan ukuran pada layar kecil */
+                flex: 1 1 45%;
             }
         }
     </style>
@@ -117,6 +141,7 @@
 <body>
 
     <div id="menu-bar">
+        <div class="hamburger-menu" onclick="toggleMenu()">☰</div>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">Tentang</a></li>
@@ -186,6 +211,10 @@
     </div>
 
     <script>
+        function toggleMenu() {
+            document.body.classList.toggle("menu-open");
+        }
+
         window.onload = function () {
             const backgroundImage = localStorage.getItem('backgroundImage');
             if (backgroundImage) {
