@@ -3,12 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shell - Beranda</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Selamat Datang di Dunia Digital!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: white;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeIn 4s forwards;
+        }
+
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        .robot {
+            font-size: 24px;
+            font-family: "Courier New", monospace;
+            color: #00FF00;
+            opacity: 0;
+            animation: fadeIn 5s forwards, robotMove 3s 5s forwards;
+        }
+
+        /* Animation for text appearance */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Animation for robot text movement */
+        @keyframes robotMove {
+            0% {
+                transform: translateY(50px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Selamat Datang di Shell!</h1>
-    <p>Anda akan diarahkan ke halaman penyambutan.</p>
-    <a href="welcome.html">Mulai</a>
+
+    <div class="container">
+        <h1>Halo, Saya Robot Virtual Anda!</h1>
+        <p>Selamat datang di dunia digital yang telah saya siapkan untuk Anda! Saya di sini untuk membantu, memberikan informasi, dan memastikan pengalaman Anda menyenankan di situs ini.</p>
+        <p>Dengan kecerdasan buatan saya, saya siap untuk membantu Anda menjelajahi berbagai konten yang telah kami siapkan. Apakah Anda siap untuk petualangan digital?</p>
+        
+        <p class="robot">🤖 "Saya di sini untuk melayani Anda, manusia. Ayo, jelajahi dunia saya!" 🤖</p>
+
+        <p>Jika Anda membutuhkan bantuan lebih lanjut atau ingin belajar lebih banyak, saya siap untuk menjawab pertanyaan Anda. Jangan ragu untuk berinteraksi dengan saya.</p>
+        <p>Selamat menjelajah!</p>
+    </div>
+
 </body>
 </html>
