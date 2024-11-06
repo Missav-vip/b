@@ -37,16 +37,16 @@
 
         .menu {
             position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%); /* Memindahkan menu ke tengah */
-            width: 200px;
-            height: 100%;
-            background: rgba(0, 0, 0, 0);
+            top: 50%; /* Menempatkan menu di tengah layar secara vertikal */
+            left: 50%; /* Menempatkan menu di tengah layar secara horizontal */
+            transform: translate(-50%, -50%); /* Menyeimbangkan posisi menu agar benar-benar di tengah */
+            width: auto; /* Menyesuaikan lebar menu dengan konten */
+            max-width: 300px; /* Lebar maksimal menu */
+            background: rgba(0, 0, 0, 0.5); /* Transparansi menu */
             color: white;
             display: none;
             flex-direction: column;
-            padding-top: 50px;
+            padding-top: 20px;
             text-align: center;
             z-index: 99;
             overflow-y: auto;
