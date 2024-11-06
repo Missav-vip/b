@@ -3,40 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>Home</title>
     <style>
         body {
-            background-color: black;
-            color: white;
-            text-align: center;
             font-family: Arial, sans-serif;
-            padding-top: 20%;
-        }
-        h1 {
-            font-size: 50px;
-            animation: fadeIn 0.001s ease-out;
+            color: white;
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+            background-image: url('background.jpg'); /* Ganti dengan path gambar latar belakang Anda */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Mengunci latar belakang agar tidak bergerak */
         }
 
-        @keyframes fadeIn {
+        #banner {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            margin-top: 0.4rem;
+        }
+
+        .responsive-banner {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        #menu-bar {
+            background-color: rgba(0, 0, 0, 0);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 20px;
+        }
+
+        #menu-bar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        #menu-bar ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        #menu-bar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        #menu-bar ul li a:hover {
+            color: #f39c12;
+        }
+
+        .circle-container {
+            display: flex;
+            justify-content: center; /* Membuat lingkaran berada di tengah */
+            margin-top: 0.5mm; /* Jarak atas 0.5mm dari banner */
+            padding-bottom: 10px;
+        }
+
+        .circle-item {
+            margin: 0 1mm; /* Jarak antar lingkaran 1mm */
+            text-align: center;
+            position: relative;
+        }
+
+        .circle {
+            display: inline-block;
+            width: 15px; /* Ukuran lingkaran 15px */
+            height: 15px; /* Ukuran lingkaran 15px */
+            border-radius: 50%;
+            background-size: cover; /* Mengatur gambar agar sesuai dengan lingkaran */
+            background-position: center;
+            color: white;
+            font-size: 8px;
+            text-align: center;
+            line-height: 15px;
+            cursor: default; /* Menghilangkan efek klik */
+            animation: moveCircle 5s infinite alternate; /* Animasi bergerak */
+        }
+
+        @keyframes moveCircle {
             0% {
-                opacity: 0;
+                transform: translateY(0); /* Posisi awal */
+            }
+            50% {
+                transform: translateY(20px); /* Bergerak ke bawah */
             }
             100% {
-                opacity: 1;
+                transform: translateY(0); /* Kembali ke posisi awal */
             }
         }
+
+        .circle-name {
+            margin-top: 1px;
+            font-size: 8px;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .circle-container .circle-item {
+                flex: 1 1 30%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .circle-container .circle-item {
+                flex: 1 1 45%;
+            }
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- Sambutan "Welcome" -->
-    <h1>Welcome</h1>
+    <div id="menu-bar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Tentang</a></li>
+            <li><a href="#">Kontak</a></li>
+        </ul>
+    </div>
+
+    <div id="banner">
+        <img src="banner.png" alt="Banner" class="responsive-banner">
+    </div>
+
+    <div class="circle-container">
+        <div class="circle-item">
+            <a href="link1.html" class="circle" style="background-image: url('bugatti.jpg');"></a>
+            <div class="circle-name">Bugatti</div>
+        </div>
+        <div class="circle-item">
+            <a href="link2.html" class="circle" style="background-image: url('lamborghini.jpg');"></a>
+            <div class="circle-name">Lamborghini</div>
+        </div>
+        <div class="circle-item">
+            <a href="link3.html" class="circle" style="background-image: url('ferrari.jpg');"></a>
+            <div class="circle-name">Ferrari</div>
+        </div>
+        <div class="circle-item">
+            <a href="link4.html" class="circle" style="background-image: url('rollsroyce.jpg');"></a>
+            <div class="circle-name">Rolls Royce</div>
+        </div>
+        <div class="circle-item">
+            <a href="link5.html" class="circle" style="background-image: url('mclaren.jpg');"></a>
+            <div class="circle-name">McLaren</div>
+        </div>
+        <div class="circle-item">
+            <a href="link6.html" class="circle" style="background-image: url('astonmartin.jpg');"></a>
+            <div class="circle-name">Aston Martin</div>
+        </div>
+        <div class="circle-item">
+            <a href="link7.html" class="circle" style="background-image: url('porsche.jpg');"></a>
+            <div class="circle-name">Porsche</div>
+        </div>
+        <div class="circle-item">
+            <a href="link8.html" class="circle" style="background-image: url('koenigsegg.jpg');"></a>
+            <div class="circle-name">Koenigsegg</div>
+        </div>
+        <div class="circle-item">
+            <a href="link9.html" class="circle" style="background-image: url('pagani.jpg');"></a>
+            <div class="circle-name">Pagani</div>
+        </div>
+    </div>
 
     <script>
-        // Arahkan ke halaman upload setelah 0.001 detik
-        setTimeout(function(){
-            window.location.href = "upload.html";
-        }, 1); // 0.001 detik = 1 milidetik
+        window.onload = function () {
+            const backgroundImage = localStorage.getItem('backgroundImage');
+            if (backgroundImage) {
+                document.body.style.backgroundImage = `url(${backgroundImage})`;
+                document.body.style.backgroundSize = "cover";
+                document.body.style.backgroundAttachment = "fixed";
+            }
+        }
     </script>
 
 </body>
