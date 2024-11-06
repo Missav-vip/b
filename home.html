@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             background-color: transparent;
-            background-attachment: fixed; /* Mengunci latar belakang */
+            background-attachment: fixed; /* Mengunci latar belakang agar tetap tidak bergerak */
             background-size: cover;
             background-position: center;
         }
@@ -74,6 +74,7 @@
         .circle-item {
             margin: 0 0.5mm; /* Jarak antar lingkaran 0.5mm */
             text-align: center;
+            position: relative;
         }
 
         .circle {
@@ -88,6 +89,19 @@
             text-align: center;
             line-height: 50px;
             cursor: default; /* Menghilangkan efek klik */
+            animation: moveCircle 5s infinite alternate; /* Animasi bergerak */
+        }
+
+        @keyframes moveCircle {
+            0% {
+                transform: translateY(0); /* Posisi awal */
+            }
+            50% {
+                transform: translateY(20px); /* Bergerak ke bawah */
+            }
+            100% {
+                transform: translateY(0); /* Kembali ke posisi awal */
+            }
         }
 
         .circle-name {
