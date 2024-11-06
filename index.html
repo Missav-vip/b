@@ -7,115 +7,115 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #222;
-            color: #fff;
-            text-align: center;
-            padding: 50px;
+            background-color: #121212;
+            color: #EAEAEA;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        h1, h2, h3 {
+            color: #fff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content {
+            background-color: #1A1A1A;
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
         h1 {
-            font-size: 2em;
+            text-align: center;
+            font-size: 2.5em;
             margin-bottom: 20px;
         }
-        .content {
-            background-color: #333;
-            padding: 30px;
+
+        .price-box, .info-box {
+            background-color: #232323;
+            padding: 20px;
             border-radius: 10px;
-            margin: 30px auto;
-            width: 80%;
-            max-width: 800px;
-            text-align: left;
+            margin-top: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
-        .content p {
-            font-size: 1.2em;
-        }
-        .price-box {
-            background-color: #444;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 30px;
-        }
-        .price-box h2 {
+
+        .price-box h2, .info-box h2 {
+            font-size: 1.8em;
             color: #4CAF50;
-            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 15px;
         }
-        .price-box p {
-            font-size: 1.2em;
-            color: #fff;
+
+        .price-box p, .info-box p, .price-box ul, .info-box ul {
+            font-size: 1.1em;
+            color: #B0B0B0;
+            line-height: 1.6;
         }
-        .button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        .button:hover {
-            background-color: #45a049;
-        }
-        .alert {
-            color: #FF5722;
-            font-size: 1.5em;
-        }
-        .info-box {
-            background-color: #555;
-            padding: 20px;
-            margin-top: 30px;
-            border-radius: 5px;
-        }
-        .info-box ul {
-            list-style: none;
+
+        .price-box ul {
+            list-style-type: none;
             padding-left: 0;
         }
-        .info-box li {
-            font-size: 1.2em;
+
+        .price-box li, .info-box li {
+            margin-bottom: 15px;
         }
+
+        .content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .content li {
+            margin-bottom: 10px;
+        }
+
+        .content a {
+            color: #00BFFF;
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Selamat Datang di Akses Web Kami</h1>
 
-    <h1>Tujuan dan Biaya Akses Website</h1>
-
-    <div class="content">
-        <h2>Tujuan Mengakses Website Ini</h2>
-        <p>Website ini disediakan untuk memberikan akses ke berbagai sumber daya penting dan informasi sensitif yang hanya dapat diakses oleh pengguna yang memenuhi syarat dan memiliki alasan yang jelas.</p>
-        <p>Pengguna yang mengakses website ini harus memiliki pemahaman tentang keamanan, serta mematuhi aturan yang berlaku di jaringan ini. Website ini menyajikan konten yang melibatkan data pribadi, transaksi, dan informasi sensitif yang hanya dapat diakses oleh mereka yang memenuhi persyaratan tertentu.</p>
-        <p><strong>Tujuan utama:</strong></p>
-        <ul>
-            <li>Mengakses konten yang tidak tersedia di web biasa (Deep Web, Dark Web, dan lainnya).</li>
-            <li>Berinteraksi dengan berbagai komunitas dan sumber daya yang aman dan terbatas.</li>
-            <li>Melakukan transaksi atau aktivitas yang hanya dapat dilakukan di dalam lingkungan yang aman dan terlindungi.</li>
-        </ul>
-
-        <h2 class="alert">Penting: Akses ke website ini dapat menimbulkan risiko dan biaya tertentu. Pastikan Anda memahami sepenuhnya sebelum melanjutkan.</h2>
-
-        <div class="price-box">
-            <h2>Biaya Akses untuk Dark Web</h2>
-            <p>Untuk mengakses Dark Web, ada biaya akses yang perlu dibayar sesuai dengan kebijakan kami. Berikut adalah biaya yang dikenakan:</p>
+        <div class="content">
+            <h2>Akses Website Berdasarkan Pilihan</h2>
+            <p>Pilih akses Anda:</p>
             <ul>
-                <li><strong>Dark Web (Akses Terbatas & Verifikasi Admin):</strong> 9.9 BTC</li>
+                <li><a href="surface-web.html">Surface Web</a></li>
+                <li><a href="deep-web.html">Deep Web</a></li>
+                <li><a href="dark-web.html">Dark Web (Biaya: 9.9 BTC)</a></li>
             </ul>
-            <p><strong>Catatan:</strong> Pembayaran hanya dapat dilakukan menggunakan cryptocurrency, dan biaya ini dapat berubah sesuai dengan fluktuasi harga Bitcoin.</p>
         </div>
 
-        <button class="button" onclick="location.href='pembayaran.html'">Lanjutkan Pembayaran</button>
+        <div class="price-box">
+            <h2>Biaya Akses Dark Web</h2>
+            <p>Untuk mendapatkan akses ke Dark Web, Anda harus membayar sebanyak 9.9 BTC. Hubungi Admin untuk detail lebih lanjut.</p>
+        </div>
 
         <div class="info-box">
             <h2>Kelebihan Mengakses Dark Web</h2>
-            <p>Dengan mengakses Dark Web, Anda dapat mendapatkan berbagai keuntungan dan layanan eksklusif yang tidak tersedia di permukaan web. Berikut beberapa kelebihan akses ke Dark Web:</p>
             <ul>
-                <li><strong>Akses Layanan Khusus:</strong> Mengakses berbagai layanan terbatas yang hanya tersedia di Dark Web, seperti komunikasi terenkripsi dan transaksi aman.</li>
-                <li><strong>Privasi Tinggi:</strong> Memastikan privasi lebih baik dengan menggunakan teknologi enkripsi dan akses anonim, membuatnya ideal untuk pengguna yang menghargai keamanan.</li>
-                <li><strong>Jasa Layanan:</strong> Akses untuk membuka layanan atau jasa yang hanya bisa dilakukan di lingkungan Dark Web, seperti berbisnis dengan transaksi anonim.</li>
-                <li><strong>Komunitas Tertutup:</strong> Bergabung dengan komunitas yang aman, terlindungi dari pihak luar, dan memiliki topik-topik yang lebih sensitif dan terlarang.</li>
+                <li>Akses ke layanan dan informasi yang tidak tersedia di web lainnya</li>
+                <li>Membuka peluang untuk menjalankan bisnis dan layanan khusus</li>
+                <li>Keamanan lebih terjaga dengan fitur tambahan</li>
             </ul>
-            <h3>Kontak Admin:</h3>
-            <p>Untuk mendapatkan lebih banyak informasi atau jika Anda ingin mengakses Dark Web, Anda harus menghubungi admin terlebih dahulu. Admin akan memverifikasi keanggotaan Anda dan memberikan akses setelah pembayaran dilakukan.</p>
-            <p><strong>Admin akan memberikan informasi lebih lanjut setelah pembayaran selesai. Pastikan Anda mengikuti prosedur yang berlaku dengan seksama.</strong></p>
         </div>
-
     </div>
-
 </body>
 </html>
