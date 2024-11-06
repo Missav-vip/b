@@ -1,29 +1,202 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Informasi Tentang Web</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #181818;
+            color: white;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            color: #f0f0f0;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        h2 {
+            color: #f0f0f0;
+        }
+
+        .info-section {
+            margin-top: 20px;
+        }
+
+        .info-section p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        form {
+            background-color: #222;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        label, input {
+            font-size: 16px;
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #444;
+            background-color: #333;
+            color: white;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #444;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <h1>Welcome to Web Access</h1>
-        <nav>
-            <ul>
-                <li><a href="web-access-info.html">Web Access Info</a></li>
-                <li><a href="info.html">Additional Info</a></li>
-            </ul>
-        </nav>
+        <h1>Informasi Tentang Web yang Tidak Bisa Diakses Oleh Orang Biasa</h1>
     </header>
 
-    <section>
-        <h2>Explore the World of Web Layers</h2>
-        <p>Click on the links above to learn more about different layers of the internet.</p>
+    <!-- Surface Web -->
+    <section id="surface-web">
+        <h2>Surface Web</h2>
+        <div class="info-section">
+            <h3>Apa Itu Surface Web?</h3>
+            <p>Surface Web adalah bagian dari internet yang dapat diakses secara bebas oleh siapa saja. Ini adalah bagian dari internet yang terindeks oleh mesin pencari seperti Google dan Yahoo, dan biasanya mencakup situs-situs populer seperti media sosial, forum, dan e-commerce.</p>
+            <p>Meski Surface Web adalah bagian yang paling dikenal, hanya sebagian kecil dari internet yang berada di sini. Surface Web adalah tempat di mana kita semua menghabiskan sebagian besar waktu kita di internet, mencari informasi, berbelanja, dan berinteraksi dengan orang lain.</p>
+            <form action="#" method="POST">
+                <label for="name">Nama Anda:</label>
+                <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+                <label for="email">Email Anda:</label>
+                <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+                <input type="submit" value="Kirim">
+            </form>
+        </div>
+    </section>
+
+    <!-- Deep Web -->
+    <section id="deep-web">
+        <h2>Deep Web</h2>
+        <div class="info-section">
+            <h3>Apa Itu Deep Web?</h3>
+            <p>Deep Web adalah bagian dari internet yang tidak terindeks oleh mesin pencari biasa. Ini termasuk berbagai sumber daya yang tidak dimaksudkan untuk diakses oleh publik. Banyak situs di Deep Web membutuhkan kredensial untuk mengaksesnya, seperti akun email pribadi, data pribadi yang disimpan, dan file internal perusahaan yang sensitif.</p>
+            <p>Deep Web berisi sejumlah besar data yang tidak dapat diakses oleh siapa pun tanpa izin atau otentikasi yang sesuai. Ini adalah tempat di mana informasi yang lebih pribadi atau terisolasi berada, jauh dari jangkauan pencarian standar.</p>
+            <form action="#" method="POST">
+                <label for="name-deepweb">Nama Anda:</label>
+                <input type="text" id="name-deepweb" name="name" placeholder="Masukkan nama Anda" required>
+                <label for="email-deepweb">Email Anda:</label>
+                <input type="email" id="email-deepweb" name="email" placeholder="Masukkan email Anda" required>
+                <input type="submit" value="Kirim">
+            </form>
+        </div>
+    </section>
+
+    <!-- Dark Web -->
+    <section id="dark-web">
+        <h2>Dark Web</h2>
+        <div class="info-section">
+            <h3>Apa Itu Dark Web?</h3>
+            <p>Dark Web adalah bagian dari internet yang hanya dapat diakses menggunakan perangkat lunak tertentu, seperti Tor. Tor memungkinkan pengguna untuk mengakses situs yang tersembunyi dan tidak terindeks oleh mesin pencari umum. Ini adalah bagian dari Deep Web, tetapi jauh lebih tersembunyi dan sulit dijangkau.</p>
+            <p>Dark Web terkenal karena sering digunakan untuk tujuan yang tidak sah, tetapi ada juga penggunaan sah dari Dark Web untuk melindungi privasi dan kebebasan berekspresi. Banyak individu di negara yang memiliki pengawasan tinggi menggunakan Dark Web untuk menghindari pengawasan pemerintah.</p>
+            <form action="#" method="POST">
+                <label for="name-darkweb">Nama Anda:</label>
+                <input type="text" id="name-darkweb" name="name" placeholder="Masukkan nama Anda" required>
+                <label for="email-darkweb">Email Anda:</label>
+                <input type="email" id="email-darkweb" name="email" placeholder="Masukkan email Anda" required>
+                <input type="submit" value="Kirim">
+            </form>
+        </div>
+    </section>
+
+    <!-- Darknet -->
+    <section id="darknet">
+        <h2>Darknet</h2>
+        <div class="info-section">
+            <h3>Apa Itu Darknet?</h3>
+            <p>Darknet adalah bagian dari Dark Web yang beroperasi dengan jaringan pribadi dan protokol tertentu yang hanya bisa diakses oleh individu yang memiliki perangkat lunak atau perangkat keras khusus. Darknet berfungsi untuk tujuan yang lebih aman dan terisolasi, memungkinkan komunikasi anonim di antara penggunanya.</p>
+            <p>Darknet bukan hanya digunakan untuk kegiatan ilegal, meskipun itu adalah bagian yang cukup sering dilaporkan. Namun, banyak orang yang membutuhkan privasi tinggi juga mengakses Darknet untuk menjaga kerahasiaan data dan komunikasi mereka. Banyak organisasi yang peduli dengan keamanan informasi juga menggunakannya.</p>
+            <form action="#" method="POST">
+                <label for="name-darknet">Nama Anda:</label>
+                <input type="text" id="name-darknet" name="name" placeholder="Masukkan nama Anda" required>
+                <label for="email-darknet">Email Anda:</label>
+                <input type="email" id="email-darknet" name="email" placeholder="Masukkan email Anda" required>
+                <input type="submit" value="Kirim">
+            </form>
+        </div>
+    </section>
+
+    <!-- Deepnet -->
+    <section id="deepnet">
+        <h2>Deepnet</h2>
+        <div class="info-section">
+            <h3>Apa Itu Deepnet?</h3>
+            <p>Deepnet adalah jaringan pribadi yang lebih tersembunyi dan lebih sulit diakses dibandingkan dengan Deep Web. Situs-situs di Deepnet lebih eksklusif dan hanya dapat diakses oleh pengguna yang memiliki akses khusus, seperti kredensial yang diberikan oleh jaringan atau entitas yang mengelola situs tersebut.</p>
+            <form action="#" method="POST">
+                <label for="name-deepnet">Nama Anda:</label>
+                <input type="text" id="name-deepnet" name="name" placeholder="Masukkan nama Anda" required>
+                <label for="email-deepnet">Email Anda:</label>
+                <input type="email" id="email-deepnet" name="email" placeholder="Masukkan email Anda" required>
+                <input type="submit" value="Kirim">
+            </form>
+        </div>
+    </section>
+
+    <!-- Hidden Internet -->
+    <section id="hidden-internet">
+        <h2>Hidden Internet</h2>
+        <div class="info-section">
+            <h3>Apa Itu Hidden Internet?</h3>
+            <p>Hidden Internet adalah bagian dari jaringan global yang hampir tidak terjangkau oleh orang luar atau pencarian mesin biasa. Ini mencakup situs-situs yang beroperasi di luar jalur akses publik yang bisa diketahui banyak orang. Pengguna yang mengakses Hidden Internet memerlukan protokol dan perangkat tertentu.</p>
+            <form action="#" method="POST">
+                <label for="name-hiddeninternet">Nama Anda
+                                    </label>
+                <input type="text" id="name-hiddeninternet" name="name" placeholder="Masukkan nama Anda" required>
+                <label for="email-hiddeninternet">Email Anda:</label>
+                <input type="email" id="email-hiddeninternet" name="email" placeholder="Masukkan email Anda" required>
+                <input type="submit" value="Kirim">
+            </form>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Web Access</p>
+        <p>&copy; 2024 - Semua hak cipta dilindungi</p>
     </footer>
+
 </body>
 </html>
