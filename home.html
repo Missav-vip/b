@@ -11,10 +11,10 @@
             margin: 0;
             padding: 0;
             background-color: transparent;
-            background-image: url('background.jpg'); /* Path to your background image */
+            background-image: url('background.jpg'); /* Ganti dengan path gambar latar belakang Anda */
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-attachment: fixed; /* Mengunci latar belakang agar tidak bergerak */
         }
 
         #banner {
@@ -34,7 +34,7 @@
         }
 
         #menu-bar {
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0);
             position: fixed;
             top: 0;
             width: 100%;
@@ -67,62 +67,48 @@
 
         .circle-container {
             display: flex;
-            justify-content: center;
-            margin-top: 0.5mm;
+            justify-content: center; /* Membuat lingkaran berada di tengah */
+            margin-top: 0.5mm; /* Jarak atas 0.5mm dari banner */
             padding-bottom: 10px;
         }
 
         .circle-item {
-            margin: 0 1mm;
+            margin: 0 1mm; /* Jarak antar lingkaran 1mm */
             text-align: center;
             position: relative;
         }
 
         .circle {
             display: inline-block;
-            width: 15px;
-            height: 15px;
+            width: 15px; /* Ukuran lingkaran 15px */
+            height: 15px; /* Ukuran lingkaran 15px */
             border-radius: 50%;
-            background-size: cover;
+            background-size: cover; /* Mengatur gambar agar sesuai dengan lingkaran */
             background-position: center;
             color: white;
             font-size: 8px;
             text-align: center;
             line-height: 15px;
-            cursor: default;
+            cursor: default; /* Menghilangkan efek klik */
+            animation: moveCircle 5s infinite alternate; /* Animasi bergerak */
         }
 
-        /* Ticker styles */
-        .ticker-container {
-            width: 100%;
-            background-color: #000;
-            padding: 10px 0;
-            text-align: center;
-            position: relative;
-            margin-top: 20px; /* Add space between ticker and circles */
-        }
-
-        .ticker {
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        .ticker span {
-            display: inline-block;
-            padding-right: 50px;
-            animation: scroll-left 15s linear infinite;
-        }
-
-        @keyframes scroll-left {
+        @keyframes moveCircle {
             0% {
-                transform: translateX(100%);
+                transform: translateY(0); /* Posisi awal */
+            }
+            50% {
+                transform: translateY(20px); /* Bergerak ke bawah */
             }
             100% {
-                transform: translateX(-100%);
+                transform: translateY(0); /* Kembali ke posisi awal */
             }
+        }
+
+        .circle-name {
+            margin-top: 1px;
+            font-size: 8px;
+            color: white;
         }
 
         @media (max-width: 768px) {
@@ -136,6 +122,7 @@
                 flex: 1 1 45%;
             }
         }
+
     </style>
 </head>
 <body>
@@ -188,13 +175,6 @@
         <div class="circle-item">
             <a href="link9.html" class="circle" style="background-image: url('pagani.jpg');"></a>
             <div class="circle-name">Pagani</div>
-        </div>
-    </div>
-
-    <!-- TradingView Widget Ticker -->
-    <div class="ticker-container">
-        <div class="ticker">
-            <span>BTC/USD: 50000 | ETH/USD: 4000 | LTC/USD: 300 | XRP/USD: 1.2 | DOGE/USD: 0.08 | ADA/USD: 2.5 | SOL/USD: 150 | TRX/USD: 0.1 | DOT/USD: 35</span>
         </div>
     </div>
 
