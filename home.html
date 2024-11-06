@@ -19,7 +19,7 @@
             width: 100%;
             text-align: center;
             position: relative;
-            margin-top: 0.1rem; /* Menurunkan banner sedikit */
+            margin-top: 1rem; /* Menurunkan banner sebesar 1 */
         }
 
         .responsive-banner {
@@ -63,69 +63,53 @@
 
         .circle-container {
             display: flex;
-            justify-content: space-between;
-            margin-top: 1rem; /* Memberikan jarak setelah banner */
-            padding: 10px 20px;
-            border-radius: 10px;
-            position: relative;
-            top: 0.1rem; /* Menurunkan lingkaran sedikit */
+            overflow-x: auto; /* Mengaktifkan scroll horizontal */
+            margin-top: 2rem; /* Memberikan jarak setelah banner */
+            padding-bottom: 10px; /* Memberikan jarak bawah agar tidak terpotong */
         }
 
         .circle-item {
-            width: auto;
-            height: auto;
-            margin: 0 10px;
+            margin: 10px;
+            text-align: center;
         }
 
         .circle {
             display: inline-block;
-            padding: 20px;
+            width: 15px; /* Ukuran lingkaran */
+            height: 15px; /* Ukuran lingkaran */
             border: 2px solid rgba(0, 0, 0, 0.3);
             border-radius: 50%;
             color: white;
             font-size: 14px;
             text-align: center;
-            line-height: 40px;
+            line-height: 15px; /* Menyelaraskan teks di tengah lingkaran */
             cursor: pointer;
             transition: transform 0.3s ease;
+            margin-bottom: 10px;
         }
 
         .circle:hover {
-            transform: scale(1.1);
+            transform: scale(1.2); /* Membuat lingkaran lebih besar saat di-hover */
         }
 
         .circle-name {
             margin-top: 5px;
-            font-size: 14px;
+            font-size: 12px;
             color: white;
-            text-align: center;
         }
 
         @media (max-width: 768px) {
             .circle-container .circle-item {
-                flex: 1 1 calc(20% - 20px);
+                flex: 1 1 30%; /* Menyusun ulang agar lebih responsif */
             }
         }
 
         @media (max-width: 480px) {
             .circle-container .circle-item {
-                flex: 1 1 calc(33% - 20px);
+                flex: 1 1 45%; /* Pengaturan ukuran pada layar kecil */
             }
         }
 
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .menu-icon {
-                display: block;
-            }
-
-            .circle-container {
-                flex-direction: row;
-            }
-        }
     </style>
 </head>
 <body>
