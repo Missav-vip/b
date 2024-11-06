@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             background-color: transparent;
-            background-image: url('background.jpg'); /* Ganti dengan path gambar latar belakang Anda */
+            background-image: url('background.jpg'); /* Path to your background image */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -34,7 +34,7 @@
         }
 
         #menu-bar {
-            background-color: rgba(0, 0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.5);
             position: fixed;
             top: 0;
             width: 100%;
@@ -90,51 +90,52 @@
             text-align: center;
             line-height: 15px;
             cursor: default;
-            animation: moveCircle 5s infinite alternate;
         }
 
-        @keyframes moveCircle {
+        /* Ticker styles */
+        .ticker-container {
+            width: 100%;
+            background-color: #000;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+            margin-top: 20px; /* Add space between ticker and circles */
+        }
+
+        .ticker {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .ticker span {
+            display: inline-block;
+            padding-right: 50px;
+            animation: scroll-left 15s linear infinite;
+        }
+
+        @keyframes scroll-left {
             0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(20px);
+                transform: translateX(100%);
             }
             100% {
-                transform: translateY(0);
+                transform: translateX(-100%);
             }
         }
 
-        .circle-name {
-            margin-top: 1px;
-            font-size: 8px;
-            color: white;
+        @media (max-width: 768px) {
+            .circle-container .circle-item {
+                flex: 1 1 30%;
+            }
         }
 
-        #ticker-wrapper {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            margin-top: 20px;
-            padding: 10px 0;
-            background-color: #333;
-            color: white;
-            font-size: 14px;
+        @media (max-width: 480px) {
+            .circle-container .circle-item {
+                flex: 1 1 45%;
+            }
         }
-
-        .ticker-item {
-            display: inline-block;
-            padding: 0 20px;
-        }
-
-        .up {
-            color: green;
-        }
-
-        .down {
-            color: red;
-        }
-
     </style>
 </head>
 <body>
@@ -156,47 +157,57 @@
             <a href="link1.html" class="circle" style="background-image: url('bugatti.jpg');"></a>
             <div class="circle-name">Bugatti</div>
         </div>
-        <!-- Circle items lainnya -->
+        <div class="circle-item">
+            <a href="link2.html" class="circle" style="background-image: url('lamborghini.jpg');"></a>
+            <div class="circle-name">Lamborghini</div>
+        </div>
+        <div class="circle-item">
+            <a href="link3.html" class="circle" style="background-image: url('ferrari.jpg');"></a>
+            <div class="circle-name">Ferrari</div>
+        </div>
+        <div class="circle-item">
+            <a href="link4.html" class="circle" style="background-image: url('rollsroyce.jpg');"></a>
+            <div class="circle-name">Rolls Royce</div>
+        </div>
+        <div class="circle-item">
+            <a href="link5.html" class="circle" style="background-image: url('mclaren.jpg');"></a>
+            <div class="circle-name">McLaren</div>
+        </div>
+        <div class="circle-item">
+            <a href="link6.html" class="circle" style="background-image: url('astonmartin.jpg');"></a>
+            <div class="circle-name">Aston Martin</div>
+        </div>
+        <div class="circle-item">
+            <a href="link7.html" class="circle" style="background-image: url('porsche.jpg');"></a>
+            <div class="circle-name">Porsche</div>
+        </div>
+        <div class="circle-item">
+            <a href="link8.html" class="circle" style="background-image: url('koenigsegg.jpg');"></a>
+            <div class="circle-name">Koenigsegg</div>
+        </div>
+        <div class="circle-item">
+            <a href="link9.html" class="circle" style="background-image: url('pagani.jpg');"></a>
+            <div class="circle-name">Pagani</div>
+        </div>
     </div>
 
-    <!-- Menambahkan TradingView Ticker Widget dengan mata uang yang Anda inginkan -->
-    <div id="ticker-wrapper">
-        <div id="tradingview-widget-container"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-            {
-                "symbols": [
-                    {"proMarket": "FX:BTCUSD", "description": "Bitcoin (BTC)"},
-                    {"proMarket": "FX:ETHUSD", "description": "Ethereum (ETH)"},
-                    {"proMarket": "FX:LTCUSD", "description": "Litecoin (LTC)"},
-                    {"proMarket": "FX:XRPUSD", "description": "Ripple (XRP)"},
-                    {"proMarket": "FX:ADAUSD", "description": "Cardano (ADA)"},
-                    {"proMarket": "FX:DOTUSD", "description": "Polkadot (DOT)"},
-                    {"proMarket": "FX:BNBUSD", "description": "Binance Coin (BNB)"},
-                    {"proMarket": "FX:SOLUSD", "description": "Solana (SOL)"},
-                    {"proMarket": "FX:USDTUSD", "description": "Tether (USDT)"},
-                    {"proMarket": "FX:XLMUSD", "description": "Stellar (XLM)"},
-                    {"proMarket": "FX:MATICUSD", "description": "Polygon (MATIC)"},
-                    {"proMarket": "FX:LINKUSD", "description": "Chainlink (LINK)"},
-                    {"proMarket": "FX:VETUSD", "description": "VeChain (VET)"},
-                    {"proMarket": "FX:TRXUSD", "description": "TRON (TRX)"},
-                    {"proMarket": "FX:SHIBUSD", "description": "Shiba Inu (SHIB)"},
-                    {"proMarket": "FX:UNIUSD", "description": "Uniswap (UNI)"},
-                    {"proMarket": "FX:AAVEUSD", "description": "Aave (AAVE)"},
-                    {"proMarket": "FX:ALGOUSD", "description": "Algorand (ALGO)"},
-                    {"proMarket": "FX:BTCGBP", "description": "Bitcoin (BTC) GBP"},
-                    {"proMarket": "FX:BTCEUR", "description": "Bitcoin (BTC) EUR"},
-                    {"proMarket": "FX:BTCJPY", "description": "Bitcoin (BTC) JPY"},
-                    {"proMarket": "FX:ETHGBP", "description": "Ethereum (ETH) GBP"},
-                    {"proMarket": "FX:ETHEUR", "description": "Ethereum (ETH) EUR"},
-                    {"proMarket": "FX:ETHJPY", "description": "Ethereum (ETH) JPY"}
-                ],
-                "colorTheme": "dark",
-                "isTransparent": false,
-                "displayMode": "regular",
-                "locale": "id"
-            }
-        </script>
+    <!-- TradingView Widget Ticker -->
+    <div class="ticker-container">
+        <div class="ticker">
+            <span>BTC/USD: 50000 | ETH/USD: 4000 | LTC/USD: 300 | XRP/USD: 1.2 | DOGE/USD: 0.08 | ADA/USD: 2.5 | SOL/USD: 150 | TRX/USD: 0.1 | DOT/USD: 35</span>
+        </div>
     </div>
+
+    <script>
+        window.onload = function () {
+            const backgroundImage = localStorage.getItem('backgroundImage');
+            if (backgroundImage) {
+                document.body.style.backgroundImage = `url(${backgroundImage})`;
+                document.body.style.backgroundSize = "cover";
+                document.body.style.backgroundAttachment = "fixed";
+            }
+        }
+    </script>
 
 </body>
 </html>
