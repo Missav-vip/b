@@ -70,12 +70,15 @@
             justify-content: center; /* Membuat lingkaran berada di tengah */
             margin-top: 0.5mm; /* Jarak atas 0.5mm dari banner */
             padding-bottom: 10px;
+            flex-wrap: wrap; /* Menyesuaikan layout ketika ukuran layar kecil */
         }
 
         .circle-item {
             margin: 0 1mm; /* Jarak antar lingkaran 1mm */
             text-align: center;
             position: relative;
+            flex: 1 1 20%; /* Mengatur fleksibilitas dan ukuran */
+            margin-bottom: 20px;
         }
 
         .circle {
@@ -106,9 +109,14 @@
         }
 
         .circle-name {
-            margin-top: 1px;
+            margin-top: 5px; /* Menambahkan jarak antara lingkaran dan nama */
             font-size: 8px;
             color: white;
+        }
+
+        .tradingview-widget {
+            width: 100%; /* Membuat lebar grafik sesuai dengan lebar kontainer */
+            height: 400px; /* Atur tinggi grafik sesuai kebutuhan */
         }
 
         @media (max-width: 768px) {
@@ -143,39 +151,28 @@
         <div class="circle-item">
             <a href="link1.html" class="circle" style="background-image: url('bugatti.jpg');"></a>
             <div class="circle-name">Bugatti</div>
+            <!-- TradingView Widget -->
+            <div class="tradingview-widget">
+                <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_65c7c&symbol=BITFINEX:BTCUSD&interval=D&hidetoptoolbar=1&symboledit=1&saveimage=1&toolbarbg=F1F3F6" width="100%" height="400" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+            </div>
         </div>
         <div class="circle-item">
             <a href="link2.html" class="circle" style="background-image: url('lamborghini.jpg');"></a>
             <div class="circle-name">Lamborghini</div>
+            <!-- TradingView Widget -->
+            <div class="tradingview-widget">
+                <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_65c7c&symbol=BITFINEX:ETHUSD&interval=D&hidetoptoolbar=1&symboledit=1&saveimage=1&toolbarbg=F1F3F6" width="100%" height="400" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+            </div>
         </div>
         <div class="circle-item">
             <a href="link3.html" class="circle" style="background-image: url('ferrari.jpg');"></a>
             <div class="circle-name">Ferrari</div>
+            <!-- TradingView Widget -->
+            <div class="tradingview-widget">
+                <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_65c7c&symbol=BITFINEX:XRPUSD&interval=D&hidetoptoolbar=1&symboledit=1&saveimage=1&toolbarbg=F1F3F6" width="100%" height="400" frameborder="0" allowtransparency="true" scrolling="no"></iframe>
+            </div>
         </div>
-        <div class="circle-item">
-            <a href="link4.html" class="circle" style="background-image: url('rollsroyce.jpg');"></a>
-            <div class="circle-name">Rolls Royce</div>
-        </div>
-        <div class="circle-item">
-            <a href="link5.html" class="circle" style="background-image: url('mclaren.jpg');"></a>
-            <div class="circle-name">McLaren</div>
-        </div>
-        <div class="circle-item">
-            <a href="link6.html" class="circle" style="background-image: url('astonmartin.jpg');"></a>
-            <div class="circle-name">Aston Martin</div>
-        </div>
-        <div class="circle-item">
-            <a href="link7.html" class="circle" style="background-image: url('porsche.jpg');"></a>
-            <div class="circle-name">Porsche</div>
-        </div>
-        <div class="circle-item">
-            <a href="link8.html" class="circle" style="background-image: url('koenigsegg.jpg');"></a>
-            <div class="circle-name">Koenigsegg</div>
-        </div>
-        <div class="circle-item">
-            <a href="link9.html" class="circle" style="background-image: url('pagani.jpg');"></a>
-            <div class="circle-name">Pagani</div>
-        </div>
+        <!-- Tambahkan lebih banyak lingkaran dengan widget TradingView sesuai kebutuhan -->
     </div>
 
     <script>
