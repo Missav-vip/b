@@ -3,119 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akses Website - Biaya dan Tujuan</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Akses Web</title>
+    <link rel="stylesheet" href="style.css">
     <style>
+        /* CSS tambahan jika diperlukan */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: #EAEAEA;
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #f1f1f1;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        h1, h2, h3 {
-            color: #fff;
+            text-align: center;
         }
 
         .container {
-            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        .content {
-            background-color: #1A1A1A;
-            border-radius: 10px;
-            padding: 40px;
-            margin-top: 30px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
         h1 {
-            text-align: center;
-            font-size: 2.5em;
+            font-size: 3rem;
             margin-bottom: 20px;
         }
 
-        .price-box, .info-box {
-            background-color: #232323;
-            padding: 20px;
+        .web-choice {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .web-choice button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #444;
+            color: #f1f1f1;
+            border: 2px solid #f1f1f1;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .web-choice button:hover {
+            background-color: #f1f1f1;
+            color: #444;
+        }
+
+        .note {
+            background-color: #333;
+            padding: 15px;
             border-radius: 10px;
-            margin-top: 40px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
         }
 
-        .price-box h2, .info-box h2 {
-            font-size: 1.8em;
-            color: #4CAF50;
-            text-align: center;
-            margin-bottom: 15px;
+        .note p {
+            font-size: 1.1rem;
         }
 
-        .price-box p, .info-box p, .price-box ul, .info-box ul {
-            font-size: 1.1em;
-            color: #B0B0B0;
-            line-height: 1.6;
+        .footer {
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #999;
         }
-
-        .price-box ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .price-box li, .info-box li {
-            margin-bottom: 15px;
-        }
-
-        .content ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .content li {
-            margin-bottom: 10px;
-        }
-
-        .content a {
-            color: #00BFFF;
-            text-decoration: none;
-        }
-
-        .content a:hover {
-            text-decoration: underline;
-        }
-
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Selamat Datang di Akses Web Kami</h1>
+        <h1>Selamat datang di Sistem Akses Web</h1>
+        <p>Pilih jenis web yang ingin Anda akses:</p>
+        
+        <!-- Pilihan Web -->
+        <div class="web-choice">
+            <button onclick="window.location.href='surface-web.html'">Surface Web</button>
+            <button onclick="window.location.href='deep-web.html'">Deep Web</button>
+            <button onclick="window.location.href='dark-web.html'">Dark Web</button>
+            <button onclick="window.location.href='darknet.html'">Darknet</button>
+        </div>
+        
+        <h3>Informasi Penting:</h3>
+        <p>Pastikan Anda memilih jenis web yang ingin diakses dengan bijak, karena setiap kategori memiliki aturan akses yang berbeda. Akses ke Dark Web dan Darknet memerlukan prosedur khusus yang harus diikuti.</p>
 
-        <div class="content">
-            <h2>Akses Website Berdasarkan Pilihan</h2>
-            <p>Pilih akses Anda:</p>
-            <ul>
-                <li><a href="surface-web.html">Surface Web</a></li>
-                <li><a href="deep-web.html">Deep Web</a></li>
-                <li><a href="dark-web.html">Dark Web (Biaya: 9.9 BTC)</a></li>
-            </ul>
+        <div class="note">
+            <h3>Catatan:</h3>
+            <p>Jika Anda memilih Dark Web atau Darknet, Anda akan diminta untuk mengikuti proses verifikasi dan pembayaran untuk mendapatkan akses penuh. Pembayaran untuk Dark Web dan Darknet sebesar 9.9 BTC.</p>
+            <p>Silakan menghubungi admin untuk mendapatkan informasi lebih lanjut mengenai akses ke Dark Web dan Darknet.</p>
         </div>
 
-        <div class="price-box">
-            <h2>Biaya Akses Dark Web</h2>
-            <p>Untuk mendapatkan akses ke Dark Web, Anda harus membayar sebanyak 9.9 BTC. Hubungi Admin untuk detail lebih lanjut.</p>
-        </div>
-
-        <div class="info-box">
-            <h2>Kelebihan Mengakses Dark Web</h2>
-            <ul>
-                <li>Akses ke layanan dan informasi yang tidak tersedia di web lainnya</li>
-                <li>Membuka peluang untuk menjalankan bisnis dan layanan khusus</li>
-                <li>Keamanan lebih terjaga dengan fitur tambahan</li>
-            </ul>
+        <div class="footer">
+            <p>&copy; 2024 Semua hak cipta dilindungi. Akses ke web ini tunduk pada kebijakan dan persyaratan kami.</p>
         </div>
     </div>
+
 </body>
 </html>
