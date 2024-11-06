@@ -3,47 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Datang di Website</title>
+    <title>Welcome</title>
     <style>
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
             background-color: black;
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             text-align: center;
-        }
-        .content {
-            max-width: 600px;
+            font-family: Arial, sans-serif;
+            padding-top: 20%;
         }
         h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
+            font-size: 50px;
+            animation: fadeIn 0.001s ease-out;
         }
-        p {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-        }
-        .message {
-            font-size: 1.2em;
-            margin-top: 20px;
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <h1>Selamat Datang!</h1>
-        <p>Sambutan dari robot website ini. Anda akan diarahkan ke halaman selanjutnya dalam beberapa detik.</p>
-        <div class="message">Menunggu 3 detik untuk melanjutkan...</div>
-    </div>
+
+    <!-- Sambutan "Welcome" -->
+    <h1>Welcome</h1>
 
     <script>
-        setTimeout(() => {
-            window.location.href = 'upload.html'; // Arahkan ke upload.html setelah 3 detik
-        }, 3000); // 3 detik
+        // Arahkan ke halaman upload setelah 0.001 detik
+        setTimeout(function(){
+            window.location.href = "upload.html";
+        }, 1); // 0.001 detik = 1 milidetik
     </script>
+
 </body>
 </html>
