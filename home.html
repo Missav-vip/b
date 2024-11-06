@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <style>
-        /* Umum */
         body {
             font-family: Arial, sans-serif;
             color: white;
-            background-color: black;
+            background-color: transparent;
             margin: 0;
             padding: 0;
         }
 
-        /* Garis Tiga (Menu Toggle) */
         .menu-toggle {
             position: fixed;
             top: 20px;
@@ -25,31 +23,31 @@
             flex-direction: column;
             justify-content: space-between;
             cursor: pointer;
-            z-index: 100; /* Memastikan berada di atas menu */
+            z-index: 100;
         }
 
         .line {
             width: 100%;
-            height: 3px; /* Ukuran garis dikurangi */
+            height: 3px;
             background-color: white;
             border-radius: 4px;
         }
 
-        /* Menu */
         .menu {
             position: fixed;
             top: 0;
             right: 0;
-            width: 200px; /* Lebar menu diatur */
+            width: 200px;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Transparan */
+            background: rgba(0, 0, 0, 0);
             color: white;
-            display: none; /* Mulai dengan tersembunyi */
+            display: none;
             flex-direction: column;
             padding-top: 50px;
             text-align: center;
-            z-index: 99; /* Dibawah garis tiga */
-            overflow-y: auto; /* Agar dapat scroll */
+            z-index: 99;
+            overflow-y: auto;
+            border: 1px solid white;
         }
 
         .menu h2 {
@@ -67,11 +65,6 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* Latar belakang */
-        body {
-            background: transparent;
-        }
-
         h1 {
             text-align: center;
             color: white;
@@ -81,14 +74,12 @@
 <body>
     <h1>Selamat datang di halaman utama</h1>
 
-    <!-- Menu Toggle Button (Tiga Garis) -->
     <div class="menu-toggle" onclick="toggleMenu()">
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
     </div>
 
-    <!-- Menu -->
     <div class="menu" id="menu">
         <h2>Menu</h2>
         <a href="#">Beranda</a>
@@ -103,19 +94,17 @@
     </div>
 
     <script>
-        // Fungsi untuk menampilkan dan menyembunyikan menu
         function toggleMenu() {
             const menu = document.getElementById('menu');
             if (menu.style.display === 'none' || menu.style.display === '') {
                 menu.style.display = 'block';
-                document.querySelector('.menu-toggle').style.display = 'none'; // Garis tiga disembunyikan saat menu terbuka
+                document.querySelector('.menu-toggle').style.display = 'none';
             } else {
                 menu.style.display = 'none';
-                document.querySelector('.menu-toggle').style.display = 'flex'; // Garis tiga ditampilkan saat menu tertutup
+                document.querySelector('.menu-toggle').style.display = 'flex';
             }
         }
 
-        // Memuat gambar latar belakang dari localStorage jika ada
         window.onload = function () {
             const backgroundImage = localStorage.getItem('backgroundImage');
             if (backgroundImage) {
