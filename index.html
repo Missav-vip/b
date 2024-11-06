@@ -1,105 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Information</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+/* Styling untuk banner */
+#banner {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+}
 
-    <!-- Banner -->
-    <div id="banner">
-        <h1>Explore the Hidden Layers of the Web</h1>
-    </div>
+#banner h1 {
+    font-size: 2.5em;
+}
 
-    <!-- Logo dan Deskripsi -->
-    <div class="logo-section">
-        <img src="logo.png" alt="Logo Web">
-        <p>Welcome to the information hub of the Surface Web, Deep Web, and more!</p>
-    </div>
+/* Styling untuk logo-container yang berisi logo-logo */
+.logo-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
 
-    <!-- Peringatan -->
-    <div class="warning">
-        Warning: Some parts of this web may lead to uncharted and dangerous areas. Proceed with caution!
-    </div>
+.logo-item {
+    text-align: center;
+    margin: 10px;
+}
 
-    <!-- Nama Web dengan Keterangan -->
-    <div class="web-info">
-        <div class="web-item">
-            <h3>Surface Web</h3>
-            <p>The part of the internet accessible to everyone, indexed by search engines.</p>
-            <button id="surface-web-btn">More Info</button>
-        </div>
-        <div class="web-item">
-            <h3>Deep Web</h3>
-            <p>Websites not indexed by search engines, requiring specific credentials to access.</p>
-            <button id="deep-web-btn">More Info</button>
-        </div>
-        <div class="web-item">
-            <h3>Darknet</h3>
-            <p>A hidden part of the internet where privacy and anonymity are prioritized.</p>
-            <button id="darknet-btn">More Info</button>
-        </div>
-        <div class="web-item">
-            <h3>Dark Web</h3>
-            <p>Part of the Darknet used for illegal activities, often requiring specialized software.</p>
-            <button id="dark-web-btn">More Info</button>
-        </div>
-        <div class="web-item">
-            <h3>DeepNet</h3>
-            <p>A web of encrypted, untraceable data and communications.</p>
-            <button id="deepnet-btn">More Info</button>
-        </div>
-        <div class="web-item">
-            <h3>Hidden Internet</h3>
-            <p>Websites that operate entirely outside of search engines and regular browsers.</p>
-            <button id="hidden-internet-btn">More Info</button>
-        </div>
-    </div>
+.logo-item img {
+    width: 100px; /* Sesuaikan ukuran logo */
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
 
-    <!-- Kata-Kata Bijak -->
-    <div class="quote">
-        "The internet is vast, and not all of it is meant to be explored. Use your knowledge wisely."
-    </div>
+.logo-item img:hover {
+    transform: scale(1.1); /* Efek hover agar logo sedikit membesar */
+}
 
-    <!-- Footer Terkunci -->
-    <div id="footer-text">
-        <p>&copy; 2024 - Semua hak cipta dilindungi</p>
-    </div>
+.logo-item p {
+    margin-top: 10px;
+    font-size: 1.1em;
+}
 
-    <!-- JavaScript untuk Interaksi -->
-    <script>
-        // Event listener untuk tombol 'Surface Web'
-        document.getElementById("surface-web-btn").addEventListener("click", function() {
-            alert("Surface Web information form will be displayed.");
-        });
-
-        // Event listener untuk tombol 'Deep Web'
-        document.getElementById("deep-web-btn").addEventListener("click", function() {
-            alert("Deep Web information form will be displayed.");
-        });
-
-        // Event listener untuk tombol 'Darknet'
-        document.getElementById("darknet-btn").addEventListener("click", function() {
-            alert("Darknet information form will be displayed.");
-        });
-
-        // Event listener untuk tombol 'Dark Web'
-        document.getElementById("dark-web-btn").addEventListener("click", function() {
-            alert("Dark Web information form will be displayed.");
-        });
-
-        // Event listener untuk tombol 'DeepNet'
-        document.getElementById("deepnet-btn").addEventListener("click", function() {
-            alert("DeepNet information form will be displayed.");
-        });
-
-        // Event listener untuk tombol 'Hidden Internet'
-        document.getElementById("hidden-internet-btn").addEventListener("click", function() {
-            alert("Hidden Internet information form will be displayed.");
-        });
-    </script>
-
-</body>
-</html>
+/* Footer yang tetap terkunci di dasar halaman */
+#footer-text {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
