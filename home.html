@@ -33,7 +33,7 @@
             width: 60%;
             height: 5px;
             background-color: white;
-            border-radius: 5px;
+            border-radius: 3px;
         }
 
         .menu {
@@ -41,7 +41,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 200px; /* Lebar menu diperkecil */
+            width: 150px; /* Lebar menu diperkecil */
             height: 4cm;
             background: rgba(0, 0, 0, 0.7);
             color: white;
@@ -73,6 +73,44 @@
         h1 {
             text-align: center;
             color: white;
+        }
+
+        /* Media Queries untuk perangkat kecil (ponsel) */
+        @media screen and (max-width: 600px) {
+            .menu {
+                width: 80%; /* Lebar menu lebih besar pada perangkat kecil */
+                height: auto;
+                max-height: 80%;
+            }
+
+            .line {
+                width: 50%; /* Lebar garis menu sedikit lebih besar di ponsel */
+            }
+        }
+
+        /* Media Queries untuk perangkat tablet */
+        @media screen and (min-width: 601px) and (max-width: 1024px) {
+            .menu {
+                width: 60%; /* Lebar menu sedikit lebih besar pada tablet */
+                height: auto;
+                max-height: 60%;
+            }
+
+            .line {
+                width: 40%; /* Lebar garis menu disesuaikan pada tablet */
+            }
+        }
+
+        /* Media Queries untuk perangkat desktop */
+        @media screen and (min-width: 1025px) {
+            .menu {
+                width: 200px; /* Lebar menu standar pada desktop */
+                height: 4cm;
+            }
+
+            .line {
+                width: 30%; /* Lebar garis menu standar pada desktop */
+            }
         }
     </style>
 </head>
