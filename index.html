@@ -3,46 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efek Flash</title>
+    <title>Verifikasi Lokasi Pengguna</title>
     <style>
-        @keyframes flashEffect {
-            0% { background-color: white; }
-            50% { background-color: red; }
-            100% { background-color: white; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
         }
-
-        .flash {
-            width: 100vw;
-            height: 100vh;
-            animation: flashEffect 0.5s infinite;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999;
+        .warning {
+            background-color: #f44336;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+        .success {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+        .vpn-warning {
+            background-color: #ff9800;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+        .countdown {
+            font-size: 2em;
+            margin-top: 20px;
+            color: yellow;
         }
     </style>
 </head>
 <body>
-    <div id="flash" class="flash"></div>
+
+    <h1>Selamat Datang!</h1>
+    <p>Untuk melanjutkan, kami memerlukan izin lokasi Anda. Pastikan Anda berada di salah satu dari tiga wilayah satelit kami yang terverifikasi.</p>
+
+    <div id="message"></div>
+    <div id="countdown" class="countdown"></div>
 
     <script>
-        // Menambahkan efek flash (kedip) jika VPN terdeteksi
-        function showFlashEffect() {
-            const flashElement = document.getElementById('flash');
-            flashElement.style.display = 'block';  // Menampilkan efek flash
+        // Daftar 3 wilayah satelit yang diterima (misalnya dengan latitude dan longitude)
+        const satelliteRegions = [
+            { lat: -6.2088, lon: 106.8456 },  // Jakarta, Indonesia
+            { lat: 40.7128, lon: -74.0060 },  // New York, USA
+            { lat: 51.5074, lon: -0.1278 }    // London, UK
+        ];
+
+        // Fungsi untuk memeriksa apakah lokasi pengguna berada di salah satu wilayah satelit
+        function isInSateliteRegion(lat, lon) {
+            for (const region of satelliteRegions) {
+                // Membandingkan lokasi dengan toleransi kecil (misalnya 0.5 derajat)
+                if (Math.abs(lat - region.lat) < 0.5 && Math.abs(lon - region.lon) < 0.5) {
+                    return true;
+                }
+            }
+            return false;
         }
 
-        // Fungsi untuk mendeteksi penggunaan VPN
-        function detectVPN() {
-            // Simulasi deteksi VPN - ganti dengan logika deteksi VPN yang lebih sesuai
-            const isVPN = true; // Misalnya, jika VPN terdeteksi
-            if (isVPN) {
-                showFlashEffect();
-                alert('VPN terdeteksi! Flashing layar...');
+        // Fungsi untuk mendapatkan lokasi pengguna
+        function getUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+
+                    // Menampilkan lokasi yang terdeteksi
+                    document.getElementById("message").innerHTML = "Lokasi Anda terdeteksi: " + lat + ", " + lon;
+
+                    // Cek apakah lokasi cocok dengan wilayah satelit
+                    if (isInSateliteRegion(lat, lon)) {
+                        document.getElementById("message").innerHTML = "<div class='success'>Lokasi Anda terverifikasi. Anda dapat melanjutkan.</div>";
+                    } else {
+                        document.getElementById("message").innerHTML = "<div class='warning'>Lokasi Anda tidak cocok dengan wilayah satelit kami. Akses dibatasi.</div>";
+                    }
+
+                    // Memulai countdown jika lokasi terverifikasi
+                    startCountdown();
+                }, function(error) {
+                    document.getElementById("message").innerHTML = "<div class='warning'>Gagal mendeteksi lokasi Anda. Pastikan izin lokasi telah diberikan.</div>";
+                });
+            } else {
+                document.getElementById("message").innerHTML = "<div class='warning'>Geolocation tidak didukung oleh browser Anda.</div>";
             }
         }
 
-        detectVPN();  // Menjalankan deteksi VPN saat halaman dimuat
+        // Fungsi untuk mendeteksi apakah pengguna menggunakan VPN
+        function detectVPN() {
+            const vpnDetected = navigator.connection || navigator.webkitConnection;
+
+            if (vpnDetected) {
+                document.getElementById("message").innerHTML = "<div class='vpn-warning'>VPN terdeteksi. Anda tidak dapat melanjutkan dengan VPN aktif.</div>";
+                stopCountdown();
+                disablePageAccess();
+            }
+        }
+
+        // Fungsi untuk menonaktifkan akses halaman jika VPN terdeteksi
+        function disablePageAccess() {
+            document.body.style.pointerEvents = "none"; // Menonaktifkan semua interaksi halaman
+            document.getElementById("message").innerHTML += "<div class='warning'>Silakan matikan VPN untuk melanjutkan.</div>";
+        }
+
+        // Fungsi countdown untuk menunggu 1 menit sebelum melanjutkan
+        let countdownTimer;
+        let timeLeft = 60;
+
+        function startCountdown() {
+            countdownTimer = setInterval(function() {
+                document.getElementById("countdown").innerHTML = "Waktu untuk melanjutkan: " + timeLeft + " detik";
+                timeLeft--;
+                if (timeLeft <= 0) {
+                    clearInterval(countdownTimer);
+                    document.getElementById("countdown").innerHTML = "Waktu habis. Halaman akan melanjutkan otomatis.";
+                    // Aksi otomatis setelah countdown habis
+                    // Misalnya, alihkan ke halaman lain atau aktifkan tombol "Lanjut"
+                }
+            }, 1000);
+        }
+
+        // Fungsi untuk menghentikan countdown
+        function stopCountdown() {
+            clearInterval(countdownTimer);
+            document.getElementById("countdown").innerHTML = "Waktu berhenti. VPN terdeteksi.";
+        }
+
+        // Menjalankan fungsi untuk meminta izin lokasi pengguna dan mendeteksi VPN saat halaman dimuat
+        window.onload = function() {
+            getUserLocation();
+            detectVPN();
+        };
     </script>
+
 </body>
 </html>
