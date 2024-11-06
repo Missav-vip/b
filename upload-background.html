@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Latar Belakang</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e1e1e;
+            color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+        }
+
+        .upload-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .upload-container h2 {
+            margin-bottom: 15px;
+            color: #ffce00;
+            font-size: 24px;
+        }
+
+        input[type="file"] {
+            margin: 15px 0;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .upload-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ff9000;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .upload-btn:hover {
+            background-color: #ff6900;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h2>Upload Latar Belakang Anda</h2>
+        <input type="file" id="backgroundImage" accept="image/*">
+        <button class="upload-btn" onclick="uploadBackground()">Upload</button>
+    </div>
+
+    <script>
+        function uploadBackground() {
+            const fileInput = document.getElementById('backgroundImage');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    // Menetapkan latar belakang
+                    document.body.style.backgroundImage = `url(${event.target.result})`;
+                    document.body.style.backgroundSize = "cover";
+                    document.body.style.backgroundAttachment = "fixed";
+
+                    // Simpan di localStorage agar tetap tersimpan saat pindah halaman
+                    localStorage.setItem('backgroundImage', event.target.result);
+
+                    // Menampilkan pesan sementara sebelum mengarahkan ke halaman lain
+                    alert("Latar belakang berhasil diunggah! Menunggu 2 detik...");
+
+                    // Arahkan ke halaman home setelah 2 detik
+                    setTimeout(() => {
+                        window.location.href = 'home.html';
+                    }, 2000); // 2 detik
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert('Silakan pilih file gambar terlebih dahulu.');
+            }
+        }
+
+        // Memeriksa latar belakang yang tersimpan
+        window.onload = function() {
+            const savedBackground = localStorage.getItem('backgroundImage');
+            if (savedBackground) {
+                document.body.style.backgroundImage = `url(${savedBackground})`;
+                document.body.style.backgroundSize = "cover";
+                document.body.style.backgroundAttachment = "fixed";
+            }
+        };
+    </script>
+</body>
+</html>
