@@ -14,7 +14,7 @@
             background-image: url('background.jpg'); /* Ganti dengan path gambar latar belakang Anda */
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Mengunci latar belakang agar tidak bergerak */
+            background-attachment: fixed;
         }
 
         #banner {
@@ -67,41 +67,41 @@
 
         .circle-container {
             display: flex;
-            justify-content: center; /* Membuat lingkaran berada di tengah */
-            margin-top: 0.5mm; /* Jarak atas 0.5mm dari banner */
+            justify-content: center;
+            margin-top: 0.5mm;
             padding-bottom: 10px;
         }
 
         .circle-item {
-            margin: 0 1mm; /* Jarak antar lingkaran 1mm */
+            margin: 0 1mm;
             text-align: center;
             position: relative;
         }
 
         .circle {
             display: inline-block;
-            width: 15px; /* Ukuran lingkaran 15px */
-            height: 15px; /* Ukuran lingkaran 15px */
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
-            background-size: cover; /* Mengatur gambar agar sesuai dengan lingkaran */
+            background-size: cover;
             background-position: center;
             color: white;
             font-size: 8px;
             text-align: center;
             line-height: 15px;
-            cursor: default; /* Menghilangkan efek klik */
-            animation: moveCircle 5s infinite alternate; /* Animasi bergerak */
+            cursor: default;
+            animation: moveCircle 5s infinite alternate;
         }
 
         @keyframes moveCircle {
             0% {
-                transform: translateY(0); /* Posisi awal */
+                transform: translateY(0);
             }
             50% {
-                transform: translateY(20px); /* Bergerak ke bawah */
+                transform: translateY(20px);
             }
             100% {
-                transform: translateY(0); /* Kembali ke posisi awal */
+                transform: translateY(0);
             }
         }
 
@@ -111,63 +111,30 @@
             color: white;
         }
 
-        /* Animasi ticker */
-        .ticker-wrapper {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: rgba(0, 0, 0, 0.7);
+        #ticker-wrapper {
             width: 100%;
             overflow: hidden;
             white-space: nowrap;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+            font-size: 14px;
         }
 
         .ticker-item {
             display: inline-block;
             padding: 0 20px;
-            font-size: 16px;
-            color: white;
-            animation: ticker-animation 15s linear infinite;
         }
 
-        @keyframes ticker-animation {
-            0% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
+        .up {
+            color: green;
         }
 
-        .ticker-symbol {
-            font-weight: bold;
-            color: #f39c12;
+        .down {
+            color: red;
         }
 
-        .ticker-change {
-            font-size: 14px;
-            font-weight: normal;
-        }
-
-        .ticker-positive {
-            color: #28a745; /* Hijau untuk kenaikan */
-        }
-
-        .ticker-negative {
-            color: #dc3545; /* Merah untuk penurunan */
-        }
-
-        /* Media Query untuk layar lebih kecil */
-        @media (max-width: 768px) {
-            .circle-container .circle-item {
-                flex: 1 1 30%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .circle-container .circle-item {
-                flex: 1 1 45%;
-            }
-        }
     </style>
 </head>
 <body>
@@ -189,67 +156,33 @@
             <a href="link1.html" class="circle" style="background-image: url('bugatti.jpg');"></a>
             <div class="circle-name">Bugatti</div>
         </div>
-        <div class="circle-item">
-            <a href="link2.html" class="circle" style="background-image: url('lamborghini.jpg');"></a>
-            <div class="circle-name">Lamborghini</div>
-        </div>
-        <div class="circle-item">
-            <a href="link3.html" class="circle" style="background-image: url('ferrari.jpg');"></a>
-            <div class="circle-name">Ferrari</div>
-        </div>
-        <div class="circle-item">
-            <a href="link4.html" class="circle" style="background-image: url('rollsroyce.jpg');"></a>
-            <div class="circle-name">Rolls Royce</div>
-        </div>
-        <div class="circle-item">
-            <a href="link5.html" class="circle" style="background-image: url('mclaren.jpg');"></a>
-            <div class="circle-name">McLaren</div>
-        </div>
-        <div class="circle-item">
-            <a href="link6.html" class="circle" style="background-image: url('astonmartin.jpg');"></a>
-            <div class="circle-name">Aston Martin</div>
-        </div>
-        <div class="circle-item">
-            <a href="link7.html" class="circle" style="background-image: url('porsche.jpg');"></a>
-            <div class="circle-name">Porsche</div>
-        </div>
-        <div class="circle-item">
-            <a href="link8.html" class="circle" style="background-image: url('koenigsegg.jpg');"></a>
-            <div class="circle-name">Koenigsegg</div>
-        </div>
-        <div class="circle-item">
-            <a href="link9.html" class="circle" style="background-image: url('pagani.jpg');"></a>
-            <div class="circle-name">Pagani</div>
-        </div>
+        <!-- Circle items lainnya -->
     </div>
 
-    <!-- Bagian Ticker TradingView -->
-    <div class="ticker-wrapper">
-        <div class="ticker-item">
-            <span class="ticker-symbol">BTC/USD</span>
-            <span class="ticker-change ticker-positive">+3.45% $31,215.67</span>
-        </div>
-        <div class="ticker-item">
-            <span class="ticker-symbol">ETH/USD</span>
-            <span class="ticker-change ticker-negative">-1.12% $2,147.45</span>
-        </div>
-        <div class="ticker-item">
-            <span class="ticker-symbol">SOL/USD</span>
-            <span class="ticker-change ticker-positive">+2.87% $212.54</span>
-        </div>
-        <div class="ticker-item">
-            <span class="ticker-symbol">XPR/USD</span>
-            <span class="ticker-change ticker-positive">+0.45% $0.89</span>
-        </div>
-        <div class="ticker-item">
-            <span class="ticker-symbol">LTC/USD</span>
-            <span class="ticker-change ticker-negative">-0.88% $195.15</span>
-        </div>
-        <div class="ticker-item">
-            <span class="ticker-symbol">MATIC/USDT</span>
-            <span class="ticker-change ticker-positive">+1.72% $1.35</span>
-        </div>
+    <!-- Menambahkan TradingView Ticker Widget dengan mata uang yang Anda inginkan -->
+    <div id="ticker-wrapper">
+        <div id="tradingview-widget-container"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            {
+                "symbols": [
+                    {"proMarket": "FX:BTCUSD", "description": "Bitcoin (BTC)"},
+                    {"proMarket": "FX:ETHUSD", "description": "Ethereum (ETH)"},
+                    {"proMarket": "FX:LTCUSD", "description": "Litecoin (LTC)"},
+                    {"proMarket": "FX:XRPUSD", "description": "Ripple (XRP)"},
+                    {"proMarket": "FX:ADAUSD", "description": "Cardano (ADA)"},
+                    {"proMarket": "FX:DOTUSD", "description": "Polkadot (DOT)"},
+                    {"proMarket": "FX:BNBUSD", "description": "Binance Coin (BNB)"},
+                    {"proMarket": "FX:SOLUSD", "description": "Solana (SOL)"},
+                    {"proMarket": "FX:USDTUSD", "description": "Tether (USDT)"},
+                    {"proMarket": "FX:XLMUSD", "description": "Stellar (XLM)"}
+                ],
+                "colorTheme": "dark",
+                "isTransparent": false,
+                "displayMode": "regular",
+                "locale": "id"
+            }
+        </script>
     </div>
 
-    <script>
-        window
+</body>
+</html>
