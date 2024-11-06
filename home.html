@@ -19,7 +19,7 @@
             width: 100%;
             text-align: center;
             position: relative;
-            margin-top: 1rem; /* Menurunkan banner sebesar 1 */
+            margin-top: -0.3rem; /* Menurunkan banner sebesar 0.3 */
         }
 
         .responsive-banner {
@@ -63,9 +63,9 @@
 
         .circle-container {
             display: flex;
-            overflow-x: auto; /* Mengaktifkan scroll horizontal */
-            margin-top: 2rem; /* Memberikan jarak setelah banner */
-            padding-bottom: 10px; /* Memberikan jarak bawah agar tidak terpotong */
+            overflow-x: auto;
+            margin-top: 0.3rem; /* Menggeser lingkaran sedikit ke bawah setelah banner */
+            padding-bottom: 10px;
         }
 
         .circle-item {
@@ -75,14 +75,14 @@
 
         .circle {
             display: inline-block;
-            width: 15px; /* Ukuran lingkaran */
-            height: 15px; /* Ukuran lingkaran */
+            width: 15px;
+            height: 15px;
             border: 2px solid rgba(0, 0, 0, 0.3);
             border-radius: 50%;
             color: white;
             font-size: 14px;
             text-align: center;
-            line-height: 15px; /* Menyelaraskan teks di tengah lingkaran */
+            line-height: 15px;
             cursor: pointer;
             transition: transform 0.3s ease;
             margin-bottom: 10px;
@@ -93,7 +93,7 @@
         }
 
         .circle-name {
-            margin-top: 5px;
+            margin-top: 2px; /* Mengatur jarak minimal antara lingkaran dan teks */
             font-size: 12px;
             color: white;
         }
